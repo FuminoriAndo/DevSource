@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<Settings>
+
+	<!-- 棚卸作業区分 -->
+	<WorkCategorys>
+
+		<!-- 棚卸データ入力作業 -->
+		<WorkCategory No="1" Category="棚卸データ入力作業"/>
+		
+		<!-- 検針データ入力作業 -->
+		<WorkCategory No="2" Category="検針データ入力作業"/>
+  
+	</WorkCategorys>
+
+	<!-- 棚卸操作種類 -->
+	<OperationTypes>
+
+    <SIZAI>
+    
+		<!-- 実施月の確認 -->
+		<!--<OperationType No="1" Type="実施月の確認"/>-->
+
+		<!-- 手順確認 -->
+		<!--<OperationType No="2" Type="手順確認"/>-->
+
+		<!-- 棚卸表印刷 -->
+		<OperationType No="3" Type="棚卸表印刷"/>
+		
+		<!-- 棚卸実績値入力 -->
+		<OperationType No="4" Type="棚卸実績値入力"/>
+		
+		<!-- 棚卸実績値更新 -->
+		<OperationType No="5" Type="棚卸実績値更新"/>
+
+		<!-- 資材班作業誌入力(液酸入庫) -->
+	  	<OperationType No="6" Type="資材班作業誌入力(液酸入庫)"/>
+		
+		<!-- 検収明細書作成 -->
+		<OperationType No="7" Type="検収明細書作成"/>
+
+		<!-- 資材班作業誌入力(液酸出庫) -->
+		<OperationType No="8" Type="資材班作業誌入力(液酸出庫)"/>
+		
+		<!-- 受払いチェック(使用高払い) -->
+		<!--<OperationType No="9" Type="受払いチェック(使用高払い)"/>-->
+
+		<!-- 受払いチェック(入庫払い) -->
+		<!--<OperationType No="10" Type="受払いチェック(入庫払い)"/>-->
+    
+ 		<!-- 計算書発行 -->
+		<OperationType No="11" Type="計算書発行"/>
+
+		<!-- 立会い用棚卸表印刷 -->
+		<OperationType No="12" Type="立会い用棚卸表印刷"/>
+
+		<!-- 財務提出用棚卸表印刷 -->
+		<OperationType No="13" Type="財務提出用棚卸表印刷"/>
+		
+		<!-- 購買検収データ作成 -->
+		<OperationType No="14" Type="購買検収データ作成"/>
+		
+	  <!-- 当月量修正 -->
+		<OperationType No="15" Type="当月量修正"/>
+
+    <!-- 資材品目マスタの変更履歴 -->
+    <OperationType No="16" Type="資材品目マスタの変更履歴"/>
+
+    </SIZAI>
+
+    <BS>
+      
+      <!-- 実施期の確認 --><!--
+      <OperationType No="1" Type="実施期の確認"/>-->
+
+      <!-- 手順確認 --><!--
+      <OperationType No="2" Type="手順確認"/>-->
+
+      <!-- 仮在庫展開 -->
+      <OperationType No="3" Type="仮在庫展開"/>
+
+      <!-- 棚卸調査表(提出用)印刷 -->
+      <OperationType No="4" Type="棚卸調査表(提出用)印刷"/>
+
+    </BS>
+	</OperationTypes>
+	
+	<!-- 棚卸操作内容 -->
+	<OperationContents>
+    <SIZAI>
+		<!-- 確定 -->
+		<OperationContent No="1" Content="確定"/>
+
+		<!-- 修正 -->
+		<OperationContent No="2" Content="修正"/>
+
+		<!-- 印刷 -->
+		<OperationContent No="3" Content="印刷"/>
+		
+		<!-- 更新 -->
+		<OperationContent No="4" Content="更新"/>
+		
+		<!-- 実行 -->
+		<OperationContent No="5" Content="実行"/>
+
+		<!-- 保存 -->
+	  <OperationContent No="6" Content="保存"/>
+		
+		<!-- 追加 -->
+		<OperationContent No="7" Content="追加"/>
+
+		<!-- 変更 -->
+		<OperationContent No="8" Content="変更"/>
+		
+		<!-- 削除 -->
+		<OperationContent No="9" Content="削除"/>
+
+		<!-- 上へ -->
+		<OperationContent No="10" Content="上へ"/>
+    
+ 		<!-- 下へ -->
+		<OperationContent No="11" Content="下へ"/>
+
+		<!-- 次へ -->
+		<OperationContent No="12" Content="次へ"/>
+
+		<!-- 前へ -->
+		<!-- <OperationContent No="13" Content="前へ"/> -->
+
+    <!-- 「×」閉じる -->
+    <OperationContent No="14" Content="「×」閉じる"/>
+    </SIZAI>
+    
+    <BS>
+      <!-- 確定 -->
+      <OperationContent No="1" Content="確定"/>
+
+      <!-- 修正 -->
+      <OperationContent No="2" Content="修正"/>
+
+      <!-- 印刷 -->
+      <OperationContent No="3" Content="印刷"/>
+
+      <!-- 更新 -->
+      <!--<OperationContent No="4" Content="更新"/>-->
+
+      <!-- 実行 -->
+      <OperationContent No="5" Content="実行"/>
+
+      <!-- 保存 -->
+      <OperationContent No="6" Content="保存"/>
+
+      <!-- 追加 -->
+      <!--<OperationContent No="7" Content="追加"/>-->
+
+      <!-- 変更 -->
+      <!--<OperationContent No="8" Content="変更"/>-->
+
+      <!-- 削除 -->
+      <!--<OperationContent No="9" Content="削除"/>-->
+
+      <!-- 上へ -->
+      <!--<OperationContent No="10" Content="上へ"/>-->
+
+      <!-- 下へ -->
+      <!--<OperationContent No="11" Content="下へ"/>-->
+
+      <!-- 次へ -->
+      <!--<OperationContent No="12" Content="次へ"/>-->
+
+      <!-- 前へ -->
+      <!-- <OperationContent No="13" Content="前へ"/> -->
+
+      <!-- 「×」閉じる -->
+      <!--<OperationContent No="14" Content="「×」閉じる"/>-->
+      
+      <!-- 終了 -->
+      <OperationContent No="15" Content="終了"/>
+    </BS>
+	</OperationContents>
+</Settings>

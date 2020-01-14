@@ -1,0 +1,23 @@
+﻿<Window x:Class="CKSI1020.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    Title="棚卸操作用マスタメンテメニュー画面" Height="678" Width="1024" 
+    DataContext="{Binding RelativeSource={RelativeSource Self}}"
+    ResizeMode="CanResizeWithGrip"
+    Closing="DataWindow_Closing"
+    WindowState="Maximized" Icon="/CKSI1020;component/setting.ico">
+
+    <Grid>
+        <StackPanel Orientation="Vertical">
+            <WrapPanel>
+            <Button x:Name="TanaorosiSystemCategory" FontSize ="16" Click="OnButtonClicked"/>
+            <Button x:Name="TanaorosiGroupKBN" FontSize ="16" Click="OnButtonClicked"/>
+            <Button x:Name="TanaorosiOperation" FontSize ="16" Click="OnButtonClicked"/>
+            <Button x:Name="TanaorosiOperationGroup" FontSize ="16" Click="OnButtonClicked"/>
+            <Button x:Name="TanaorosiOperationMenu" FontSize ="16" Click="OnButtonClicked"/>
+            </WrapPanel>
+        </StackPanel>
+    </Grid>
+
+</Window>
+

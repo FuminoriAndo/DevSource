@@ -1,0 +1,758 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>CKSI0010</name>
+    </assembly>
+    <members>
+        <member name="M:Project1.Cksi0010.GetOthersNotInputHinmokuCode">
+            <summary>
+            その他の資材区分で入力してはいけない品目の一覧を取得する
+            </summary>
+            <returns>その他の資材区分で入力してはいけない品目の一覧</returns>
+        </member>
+        <member name="M:Project1.Cksi0010.ExistSizaiTanaorosiMst(System.String,System.Collections.Generic.IList{System.String})">
+            <summary>
+            指定した品目コード、資材区分の品目データが資材棚卸マスタに存在するかチェックする
+            </summary>
+            <param name="hinmokuCode">品目コード</param>
+            <param name="sizaiCategory">資材区分</param>
+            <returns>結果</returns>
+        </member>
+        <member name="T:Project1.SizaiConstants">
+            <summary>
+            定数クラス
+            </summary>
+        </member>
+        <member name="F:Project1.SizaiConstants.SizaiCategory_SK_StringDefine">
+            <summary>
+            資材区分(SK)
+            </summary>
+        </member>
+        <member name="F:Project1.SizaiConstants.SizaiCategory_EF_StringDefine">
+            <summary>
+            資材区分(EF)
+            </summary>
+        </member>
+        <member name="F:Project1.SizaiConstants.SizaiCategory_LF_StringDefine">
+            <summary>
+            資材区分(LF)
+            </summary>
+        </member>
+        <member name="F:Project1.SizaiConstants.SizaiCategory_Chikuro_StringDefine">
+            <summary>
+            資材区分(築炉)
+            </summary>
+        </member>
+        <member name="F:Project1.SizaiConstants.SizaiCategory_LD_StringDefine">
+            <summary>
+            資材区分(LD)
+            </summary>
+        </member>
+        <member name="F:Project1.SizaiConstants.SizaiCategory_TD_StringDefine">
+            <summary>
+            資材区分(TD)
+            </summary>
+        </member>
+        <member name="F:Project1.SizaiConstants.SizaiCategory_CC_StringDefine">
+            <summary>
+            資材区分(CC)
+            </summary>
+        </member>
+        <member name="F:Project1.SizaiConstants.SizaiCategory_Others_StringDefine">
+            <summary>
+            資材区分(その他)
+            </summary>
+        </member>
+        <member name="F:Project1.SizaiConstants.SizaiCategory_Meter_StringDefine">
+            <summary>
+            資材区分(メータ)
+            </summary>
+        </member>
+        <member name="F:Project1.SizaiConstants.SizaiCategory_Yobi1">
+            <summary>
+            資材区分(予備1)
+            </summary>
+        </member>
+        <member name="F:Project1.SizaiConstants.SizaiCategory_Yobi2">
+            <summary>
+            資材区分(予備2)
+            </summary>
+        </member>
+        <member name="F:Project1.SizaiConstants.Mukesaki_EF_StringDefine">
+            <summary>
+            向先(EF)
+            </summary>
+        </member>
+        <member name="F:Project1.SizaiConstants.Mukesaki_LF_StringDefine">
+            <summary>
+            向先(LF)
+            </summary>
+        </member>
+        <member name="F:Project1.SizaiConstants.Mukesaki_Chikuro_StringDefine">
+            <summary>
+            向先(築炉)
+            </summary>
+        </member>
+        <member name="F:Project1.SizaiConstants.Mukesaki_LD_StringDefine">
+            <summary>
+            向先(LD)
+            </summary>
+        </member>
+        <member name="F:Project1.SizaiConstants.Mukesaki_TD_StringDefine">
+            <summary>
+            向先(TD)
+            </summary>
+        </member>
+        <member name="F:Project1.SizaiConstants.Mukesaki_CC_StringDefine">
+            <summary>
+            向先(CC)
+            </summary>
+        </member>
+        <member name="F:Project1.SizaiConstants.Mukesaki_Others_StringDefine">
+            <summary>
+            向先(その他)
+            </summary>
+        </member>
+        <member name="T:Project1.SizaiConstants.SizaiCategory">
+            <summary>
+            資材区分
+            </summary>
+        </member>
+        <member name="F:Project1.SizaiConstants.SizaiCategory.None">
+            <summary>
+            未設定
+            </summary>
+        </member>
+        <member name="F:Project1.SizaiConstants.SizaiCategory.SK">
+            <summary>
+            SK
+            </summary>
+        </member>
+        <member name="F:Project1.SizaiConstants.SizaiCategory.EF">
+            <summary>
+            EF
+            </summary>
+        </member>
+        <member name="F:Project1.SizaiConstants.SizaiCategory.LF">
+            <summary>
+            LF
+            </summary>
+        </member>
+        <member name="F:Project1.SizaiConstants.SizaiCategory.Chikuro">
+            <summary>
+            築炉
+            </summary>
+        </member>
+        <member name="F:Project1.SizaiConstants.SizaiCategory.LD">
+            <summary>
+            LD
+            </summary>
+        </member>
+        <member name="F:Project1.SizaiConstants.SizaiCategory.TD">
+            <summary>
+            TD
+            </summary>
+        </member>
+        <member name="F:Project1.SizaiConstants.SizaiCategory.CC">
+            <summary>
+            CC
+            </summary>
+        </member>
+        <member name="F:Project1.SizaiConstants.SizaiCategory.Others">
+            <summary>
+            その他
+            </summary>
+        </member>
+        <member name="F:Project1.SizaiConstants.SizaiCategory.Meter">
+            <summary>
+            メータ
+            </summary>
+        </member>
+        <member name="F:Project1.SizaiConstants.SizaiCategory.Yobi1">
+            <summary>
+            予備1
+            </summary>
+        </member>
+        <member name="F:Project1.SizaiConstants.SizaiCategory.Yobi2">
+            <summary>
+            予備2
+            </summary>
+        </member>
+        <member name="T:Project1.SizaiConstants.Mukesaki">
+            <summary>
+            向先
+            </summary>
+        </member>
+        <member name="F:Project1.SizaiConstants.Mukesaki.EF">
+            <summary>
+            EF
+            </summary>
+        </member>
+        <member name="F:Project1.SizaiConstants.Mukesaki.LF">
+            <summary>
+            LF
+            </summary>
+        </member>
+        <member name="F:Project1.SizaiConstants.Mukesaki.Chikuro">
+            <summary>
+            築炉
+            </summary>
+        </member>
+        <member name="F:Project1.SizaiConstants.Mukesaki.LD">
+            <summary>
+            LD
+            </summary>
+        </member>
+        <member name="F:Project1.SizaiConstants.Mukesaki.CC">
+            <summary>
+            CC
+            </summary>
+        </member>
+        <member name="F:Project1.SizaiConstants.Mukesaki.TD">
+            <summary>
+            TD
+            </summary>
+        </member>
+        <member name="F:Project1.SizaiConstants.Mukesaki.Others">
+            <summary>
+            その他
+            </summary>
+        </member>
+        <member name="M:Project1.IPPAN2.Get_Syohizei(System.String)">
+            <summary>
+            指定年月日を基準にDBから税率などの値を取得する
+            </summary>
+            <param name="L_DATE">指定年月日</param>
+            <returns>ZeiInfoクラス</returns>
+        </member>
+        <member name="M:Project1.IPPAN2.Get_Syohizei(System.Int32,System.String)">
+            <summary>
+            税区分を基準にDBから税率などの値を取得する
+            </summary>
+            <param name="kbn">1の場合、引数ZEIKBNは税区分1,2の場合、引数ZEIKBNは税区分2</param>
+            <param name="ZEIKBN">税区分の値</param>
+            <returns>ZeiInfoクラス</returns>
+        </member>
+        <member name="M:Project1.IPPAN2.Get_Syohizei(System.String,System.Int32,System.Double)">
+            <summary>
+            指定日時と金額から、税抜金額、税込金額、消費税を求め、テーブルから取得した税区分や税率なども返す。
+            </summary>
+            <param name="L_DATE">指定年月日</param>
+            <param name="zei">引数が税込、四捨五入まるめなら「1」,切上げまるめなら「2」、引数が税抜、四捨五入まるめなら「3」,切上げまるめなら「4」</param>
+            <param name="KINGAKU">入力金額</param>
+            <returns>ZeiInfoクラス</returns>
+        </member>
+        <member name="M:Project1.IPPAN2.Get_Syohizei(System.Int32,System.String,System.Int32,System.Double)">
+            <summary>
+            税区分と金額から、税抜金額、税込金額、消費税を求める。テーブルから取得した税区分や税率なども返す。       
+            </summary>
+            <param name="kbn">1の場合、引数ZEIKBNは税区分1,2の場合、引数ZEIKBNは税区分2</param>
+            <param name="ZEIKBN">税区分の値</param>
+            <param name="zei">引数が税込、四捨五入まるめなら「1」,切上げまるめなら「2」、引数が税抜、四捨五入まるめなら「3」,切上げまるめなら「4」</param>
+            <param name="KINGAKU">入力金額 </param>
+            <returns>ZeiInfoクラス</returns>
+        </member>
+        <member name="F:Project1.FRM_CKSI0010M.SIZAI_IN_OUT_LIST_SHEET_NAME">
+            <summary>
+            副資材入出庫表のシート名の定義
+            </summary>
+        </member>
+        <member name="F:Project1.FRM_CKSI0010M.KBN_CATEGORY_A">
+            <summary>
+            副資材入出庫表のカテゴリAの区分
+            </summary>
+        </member>
+        <member name="F:Project1.FRM_CKSI0010M.KBN_CATEGORY_B">
+            <summary>
+            副資材入出庫表のカテゴリBの区分
+            </summary>
+        </member>
+        <member name="F:Project1.FRM_CKSI0010M.KBN_CATEGORY_C">
+            <summary>
+            副資材入出庫表のカテゴリCの区分
+            </summary>
+        </member>
+        <member name="F:Project1.FRM_CKSI0010M.EXCEL_START_ROW">
+            <summary>
+            副資材入出庫表のデータ範囲の開始行
+            </summary>
+        </member>
+        <member name="F:Project1.FRM_CKSI0010M.EXCEL_START_COL">
+            <summary>
+            副資材入出庫表のデータ範囲の開始列
+            </summary>
+        </member>
+        <member name="F:Project1.FRM_CKSI0010M.EXCEL_END_COL">
+            <summary>
+            副資材入出庫表のデータ範囲の終了列
+            </summary>
+        </member>
+        <member name="F:Project1.FRM_CKSI0010M.sizaiInOutFilePath">
+            <summary>
+            副資材入出庫表のファイルパス
+            </summary>
+        </member>
+        <member name="F:Project1.FRM_CKSI0010M.kensinExcelData">
+            <summary>
+            検針データ(EXCEL)から読込んだデータ
+            </summary>
+        </member>
+        <member name="F:Project1.FRM_CKSI0010M.othersNotInputHinmokuCode">
+            <summary>
+            その他の資材区分で入力してはいけない品目の一覧
+            </summary>
+        </member>
+        <member name="M:Project1.FRM_CKSI0010M.convertToSizaiCategoryValue(System.String)">
+            <summary>
+            向先の値を資材棚卸しの区分値に変換する
+            </summary>
+            <param name="mukesakiValue">向先の値</param>
+            <returns>資材棚卸しの区分値</returns>
+        </member>
+        <member name="M:Project1.FRM_CKSI0010M.existSizaiTanaorosiMst(System.String,System.Collections.Generic.IList{System.String})">
+            <summary>
+            指定した品目コード、資材区分の品目データが資材棚卸マスタに存在するかチェックする
+            </summary>
+            <param name="hinmokuCode">品目コード</param>
+            <param name="sizaiCategory">資材区分</param>
+            <returns>結果</returns>
+        </member>
+        <member name="M:Project1.FRM_CKSI0010M.ReadSizaiInOutData(Project1.FRM_CKSI0010M.SIZAI_IN_OUT_CATEGORY)">
+            <summary>
+            副資材入出庫表のデータを読込む
+            </summary>
+            <param name="category">カテゴリ</param>
+            <returns>引数で指定したカテゴリのデータ</returns>
+        </member>
+        <member name="M:Project1.FRM_CKSI0010M.GetYearMonthDay(System.String)">
+            <summary>
+            月末の年月日を取得する
+            </summary>
+            <returns>月末の年月日</returns>
+        </member>
+        <member name="M:Project1.FRM_CKSI0010M.SearchWorkSheet(Microsoft.Office.Interop.Excel.Workbook,System.String)">
+            <summary>
+            指定したWorkSheetの検索
+            </summary>
+            <param name="workbook">WorkBook</param>
+            <param name="sheetname">シート名</param>
+            <returns>WorkSheet</returns>
+        </member>
+        <member name="T:Project1.FRM_CKSI0010M.SIZAI_IN_OUT_CATEGORY">
+            <summary>
+            副資材入出庫表のカテゴリ
+            </summary>
+        </member>
+        <member name="T:Project1.FRM_CKSI0010M.EXCEL_COL_DEFINE">
+            <summary>
+            副資材入出庫表のデータ範囲の列のインデックス
+            </summary>
+        </member>
+        <member name="T:Project1.SizaiInOutItem">
+            <summary>
+            副資材入出庫表の項目
+            </summary>
+        </member>
+        <member name="P:Project1.SizaiInOutItem.Kbn">
+            <summary>
+            区分
+            </summary>
+        </member>
+        <member name="P:Project1.SizaiInOutItem.HinmokuCode">
+            <summary>
+            品目CD
+            </summary>
+        </member>
+        <member name="P:Project1.SizaiInOutItem.HinmokuName">
+            <summary>
+            品目名
+            </summary>
+        </member>
+        <member name="P:Project1.SizaiInOutItem.Tani">
+            <summary>
+            単位
+            </summary>
+        </member>
+        <member name="P:Project1.SizaiInOutItem.GyosyaCode">
+            <summary>
+            業者コード
+            </summary>
+        </member>
+        <member name="P:Project1.SizaiInOutItem.GyosyaName">
+            <summary>
+            業者名
+            </summary>
+        </member>
+        <member name="P:Project1.SizaiInOutItem.Mukesaki">
+            <summary>
+            向先
+            </summary>
+        </member>
+        <member name="P:Project1.SizaiInOutItem.Suryou">
+            <summary>
+            数量
+            </summary>
+        </member>
+        <member name="P:Project1.SizaiInOutItem.Suibunhiki">
+            <summary>
+            水分引
+            </summary>
+        </member>
+        <member name="T:Project1.Extensions">
+            <summary>
+            拡張メソッド
+            </summary>
+        </member>
+        <member name="M:Project1.Extensions.GetName(Project1.SizaiConstants.SizaiCategory)">
+            <summary>
+            資材区分の名前を取得する
+            </summary>
+            <param name="sizaiCategory">資材区分</param>
+            <returns>資材区分の名前</returns>
+        </member>
+        <member name="M:Project1.Extensions.GetIntValue(Project1.SizaiConstants.SizaiCategory)">
+            <summary>
+            資材区分のValueを取得する
+            </summary>
+            <param name="sizaiCategory">資材区分</param>
+            <returns>資材区分のValue</returns>
+        </member>
+        <member name="M:Project1.Extensions.GetStringValue(Project1.SizaiConstants.SizaiCategory)">
+            <summary>
+            資材区分のValueを取得する
+            </summary>
+            <param name="sizaiCategory">資材区分</param>
+            <returns>資材区分のValue</returns>
+        </member>
+        <member name="M:Project1.Extensions.GetName(Project1.SizaiConstants.Mukesaki)">
+            <summary>
+            向先のNameを取得する
+            </summary>
+            <param name="mukesaki">向先</param>
+            <returns>向先のName</returns>
+        </member>
+        <member name="M:Project1.Extensions.GetIntValue(Project1.SizaiConstants.Mukesaki)">
+            <summary>
+            向先のValueを取得する
+            </summary>
+            <param name="mukesaki">向先</param>
+            <returns>向先のValue</returns>
+        </member>
+        <member name="M:Project1.Extensions.GetStringValue(Project1.SizaiConstants.Mukesaki)">
+            <summary>
+            向先のValueを取得する
+            </summary>
+            <param name="mukesaki">向先</param>
+            <returns>向先のValue</returns>
+        </member>
+        <member name="T:Project1.C_ODBC">
+            <summary>
+            ODBC操作クラス
+            </summary>
+        </member>
+        <member name="F:Project1.C_ODBC.ORA_00054">
+            <summary>
+            oracleエラー：ロック取得失敗
+            </summary>
+        </member>
+        <member name="F:Project1.C_ODBC._con">
+            <summary>
+            SQLコネクション
+            </summary>
+        </member>
+        <member name="F:Project1.C_ODBC._trn">
+            <summary>
+            トランザクション・オブジェクト
+            </summary>
+        </member>
+        <member name="F:Project1.C_ODBC._ex">
+            <summary>
+            エラー情報
+            </summary>
+        </member>
+        <member name="M:Project1.C_ODBC.Connect(System.String,System.String,System.String,System.String)">
+            <summary>
+            DB接続
+            </summary>
+            <param name="dsn">データソース名</param>
+            <param name="dbn">データベース名</param>
+            <param name="uid">ユーザーID</param>
+            <param name="pas">パスワード</param>
+        </member>
+        <member name="M:Project1.C_ODBC.Connect">
+            <summary>
+            DB接続
+            </summary>
+        </member>
+        <member name="M:Project1.C_ODBC.Disconnect">
+            <summary>
+            DB切断
+            </summary>
+        </member>
+        <member name="M:Project1.C_ODBC.ExecSQL(System.String)">
+            <summary>
+            SQLの実行
+            </summary>
+            <param name="sql">SQL文</param>
+        </member>
+        <member name="M:Project1.C_ODBC.ExecStored(System.String,System.Collections.ArrayList@)">
+            <summary>
+            ストアドプロシージャの実行
+            </summary>
+            <param name="sCmd">ストアドのコマンド</param>
+            <param name="arylist">設定するパラメータ</param>
+        </member>
+        <member name="M:Project1.C_ODBC.BeginTrans">
+            <summary>
+            トランザクション開始
+            </summary>
+        </member>
+        <member name="M:Project1.C_ODBC.Commit">
+            <summary>
+            コミット
+            </summary>
+        </member>
+        <member name="M:Project1.C_ODBC.Rollback">
+            <summary>
+            ロールバック
+            </summary>
+        </member>
+        <member name="M:Project1.C_ODBC.LockCheck(System.String)">
+            <summary>
+            ロックチェック
+            </summary>
+            <param name="tableName">対象テーブル名</param>
+        </member>
+        <member name="M:Project1.C_ODBC.TableLockEX(System.String)">
+            <summary>
+            テーブル排他ロック
+            </summary>
+            <param name="sTableName">テーブル名</param>
+        </member>
+        <member name="M:Project1.C_ODBC.Error">
+            <summary>
+            エラーメッセージ
+            </summary>
+        </member>
+        <member name="M:Project1.C_ODBC.Dispose">
+            <summary>
+            解放処理
+            </summary>
+        </member>
+        <member name="T:Project1.C_ODBC.StoredParam">
+            <summary>
+            ストアド設定構造体
+            </summary>
+        </member>
+        <member name="M:Project1.IPPAN.Change_InputZeiKubun(System.String,System.String,System.String)">
+            ------------------------------------------------------------------------------------------------------------------
+             機能      :  入力税区分変換取得
+            
+             戻り値    :  String型 税区分
+            
+             引き数    :  L_InpKbn                    ：入力税区分
+                          L_Kamoku                    ：科目コード
+                          L_Bumon                     ：部門コード
+            
+             機能説明  :  一般管理販売費の入力税区分を変換します。
+            
+             備考      :  2012/04/03 依頼書№:10-136 全面修正
+            
+            ------------------------------------------------------------------------------------------------------------------
+        </member>
+        <member name="T:Project1.C_COMMON">
+            <summary>
+            共通関数を記述(主にコンバート差分の吸収)
+            </summary>
+        </member>
+        <member name="F:Project1.C_COMMON.G_COMMON_MSGTITLE">
+            <summary>
+            メッセージのタイトル(プロジェクト名)
+            </summary>
+        </member>
+        <member name="F:Project1.C_COMMON.G_CRYSTALREPORT_CONNECT">
+            <summary>
+            CrystalReport接続文字列
+            </summary>
+        </member>
+        <member name="F:Project1.C_COMMON.G_CMN_LOCALID_JP">
+            <summary>
+            カルチャ識別子：日本語
+            </summary>
+        </member>
+        <member name="M:Project1.C_COMMON.Msg(System.String)">
+            <summary>
+            メッセージ出力
+            </summary>
+            <param name="sMsg">出力するメッセージ</param>
+            <returns>結果</returns>
+        </member>
+        <member name="M:Project1.C_COMMON.Msg(System.String,System.String)">
+            <summary>
+            メッセージ出力
+            </summary>
+            <param name="sMsg">出力するメッセージ</param>
+            <param name="sTitle">タイトル</param>
+            <returns>結果</returns>
+        </member>
+        <member name="M:Project1.C_COMMON.Msg(System.String,System.Windows.Forms.MessageBoxButtons)">
+            <summary>
+            メッセージ出力
+            </summary>
+            <param name="sMsg">出力するメッセージ</param>
+            <param name="btnType">ボタン形式</param>
+            <returns>結果</returns>
+        </member>
+        <member name="M:Project1.C_COMMON.Msg(System.String,System.Windows.Forms.MessageBoxButtons,System.String)">
+            <summary>
+            メッセージ出力
+            </summary>
+            <param name="sMsg">出力するメッセージ</param>
+            <param name="btnType">ボタン形式</param>
+            <param name="sTitle">タイトル</param>
+            <returns>結果</returns>
+        </member>
+        <member name="M:Project1.C_COMMON.Msg(System.String,System.Windows.Forms.MessageBoxButtons,System.Windows.Forms.MessageBoxIcon)">
+            <summary>
+            メッセージ出力
+            </summary>
+            <param name="sMsg">出力するメッセージ</param>
+            <param name="btnType">ボタン形式</param>
+            <param name="icnType">アイコン形式</param>
+            <returns></returns>
+        </member>
+        <member name="M:Project1.C_COMMON.FormatToNum(System.String,System.String)">
+            <summary>
+            書式設定(数値変換)
+            </summary>
+            <param name="sStr">対象文字列</param>
+            <param name="sFmt">書式</param>
+            <returns>結果</returns>
+        </member>
+        <member name="M:Project1.C_COMMON.ToDecimal(System.String)">
+            <summary>
+            decimal変換処理
+            </summary>
+            <param name="sStr">対象文字列</param>
+            <returns>結果</returns>
+        </member>
+        <member name="M:Project1.C_COMMON.ChkStrToNum(System.String)">
+            <summary>
+            数値変換前文字列チェック処理
+            </summary>
+            <param name="sStr">対象文字列</param>
+            <returns>結果</returns>
+        </member>
+        <member name="M:Project1.C_COMMON.LeftB(System.String,System.Int32)">
+            <summary>
+            文字列の左端から指定したバイト数分の文字列を返します。
+            </summary>
+            <param name="stTarget">取り出す元になる文字列</param>
+            <param name="iByteSize">取り出すバイト数</param>
+            <returns>左端から指定されたバイト数分の文字列</returns>
+        </member>
+        <member name="M:Project1.C_COMMON.LenB(System.String)">
+            <summary>
+            半角 1 バイト、全角 2 バイトとして、指定された文字列のバイト数を返します。
+            </summary>
+            <param name="stTarget">バイト数取得の対象となる文字列</param>
+            <returns>半角 1 バイト、全角 2 バイトでカウントされたバイト数</returns>
+        </member>
+        <member name="M:Project1.C_COMMON.MidB(System.String,System.Int32)">
+            -----------------------------------------------------------------------------------------
+            <summary>
+                文字列の指定されたバイト位置以降のすべての文字列を返します。</summary>
+            <param name="stTarget">
+                取り出す元になる文字列。</param>
+            <param name="iStart">
+                取り出しを開始する位置。</param>
+            <returns>
+                指定されたバイト位置以降のすべての文字列。</returns>
+            -----------------------------------------------------------------------------------------
+        </member>
+        <member name="M:Project1.C_COMMON.MidB(System.String,System.Int32,System.Int32)">
+            -----------------------------------------------------------------------------------------
+            <summary>
+                文字列の指定されたバイト位置から、指定されたバイト数分の文字列を返します。</summary>
+            <param name="stTarget">
+                取り出す元になる文字列。</param>
+            <param name="iStart">
+                取り出しを開始する位置。</param>
+            <param name="iByteSize">
+                取り出すバイト数。</param>
+            <returns>
+                指定されたバイト位置から指定されたバイト数分の文字列。</returns>
+            -----------------------------------------------------------------------------------------
+        </member>
+        <member name="M:Project1.C_COMMON.MIGIDUME(System.String,System.String,System.Int32)">
+            <summary>
+            金額右詰編集処理
+            </summary>
+            <param name="Kingaku">編集前金額(文字型)</param>
+            <param name="Hensyu">編集フォーマット(VB形式)</param>
+            <param name="Keta">編集後の項目の桁数</param>
+            <returns></returns>
+        </member>
+        <member name="M:Project1.C_COMMON.StrintToInt(System.String)">
+            <summary>
+            　　string型をint型に変換します。
+            　　スペース、nullの場合には「0」を返します。
+            </summary>
+            <param name="stTarget"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Project1.C_COMMON.DateYYChanged(System.String)">
+            <summary>
+            
+            </summary>
+            <param name="stYY"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Project1.C_COMMON.CheckKouteiNM(System.String)">
+            <summary>
+            工程名称が存在するかを確認
+            </summary>
+            <param name="kouteiCD">工程CD</param>
+            <returns>結果の値(有：0 無：1)</returns>
+        </member>
+        <member name="M:Project1.C_COMMON.GetKouteiNM(System.String,System.String@)">
+            <summary>
+            工程マスタから工程名称を取得
+            </summary>
+            <param name="kouteiCD">工程CD</param>
+            <param name="kouteiNM">工程名称</param>
+            <returns>結果の値(取得OK：0 取得NG : 1)</returns>
+        </member>
+        <member name="T:Common.XMLOperator">
+            <summary>
+            XML操作
+            </summary>
+        </member>
+        <member name="F:Common.XMLOperator.singleton">
+            <summary>
+            XML操作オブジェクト(Singleton)
+            </summary>
+        </member>
+        <member name="F:Common.XMLOperator.xDocument">
+            <summary>
+            XDocumentオブジェクト
+            </summary>
+        </member>
+        <member name="M:Common.XMLOperator.#ctor">
+            <summary>
+            コンストラクタ
+            </summary>
+        </member>
+        <member name="M:Common.XMLOperator.GetInstance">
+            <summary>
+            インスタンスの取得
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Common.XMLOperator.GetSizaiInOutSheetName">
+            <summary>
+            検針データ(EXCEL)出力用のシート名の取得
+            </summary>
+        </member>
+    </members>
+</doc>

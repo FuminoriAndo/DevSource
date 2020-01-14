@@ -1,0 +1,81 @@
+﻿<v:OperationViewBase
+    x:Class="CKSI1010.Operation.TanaorosiYearMonthCheck.View.TanaorosiYearMonthCheckView" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:cnv="clr-namespace:CKSI1010.Converter" xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:v="clr-namespace:CKSI1010.Operation.Common.View" d:DesignHeight="300" d:DesignWidth="300"
+    DataContext="{Binding TanaorosiYearMonthCheckViewModel, Source={StaticResource Locator}}"
+    mc:Ignorable="d">
+
+    <v:OperationViewBase.Resources>
+        <cnv:HalfToFirstOrSecondConverter x:Key="HalfToFirstOrSecondConverter" />
+    </v:OperationViewBase.Resources>
+
+    <StackPanel Margin="8,0" Orientation="Vertical">
+
+        <StackPanel Orientation="Horizontal">
+            <Image
+                Width="18" Height="18" HorizontalAlignment="Left"
+                Source="/CKSI1010;component/image/hint.png" />
+            <Label
+                Margin="4,0,0,0" VerticalAlignment="Center" FontSize="18"
+                Content="棚卸実施月を確認します。" />
+        </StackPanel>
+        <StackPanel Orientation="Horizontal">
+            <Label
+                Margin="22,0,0,0" VerticalAlignment="Center" FontSize="18"
+                Content="妥当であれば" />
+            <Label
+                Margin="0,0,0,0" VerticalAlignment="Stretch" FontSize="14"
+                VerticalContentAlignment="Center"
+                Background="{StaticResource BackgroundColor2}"
+                FontWeight="Bold"
+                Content=" 開始 " />
+            <Label
+                Margin="0,0,0,0" VerticalAlignment="Center" FontSize="18"
+                Content="をクリックしてください。妥当でない場合は、システム管理室に連絡してください。" />
+        </StackPanel>
+
+        <StackPanel Margin="0,16,0,0" Orientation="Horizontal" Background="{StaticResource BackgroundColor2}" HorizontalAlignment="Left">
+            <StackPanel
+                HorizontalAlignment="Left"               
+                Orientation="Horizontal">
+                <!--
+                <Label Margin="2" Content="{Binding OperationYearMonth.Year}" />
+                -->
+                <Label
+                    Width="32" Margin="2"
+                    HorizontalContentAlignment="Right"
+                    Content="{Binding OperationYearMonth.Year, UpdateSourceTrigger=PropertyChanged, TargetNullValue=0}" />
+                <Label Margin="2" Content="年" />
+                <Label
+                    Width="16" Margin="2"
+                    HorizontalContentAlignment="Right"
+                    Content="{Binding OperationYearMonth.Month, UpdateSourceTrigger=PropertyChanged, TargetNullValue=0}" />
+                <Label Margin="2" Content="月" />
+            </StackPanel>
+
+            <StackPanel
+                Margin="4,0,0,0" HorizontalAlignment="Left"
+                Orientation="Horizontal">
+
+                <Label>
+                    <Label.Content>
+                        <TextBlock Margin="4,0">
+                            <TextBlock.Text>
+                                <MultiBinding StringFormat="{}(第{0}{1}期)">
+                                    <Binding Path="OperationYearMonth.Term" />
+                                    <Binding Converter="{StaticResource HalfToFirstOrSecondConverter}" Path="OperationYearMonth.Half" />
+                                </MultiBinding>
+                            </TextBlock.Text>
+                        </TextBlock>
+                    </Label.Content>
+                </Label>
+            </StackPanel>
+        </StackPanel>
+
+        <CheckBox
+            Content="期末" Focusable="False"
+            IsChecked="{Binding OperationYearMonth.TermEnd}"
+            IsHitTestVisible="False" />
+    </StackPanel>
+</v:OperationViewBase>
+

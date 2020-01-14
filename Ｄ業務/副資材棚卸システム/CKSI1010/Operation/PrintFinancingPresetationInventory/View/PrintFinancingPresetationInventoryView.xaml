@@ -1,0 +1,61 @@
+﻿<v:OperationViewBase
+    x:Class="CKSI1010.Operation.PrintFinancingPresetationInventory.View.PrintFinancingPresetationInventoryView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:cnv="clr-namespace:CKSI1010.Converter"
+    xmlns:v="clr-namespace:CKSI1010.Operation.Common.View" 
+    DataContext="{Binding PrintFinancingPresetationInventoryViewModel, Source={StaticResource Locator}}"
+    d:DesignHeight="300" 
+    d:DesignWidth="300"
+    mc:Ignorable="d">
+
+    <v:OperationViewBase.Resources>
+        <cnv:MonthToFirstOrSecondConverter x:Key="MonthToFirstOrSecondConverter" />
+    </v:OperationViewBase.Resources>
+
+    <StackPanel Margin="8,0" Orientation="Vertical">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+
+            <Image Grid.Row="0" Grid.Column="0" Width="18"
+                   Height="18" HorizontalAlignment="Left" Source="/CKSI1010;component/image/hint.png" />
+            <Label Grid.Row="0" Grid.Column="1" Margin="4,0,0,0"
+                   VerticalAlignment="Center" FontSize="18">
+                <Label.Content>
+                    <TextBlock>
+                        <TextBlock.Text>
+                            <MultiBinding StringFormat="{}{0}/{1}(第{2}{3}期)の財務提出用棚卸表を発行します。">
+                                <Binding Path="OperationYearMonth.Year" />
+                                <Binding Path="OperationYearMonth.Month" />
+                                <Binding Path="OperationYearMonth.Term" />
+                                <Binding Converter="{StaticResource MonthToFirstOrSecondConverter}" Path="OperationYearMonth.Month" />
+                            </MultiBinding>
+                        </TextBlock.Text>
+                    </TextBlock>
+                </Label.Content>
+            </Label>
+
+            <StackPanel Grid.Row="1" Grid.Column="1" Orientation="Horizontal">
+                <Button
+                        Margin="0,0,0,0" FontSize="14" FontWeight="Bold"
+                        Content="印刷" IsEnabled="False" />
+                <Label
+                        VerticalAlignment="Center" FontSize="18" Content="ボタンをクリックしてください。" />
+
+            </StackPanel>
+
+        </Grid>
+    </StackPanel>
+</v:OperationViewBase>
+

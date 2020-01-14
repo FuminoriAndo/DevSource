@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+
+<settings>
+	<oracle>
+		<setting name="DataSource" value="GM"></setting>
+		<setting name="UserName" value="SA"></setting>
+		<setting name="Password" value="SA"></setting>
+		<setting name="TableTanaorosiSystemCategoryMst" value="TANAOROSI_SYSTEM_CATEGORY_MST"></setting>
+		<setting name="TableTanaorosiGroupKbnMst" value="TANAOROSI_GROUP_KBN_MST"></setting>
+		<setting name="TableTanaorosiOperationMst" value="TANAOROSI_OPERATION_MST"></setting>
+		<setting name="TableTanaorosiOperationGroupMst" value="TANAOROSI_OPERATION_GROUP_MST"></setting>
+		<setting name="TableTanaorosiOperationMenuMst" value="TANAOROSI_OPERATION_MENU_MST"></setting>
+	</oracle>
+</settings>

@@ -1,0 +1,88 @@
+﻿<v:OperationViewBase
+    x:Class="CKSI1010.Operation.InputInputWorkNote.View.InputInputWorkNoteView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:cnv="clr-namespace:CKSI1010.Converter" 
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:v="clr-namespace:CKSI1010.Operation.Common.View"
+    DataContext="{Binding InputInputWorkNoteViewModel, Source={StaticResource Locator}}"
+    d:DesignHeight="300" d:DesignWidth="300"
+    mc:Ignorable="d" >
+
+    <v:OperationViewBase.Resources>
+        <cnv:MonthToFirstOrSecondConverter x:Key="MonthToFirstOrSecondConverter" />
+    </v:OperationViewBase.Resources>
+    <StackPanel Margin="8,0" Orientation="Vertical">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+            <Image
+                Width="18" Height="18" Grid.Row="0" Grid.Column="0" HorizontalAlignment="Left"
+                Source="/CKSI1010;component/image/hint.png" />
+
+            <Label Margin="4,0,0,0" VerticalAlignment="Center" FontSize="18" Grid.Row="0" Grid.Column="1">
+                <TextBlock Margin="4,0">
+                    <TextBlock.Text>
+                        <MultiBinding StringFormat="{}{0}/{1}(第{2}{3}期)の資材班作業誌入力(液酸入庫)を行います。">
+                            <Binding Path="OperationYearMonth.Year" />
+                            <Binding Path="OperationYearMonth.Month" />
+                            <Binding Path="OperationYearMonth.Term" />
+                            <Binding Converter="{StaticResource MonthToFirstOrSecondConverter}" Path="OperationYearMonth.Month" />
+                        </MultiBinding>
+                    </TextBlock.Text>
+                </TextBlock>
+            </Label>
+
+            <StackPanel Margin="8,0,0,0" Grid.Row="1" Grid.Column="1" Orientation="Horizontal">
+                <Label VerticalAlignment="Center" FontSize="18" Content="月末検針データ(EXCEL)の場所を指定して、" />
+                <Button FontSize="14" FontWeight="Bold" Content="実行" IsEnabled="False" Height="30" />
+                <Label VerticalAlignment="Center" FontSize="18" Content="ボタンをクリックしてください。" />
+            </StackPanel>
+        </Grid>
+        <StackPanel Margin="24,18,0,0" Grid.Row="1" Grid.Column="1" Orientation="Horizontal">
+            <Border BorderBrush="DimGray" BorderThickness="2">
+                <TextBlock x:Name="textBlockFileName" Width="500" FontSize="16" Text="{Binding FileName}"  />
+            </Border>
+            <Button Margin="4,0,0,0" FontSize="14" FontWeight="Bold" Content="・・・" Height="30" Command="{Binding FileSelect}" Width="55" >
+                <Button.Style>
+                    <Style TargetType="{x:Type Button}">
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding IsFixed}" Value="True">
+                                <Setter Property="IsEnabled" Value="False" />
+                            </DataTrigger>
+                            <DataTrigger Binding="{Binding IsFixed}" Value="False">
+                                <Setter Property="IsEnabled" Value="True" />
+                                <Setter Property="Button.Background" Value="{StaticResource BackgroundColor2}"/>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
+            </Button>
+        </StackPanel>
+        <StackPanel Margin="0,8,0,0" Orientation="Horizontal">
+            <Button Margin="24,0" FontSize="14" FontWeight="Bold" Content="実行" Height="30" Command="{Binding ExecuteCKSI0010}">
+                <Button.Style>
+                    <Style TargetType="{x:Type Button}">
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding IsFixed}" Value="True">
+                                <Setter Property="IsEnabled" Value="False" />
+                            </DataTrigger>
+                            <DataTrigger Binding="{Binding IsFixed}" Value="False">
+                                <Setter Property="IsEnabled" Value="True" />
+                                <Setter Property="Button.Background" Value="{StaticResource BackgroundColor2}"/>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
+            </Button>
+        </StackPanel>
+    </StackPanel>
+</v:OperationViewBase>

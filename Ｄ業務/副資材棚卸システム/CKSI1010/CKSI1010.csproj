@@ -1,0 +1,500 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{E19869DF-C841-492D-B456-6A3102E410AD}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>CKSI1010</RootNamespace>
+    <AssemblyName>CKSI1010</AssemblyName>
+    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <RunCodeAnalysis>true</RunCodeAnalysis>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x64\Debug\</OutputPath>
+    <DefineConstants>CODE_ANALYSIS;DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <RunCodeAnalysis>true</RunCodeAnalysis>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <OutputPath>bin\x64\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x86\Debug\</OutputPath>
+    <DefineConstants>CODE_ANALYSIS;DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <RunCodeAnalysis>true</RunCodeAnalysis>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <OutputPath>bin\x86\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AutoMapper, Version=6.0.2.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <HintPath>..\packages\AutoMapper.6.0.2\lib\net45\AutoMapper.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Dapper, Version=1.50.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Dapper.1.50.2\lib\net451\Dapper.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="GalaSoft.MvvmLight, Version=5.3.0.19026, Culture=neutral, PublicKeyToken=e7570ab207bcb616, processorArchitecture=MSIL">
+      <HintPath>..\packages\MvvmLightLibs.5.3.0.0\lib\net45\GalaSoft.MvvmLight.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="GalaSoft.MvvmLight.Extras, Version=5.3.0.19032, Culture=neutral, PublicKeyToken=669f0b5e8f868abf, processorArchitecture=MSIL">
+      <HintPath>..\packages\MvvmLightLibs.5.3.0.0\lib\net45\GalaSoft.MvvmLight.Extras.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="GalaSoft.MvvmLight.Platform, Version=5.3.0.19032, Culture=neutral, PublicKeyToken=5f873c45e98af8a1, processorArchitecture=MSIL">
+      <HintPath>..\packages\MvvmLightLibs.5.3.0.0\lib\net45\GalaSoft.MvvmLight.Platform.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="log4net, Version=1.2.10.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=AMD64">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Lib\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.ServiceLocation, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\CommonServiceLocator.1.3\lib\portable-net4+sl5+netcore45+wpa81+wp8\Microsoft.Practices.ServiceLocation.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.VisualBasic" />
+    <Reference Include="Oracle.ManagedDataAccess, Version=4.121.2.0, Culture=neutral, PublicKeyToken=89b483f429c47342, processorArchitecture=MSIL">
+      <HintPath>..\packages\Oracle.ManagedDataAccess.12.1.24160719\lib\net40\Oracle.ManagedDataAccess.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Windows.Interactivity, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\MvvmLightLibs.5.3.0.0\lib\net45\System.Windows.Interactivity.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Compile Include="..\Common\MessageManager.cs">
+      <Link>Common\MessageManager.cs</Link>
+    </Compile>
+    <Compile Include="..\Common\MessageOperator.cs">
+      <Link>Common\MessageOperator.cs</Link>
+    </Compile>
+    <Compile Include="..\Converter\BooleanInverseConverter.cs">
+      <Link>Converter\BooleanInverseConverter.cs</Link>
+    </Compile>
+    <Compile Include="..\Converter\BooleanNegationConverter.cs">
+      <Link>Converter\BooleanNegationConverter.cs</Link>
+    </Compile>
+    <Compile Include="..\Converter\IntToStringConverter.cs">
+      <Link>Converter\IntToStringConverter.cs</Link>
+    </Compile>
+    <Compile Include="..\Converter\StringToIntConverter.cs">
+      <Link>Converter\StringToIntConverter.cs</Link>
+    </Compile>
+    <Compile Include="..\Core\Singleton.cs">
+      <Link>Core\Singleton.cs</Link>
+    </Compile>
+    <Compile Include="..\Core\SingletonViewModelBase.cs">
+      <Link>Core\SingletonViewModelBase.cs</Link>
+    </Compile>
+    <Compile Include="Common\Behaviors.cs" />
+    <Compile Include="Common\CommonUtility.cs" />
+    <Compile Include="Common\Excel\DTO\InventoryFinancingPresetationDTO.cs" />
+    <Compile Include="Common\Excel\DTO\SizaiHinmokuDTO.cs" />
+    <Compile Include="Common\Excel\DTO\UkebaraiDTO.cs" />
+    <Compile Include="Common\Excel\DTO\InventoryWitnessDTO.cs" />
+    <Compile Include="Common\PaymentInfo.cs" />
+    <Compile Include="Common\TanaorosiLogException.cs" />
+    <Compile Include="Common\Constants.cs" />
+    <Compile Include="Common\Excel\ExcelAccessor.cs" />
+    <Compile Include="Common\ExternalProcessAccessor.cs" />
+    <Compile Include="Common\InputChecker.cs" />
+    <Compile Include="Common\KensinExcelOperator.cs" />
+    <Compile Include="Common\Operation.cs" />
+    <Compile Include="Common\ChangeOperationNotificationMessage.cs" />
+    <Compile Include="Common\CloseModalWindowMessage.cs" />
+    <Compile Include="Common\ShowModalWindowMessage.cs" />
+    <Compile Include="Common\WindowOperator.cs" />
+    <Compile Include="Common\XMLOpeartor.cs" />
+    <Compile Include="Controls\CircularProgressControl.xaml.cs">
+      <DependentUpon>CircularProgressControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\DataGridTemplateColumn.cs" />
+    <Compile Include="Converter\HalfToFirstOrSecondConverter.cs" />
+    <Compile Include="Converter\BooleanToVisibilityConverter.cs" />
+    <Compile Include="Converter\DoActionConverter.cs" />
+    <Compile Include="Converter\UkebaraiTieConverter.cs" />
+    <Compile Include="Converter\MonthToFirstOrSecondConverter.cs" />
+    <Compile Include="Converter\BooleanToButtonOpacityConverter.cs" />
+    <Compile Include="Converter\MukesakiTieConverter.cs" />
+    <Compile Include="Converter\ShizaiKbnTieConverter.cs" />
+    <Compile Include="Converter\ShizaiKbnToStringConverter.cs" />
+    <Compile Include="Converter\ShizaiKbnConverter.cs" />
+    <Compile Include="Operation\Common\OperationUtility.cs" />
+    <Compile Include="Operation\CorrectInventoryActual\ViewModel\CorrectInventoryActualRecordViewModel.cs" />
+    <Compile Include="Operation\CorrectInventoryActual\ViewModel\CorrectInventoryActualViewModel.cs" />
+    <Compile Include="Operation\CorrectInventoryActual\View\CorrectInventoryActualView.xaml.cs">
+      <DependentUpon>CorrectInventoryActualView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Operation\CreateDetails\ViewModel\CreateDetailsViewModel.cs" />
+    <Compile Include="Operation\CreateDetails\View\CreateDetailsView.xaml.cs">
+      <DependentUpon>CreateDetailsView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Operation\CreatePurchasingCheckData\ViewModel\CreatePurchasingCheckDataViewModel.cs" />
+    <Compile Include="Operation\CreatePurchasingCheckData\View\CreatePurchasingCheckDataView.xaml.cs">
+      <DependentUpon>CreatePurchasingCheckDataView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Operation\InputInventoryActual\ViewModel\InputInventoryActualInventoryDataViewModel.cs" />
+    <Compile Include="Operation\InputInventoryActual\ViewModel\InputInventoryActualRecordViewModel.cs" />
+    <Compile Include="Operation\InputInventoryActual\ViewModel\InputInventoryActualMeterDataViewModel.cs" />
+    <Compile Include="Operation\InputInventoryActual\ViewModel\InputInventoryActualBaseViewModel.cs" />
+    <Compile Include="Operation\InputInventoryActual\View\InputInventoryActualInventoryDataView.xaml.cs">
+      <DependentUpon>InputInventoryActualInventoryDataView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Operation\InputInventoryActual\View\InputInventoryActualMeterDataView.xaml.cs">
+      <DependentUpon>InputInventoryActualMeterDataView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Operation\InputOutputWorkNote\ViewModel\InputOutputWorkNoteViewModel.cs" />
+    <Compile Include="Operation\InputOutputWorkNote\View\InputOutputWorkNoteView.xaml.cs">
+      <DependentUpon>InputOutputWorkNoteView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Operation\InputPaymentCheck\ViewModel\InputPaymentCheckViewModel.cs" />
+    <Compile Include="Operation\InputPaymentCheck\ViewModel\InputPaymentRecordViewModel.cs" />
+    <Compile Include="Operation\InputPaymentCheck\View\InputPaymentCheckView.xaml.cs">
+      <DependentUpon>InputPaymentCheckView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Operation\IssueCaluculation\ViewModel\IssueCaluculationViewModel.cs" />
+    <Compile Include="Operation\IssueCaluculation\VIew\IssueCaluculationView.xaml.cs">
+      <DependentUpon>IssueCaluculationView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Operation\PrintFinancingPresetationInventory\ViewModel\PrintFinancingPresetationInventoryViewModel.cs" />
+    <Compile Include="Operation\PrintFinancingPresetationInventory\View\PrintFinancingPresetationInventoryView.xaml.cs">
+      <DependentUpon>PrintFinancingPresetationInventoryView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Operation\PrintWitnessInventory\ViewModel\PrintWitnessInventoryViewModel.cs" />
+    <Compile Include="Operation\PrintWitnessInventory\View\PrintWitnessInventoryView.xaml.cs">
+      <DependentUpon>PrintWitnessInventoryView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Operation\InputInputWorkNote\ViewModel\InputInputWorkNoteViewModel.cs" />
+    <Compile Include="Operation\InputInputWorkNote\View\InputInputWorkNoteView.xaml.cs">
+      <DependentUpon>InputInputWorkNoteView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Operation\Print\ViewModel\PrintRecordViewModel.cs" />
+    <Compile Include="Common\SizaiCategoryTiePlaceDefinition.cs" />
+    <Compile Include="Operation\SelectInputWork\ViewModel\SelectInputWorkViewModel.cs" />
+    <Compile Include="Operation\SelectInputWork\View\SelectInputWorkView.xaml.cs">
+      <DependentUpon>SelectInputWorkView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Operation\SettingDisplay\Setting\Settings.cs" />
+    <Compile Include="Operation\SettingDisplay\ViewModel\SettingDisplayViewModel.cs" />
+    <Compile Include="Operation\SettingDisplay\View\SettingDisplayView.xaml.cs">
+      <DependentUpon>SettingDisplayView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Operation\ShowSizaiHinmokuChangeList\ViewModel\ShowSizaiHinmokuChangeListViewModel.cs" />
+    <Compile Include="Operation\ShowSizaiHinmokuChangeList\ViewModel\SizaiHinmokuRecordViewModel.cs" />
+    <Compile Include="Operation\ShowSizaiHinmokuChangeList\View\ShowSizaiHinmokuChangeListView.xaml.cs">
+      <DependentUpon>ShowSizaiHinmokuChangeListView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Operation\UpdateInventoryActual\ViewModel\UpdateInventoryActualViewModel.cs" />
+    <Compile Include="Operation\UpdateInventoryActual\View\UpdateInventoryActualView.xaml.cs">
+      <DependentUpon>UpdateInventoryActualView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Operation\UsePaymentCheck\ViewModel\UsePaymentCheckViewModel.cs" />
+    <Compile Include="Operation\UsePaymentCheck\ViewModel\UsePaymentRecordViewModel.cs" />
+    <Compile Include="Operation\UsePaymentCheck\View\UsePaymentCheckView.xaml.cs">
+      <DependentUpon>UsePaymentCheckView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Shared\Model\InventoryFinancingPresetation.cs" />
+    <Compile Include="Shared\Model\InventoryMaster.cs" />
+    <Compile Include="Shared\Model\InventoryPrint.cs" />
+    <Compile Include="Shared\Model\InventoryWork.cs" />
+    <Compile Include="Shared\Model\Ukebarai.cs" />
+    <Compile Include="Shared\Model\SizaiHinmokuItem.cs" />
+    <Compile Include="Shared\Model\TanaorosiDetailLog.cs" />
+    <Compile Include="Shared\Model\TanaorosiLog.cs" />
+    <Compile Include="Shared\Model\MeterDataWorkNoteItem.cs" />
+    <Compile Include="Shared\Model\StartupArgs.cs" />
+    <Compile Include="Shared\Model\OutWorkNoteItem.cs" />
+    <Compile Include="Shared\Model\InventoryWitness.cs" />
+    <Compile Include="Shared\ViewModel\TanaorosiProgress.cs" />
+    <Compile Include="Shared\Model\Inventory.cs" />
+    <Compile Include="Shared\Model\OperationInfo.cs" />
+    <Compile Include="Shared\Model\SubmitItem.cs" />
+    <Compile Include="Shared\Model\InventoryTerm.cs" />
+    <Compile Include="Shared\Model\Supplier.cs" />
+    <Compile Include="Operation\Common\ViewModel\OperationViewModelBase.cs" />
+    <Compile Include="Shared\Model\DesignDataService.cs" />
+    <Compile Include="Shared\Model\DataService.cs" />
+    <Compile Include="Shared\Model\IDataService.cs" />
+    <Compile Include="Base\ViewModel\BaseViewModel.cs" />
+    <Compile Include="Operation\Common\View\IOperationViewBase.cs" />
+    <Compile Include="Operation\Common\View\OperationViewBase.cs" />
+    <Compile Include="Operation\Print\ViewModel\PrintViewModel.cs" />
+    <Compile Include="Operation\Print\View\PrintView.xaml.cs">
+      <DependentUpon>PrintView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Operation\ShowFlow\ViewModel\FlowItem.cs" />
+    <Compile Include="Shared\Model\WorkNoteItem.cs" />
+    <Compile Include="Shared\Model\Material.cs" />
+    <Compile Include="Shared\ViewModel\BusyStatus.cs" />
+    <Compile Include="Shared\ViewModel\OperationYearMonth.cs" />
+    <Compile Include="Shared\SharedModel.cs" />
+    <Compile Include="Shared\SharedViewModel.cs" />
+    <Compile Include="Types\ShizaiKbn.cs" />
+    <Compile Include="ViewModelLocator.cs" />
+    <Compile Include="Operation\TanaorosiYearMonthCheck\ViewModel\TanaorosiYearMonthCheckViewModel.cs" />
+    <Compile Include="Operation\TanaorosiYearMonthCheck\View\TanaorosiYearMonthCheckView.xaml.cs">
+      <DependentUpon>TanaorosiYearMonthCheckView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Operation\ShowFlow\ViewModel\ShowFlowViewModel.cs" />
+    <Compile Include="Operation\ShowFlow\View\ShowFlowView.xaml.cs">
+      <DependentUpon>ShowFlowView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Core\Extensions.cs" />
+    <Page Include="Base\View\BaseWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Base\View\BaseWindow.xaml.cs">
+      <DependentUpon>BaseWindow.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Page Include="Controls\CircularProgressControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Operation\CorrectInventoryActual\View\CorrectInventoryActualView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Operation\InputInputWorkNote\View\InputInputWorkNoteView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Operation\CreateDetails\View\CreateDetailsView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Operation\CreatePurchasingCheckData\View\CreatePurchasingCheckDataView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Operation\InputInventoryActual\View\InputInventoryActualInventoryDataView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Operation\InputInventoryActual\View\InputInventoryActualMeterDataView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Operation\SelectInputWork\View\SelectInputWorkView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Operation\SettingDisplay\View\SettingDisplayView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Operation\ShowSizaiHinmokuChangeList\View\ShowSizaiHinmokuChangeListView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Operation\TanaorosiYearMonthCheck\View\TanaorosiYearMonthCheckView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Operation\InputOutputWorkNote\View\InputOutputWorkNoteView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Operation\InputPaymentCheck\View\InputPaymentCheckView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Operation\IssueCaluculation\VIew\IssueCaluculationView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Operation\PrintFinancingPresetationInventory\View\PrintFinancingPresetationInventoryView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Operation\PrintWitnessInventory\View\PrintWitnessInventoryView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Operation\Print\View\PrintView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Operation\ShowFlow\View\ShowFlowView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Operation\UpdateInventoryActual\View\UpdateInventoryActualView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Operation\UsePaymentCheck\View\UsePaymentCheckView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Theme\style.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <None Include="log4net.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <AppDesigner Include="Properties\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <COMReference Include="Microsoft.Office.Core">
+      <Guid>{2DF8D04C-5BFA-101B-BDE5-00AA0044DE52}</Guid>
+      <VersionMajor>2</VersionMajor>
+      <VersionMinor>5</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="Microsoft.Office.Interop.Excel">
+      <Guid>{00020813-0000-0000-C000-000000000046}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>7</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="VBIDE">
+      <Guid>{0002E157-0000-0000-C000-000000000046}</Guid>
+      <VersionMajor>5</VersionMajor>
+      <VersionMinor>3</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Image\wooden-box.ico" />
+    <Content Include="..\Setting\Message.xml">
+      <Link>Message.xml</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Settings.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
+    </Content>
+    <Resource Include="Image\hint.png" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

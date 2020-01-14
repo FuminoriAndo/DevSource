@@ -1,0 +1,827 @@
+﻿<v:OperationViewBase
+    x:Class="CKSI1010.Operation.Print.View.PrintView" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:converter="clr-namespace:CKSI1010.Converter" xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:v="clr-namespace:CKSI1010.Operation.Common.View" d:DesignHeight="1024" d:DesignWidth="1280"
+    xmlns:cmd="clr-namespace:GalaSoft.MvvmLight.Command;assembly=GalaSoft.MvvmLight.Platform"
+    xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
+    xmlns:b="clr-namespace:CKSI1010.Common"
+    DataContext="{Binding PrintViewModel, Source={StaticResource Locator}}"
+    mc:Ignorable="d">
+
+    <v:OperationViewBase.Resources>
+        <converter:MonthToFirstOrSecondConverter x:Key="MonthToFirstOrSecondConverter" />
+    </v:OperationViewBase.Resources>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <Image
+            Grid.Row="0" Grid.Column="0" Width="18"
+            Height="18" HorizontalAlignment="Left" Source="/CKSI1010;component/image/hint.png" />
+
+        <Label HorizontalAlignment="Left"
+            Grid.Row="0" Grid.Column="1" FontSize="18">
+            <Label.Content>
+                <TextBlock Margin="4,0">
+                    <TextBlock.Text>
+                        <MultiBinding StringFormat="{}{0}/{1}(第{2}{3}期)の資材棚卸調査表を印刷します。">
+                            <Binding Path="OperationYearMonth.Year" />
+                            <Binding Path="OperationYearMonth.Month" />
+                            <Binding Path="OperationYearMonth.Term" />
+                            <Binding Converter="{StaticResource MonthToFirstOrSecondConverter}" Path="OperationYearMonth.Month" />
+                        </MultiBinding>
+                    </TextBlock.Text>
+                </TextBlock>
+            </Label.Content>
+        </Label>
+
+        <StackPanel HorizontalAlignment="Left"
+            Grid.Row="1" Grid.Column="1" Orientation="Horizontal">
+            <Label
+                Margin="4,0,0,0" VerticalAlignment="Center" FontSize="18"
+                Content="印刷対象を選択し" />
+            <Button
+                Margin="2,0,0,0" FontSize="16" FontWeight="Bold" 
+                Content="印刷" IsEnabled="False" />
+            <Label
+                VerticalAlignment="Center" FontSize="18" Content="ボタンをクリックしてください。" />
+        </StackPanel>
+
+        <!--  帳票一覧  -->
+        <Grid Grid.Row="2" Grid.Column="1">
+
+            <Grid.RowDefinitions>
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+            </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <Border
+                Grid.Row="0" Margin="0,8,0,0" Padding="8"
+                BorderBrush="{StaticResource ControlBackgroundColor1}"
+                BorderThickness="0.5">
+                <WrapPanel Orientation="Horizontal">
+                    <CheckBox Margin="8,0" Content="SK" IsChecked="{Binding PrintSK}" >
+                        <CheckBox.Style>
+                            <Style BasedOn="{StaticResource {x:Type CheckBox}}" TargetType="{x:Type CheckBox}">
+                                <Setter Property="IsEnabled" Value="True" />
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding IsFixed}" Value="True">
+                                        <Setter Property="IsEnabled" Value="False" />
+                                    </DataTrigger>
+                                    <DataTrigger Binding="{Binding IsShowEditForm}" Value="True">
+                                        <Setter Property="IsTabStop" Value="False" />
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </CheckBox.Style>
+                    </CheckBox>
+                    <CheckBox Margin="8,0" Content="EF" IsChecked="{Binding PrintEF}">
+                        <CheckBox.Style>
+                            <Style BasedOn="{StaticResource {x:Type CheckBox}}" TargetType="{x:Type CheckBox}">
+                                <Setter Property="IsEnabled" Value="True" />
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding IsFixed}" Value="True">
+                                        <Setter Property="IsEnabled" Value="False" />
+                                    </DataTrigger>
+                                    <DataTrigger Binding="{Binding IsShowEditForm}" Value="True">
+                                        <Setter Property="IsTabStop" Value="False" />
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </CheckBox.Style>
+                    </CheckBox>
+                    <CheckBox Margin="8,0" Content="LF" IsChecked="{Binding PrintLF}">
+                        <CheckBox.Style>
+                            <Style BasedOn="{StaticResource {x:Type CheckBox}}" TargetType="{x:Type CheckBox}">
+                                <Setter Property="IsEnabled" Value="True" />
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding IsFixed}" Value="True">
+                                        <Setter Property="IsEnabled" Value="False" />
+                                    </DataTrigger>
+                                    <DataTrigger Binding="{Binding IsShowEditForm}" Value="True">
+                                        <Setter Property="IsTabStop" Value="False" />
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </CheckBox.Style>
+                    </CheckBox>
+                    <CheckBox Margin="8,0" Content="築炉" IsChecked="{Binding PrintBuilding}">
+                        <CheckBox.Style>
+                            <Style BasedOn="{StaticResource {x:Type CheckBox}}" TargetType="{x:Type CheckBox}">
+                                <Setter Property="IsEnabled" Value="True" />
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding IsFixed}" Value="True">
+                                        <Setter Property="IsEnabled" Value="False" />
+                                    </DataTrigger>
+                                    <DataTrigger Binding="{Binding IsShowEditForm}" Value="True">
+                                        <Setter Property="IsTabStop" Value="False" />
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </CheckBox.Style>
+                    </CheckBox>
+                    <CheckBox Margin="8,0" Content="LD" IsChecked="{Binding PrintLD}">
+                        <CheckBox.Style>
+                            <Style BasedOn="{StaticResource {x:Type CheckBox}}" TargetType="{x:Type CheckBox}">
+                                <Setter Property="IsEnabled" Value="True" />
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding IsFixed}" Value="True">
+                                        <Setter Property="IsEnabled" Value="False" />
+                                    </DataTrigger>
+                                    <DataTrigger Binding="{Binding IsShowEditForm}" Value="True">
+                                        <Setter Property="IsTabStop" Value="False" />
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </CheckBox.Style>
+                    </CheckBox>
+                    <CheckBox Margin="8,0" Content="TD" IsChecked="{Binding PrintTD}">
+                        <CheckBox.Style>
+                            <Style BasedOn="{StaticResource {x:Type CheckBox}}" TargetType="{x:Type CheckBox}">
+                                <Setter Property="IsEnabled" Value="True" />
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding IsFixed}" Value="True">
+                                        <Setter Property="IsEnabled" Value="False" />
+                                    </DataTrigger>
+                                    <DataTrigger Binding="{Binding IsShowEditForm}" Value="True">
+                                        <Setter Property="IsTabStop" Value="False" />
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </CheckBox.Style>
+                    </CheckBox>
+                    <CheckBox Margin="8,0" Content="CC" IsChecked="{Binding PrintCC}">
+                        <CheckBox.Style>
+                            <Style BasedOn="{StaticResource {x:Type CheckBox}}" TargetType="{x:Type CheckBox}">
+                                <Setter Property="IsEnabled" Value="True" />
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding IsFixed}" Value="True">
+                                        <Setter Property="IsEnabled" Value="False" />
+                                    </DataTrigger>
+                                    <DataTrigger Binding="{Binding IsShowEditForm}" Value="True">
+                                        <Setter Property="IsTabStop" Value="False" />
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </CheckBox.Style>
+                    </CheckBox>
+                    <CheckBox Margin="8,0" Content="他" IsChecked="{Binding PrintOthers}">
+                        <CheckBox.Style>
+                            <Style BasedOn="{StaticResource {x:Type CheckBox}}" TargetType="{x:Type CheckBox}">
+                                <Setter Property="IsEnabled" Value="True" />
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding IsFixed}" Value="True">
+                                        <Setter Property="IsEnabled" Value="False" />
+                                    </DataTrigger>
+                                    <DataTrigger Binding="{Binding IsShowEditForm}" Value="True">
+                                        <Setter Property="IsTabStop" Value="False" />
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </CheckBox.Style>
+                    </CheckBox>
+                    <Button FontSize="14" FontWeight="Bold" Content="全選択" Command="{Binding FireSelectAll}">
+                        <Button.Style>
+                            <Style TargetType="{x:Type Button}">
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding IsFixed}" Value="True">
+                                        <Setter Property="IsEnabled" Value="False" />
+                                    </DataTrigger>
+                                    <DataTrigger Binding="{Binding IsFixed}" Value="False">
+                                        <Setter Property="IsEnabled" Value="True" />
+                                        <Setter Property="Button.Background" Value="{StaticResource BackgroundColor2}"/>
+                                    </DataTrigger>
+                                    <DataTrigger Binding="{Binding IsShowEditForm}" Value="True">
+                                        <Setter Property="IsTabStop" Value="False" />
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Button.Style>
+                    </Button>
+                    <Button Margin="4,0,0,0" FontSize="14" FontWeight="Bold" Command="{Binding FireDeselectAll}" Content="全選択解除" >
+                        <Button.Style>
+                            <Style TargetType="{x:Type Button}">
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding IsFixed}" Value="True">
+                                        <Setter Property="IsEnabled" Value="False" />
+                                    </DataTrigger>
+                                    <DataTrigger Binding="{Binding IsFixed}" Value="False">
+                                        <Setter Property="IsEnabled" Value="True" />
+                                        <Setter Property="Button.Background" Value="{StaticResource BackgroundColor2}"/>
+                                    </DataTrigger>
+                                    <DataTrigger Binding="{Binding IsShowEditForm}" Value="True">
+                                        <Setter Property="IsTabStop" Value="False" />
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Button.Style>
+                    </Button>
+                </WrapPanel>
+            </Border>
+
+            <StackPanel
+                Grid.Row="5" Margin="0,12,0,0" HorizontalAlignment="Left"
+                Orientation="Horizontal">
+                <CheckBox Margin="8,0" FontSize="18" Content="当月量クリア" IsChecked="{Binding TogetuClear}" >
+                    <CheckBox.Style>
+                        <Style BasedOn="{StaticResource {x:Type CheckBox}}" TargetType="{x:Type CheckBox}">
+                            <Setter Property="IsEnabled" Value="True" />
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding IsFixed}" Value="True">
+                                    <Setter Property="IsEnabled" Value="False" />
+                                </DataTrigger>
+                                <DataTrigger Binding="{Binding IsShowEditForm}" Value="True">
+                                    <Setter Property="IsTabStop" Value="False" />
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </CheckBox.Style>
+                </CheckBox>
+            </StackPanel>
+        </Grid>
+
+        <Image
+            Grid.Row="3" Grid.Column="1" Width="18" Margin="-18,16,0,0"
+            Height="18" HorizontalAlignment="Left" Source="/CKSI1010;component/image/hint.png" />
+
+        <!-- 説明文 -->
+        <Label Grid.Row="3" Grid.Column="1" FontSize="18" Margin="4,16,0,0">
+            資材棚卸調査表の項目に変更がある場合は、以下の画面で変更してください。
+        </Label>
+
+        <!-- 凡例　-->
+        <Border Grid.Row="4" Grid.Column="1" BorderThickness="5" MaxWidth="1200" Height="50" HorizontalAlignment="Left" >
+            <!-- 破線Border　-->
+            <Border.BorderBrush>
+                <VisualBrush>
+                    <VisualBrush.Visual>
+                        <Rectangle StrokeThickness="2"
+                    Stroke="{StaticResource BackgroundColor2}" 
+                    StrokeDashArray="4 2"
+                    Width="{Binding RelativeSource={RelativeSource AncestorType={x:Type Border}}, Path=ActualWidth}"
+                    Height="{Binding RelativeSource={RelativeSource AncestorType={x:Type Border}}, Path=ActualHeight}" />
+                    </VisualBrush.Visual>
+                </VisualBrush>
+            </Border.BorderBrush>
+
+            <StackPanel HorizontalAlignment="Left" Grid.Row="4" Grid.Column="1" Orientation="Horizontal" Margin="-5,5,0,-5" >
+                <Button
+                FontSize="14" FontWeight="Bold"
+                Content="追加" IsEnabled="False" Margin="5"/>
+                <Label Content="選択行の後に項目を追加します。" Margin="5"/>
+                <Button
+                FontSize="14" FontWeight="Bold"
+                Content="変更" IsEnabled="False" Margin="5" />
+                <Label Content="選択行の項目を変更します。" Margin="5"/>
+                <Button
+                FontSize="14" FontWeight="Bold"
+                Content="削除" IsEnabled="False" Margin="5"/>
+                <Label Content="選択行の項目を削除します。"/>
+                <Button
+                FontSize="14" FontWeight="Bold"
+                Content="下へ" IsEnabled="False" Margin="5"/>
+                <Label Content="選択行の項目を下へ移動します。" Margin="5"/>
+                <Button
+                FontSize="14" FontWeight="Bold"
+                Content="上へ" IsEnabled="False" Margin="5"/>
+                <Label Content="選択行の項目を上へ移動します。" Margin="5"/>
+            </StackPanel>
+        </Border>
+
+        <!-- tab風 -->
+        <Grid Grid.Row="5" Grid.Column="1" Grid.ColumnSpan="2">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <!-- tab風ボタン -->
+            <StackPanel Grid.Row="0" Orientation="Horizontal" Margin="0, 10, 0 ,0">
+                <Button FontSize="14" Content="SK"  Command="{Binding FireChangeTab}" CommandParameter="SK" Opacity="{Binding OpecitySK}" >
+                    <Button.Style>
+                        <Style BasedOn="{StaticResource {x:Type Button}}" TargetType="{x:Type Button}">
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding IsShowEditForm}" Value="True">
+                                    <Setter Property="IsTabStop" Value="False" />
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+                </Button>
+                <Button FontSize="14" Content="EF" Command="{Binding FireChangeTab}" CommandParameter="EF" Opacity="{Binding OpecityEF}" >
+                    <Button.Style>
+                        <Style BasedOn="{StaticResource {x:Type Button}}" TargetType="{x:Type Button}">
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding IsShowEditForm}" Value="True">
+                                    <Setter Property="IsTabStop" Value="False" />
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+                </Button>
+                <Button FontSize="14" Content="LF" Command="{Binding FireChangeTab}"  CommandParameter="LF"  Opacity="{Binding OpecityLF}" >
+                    <Button.Style>
+                        <Style BasedOn="{StaticResource {x:Type Button}}" TargetType="{x:Type Button}">
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding IsShowEditForm}" Value="True">
+                                    <Setter Property="IsTabStop" Value="False" />
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+                </Button>
+                <Button FontSize="14" Content="築炉" Command="{Binding FireChangeTab}" CommandParameter="CHIKURO"  Opacity="{Binding OpecityBuilding}" >
+                    <Button.Style>
+                        <Style BasedOn="{StaticResource {x:Type Button}}" TargetType="{x:Type Button}">
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding IsShowEditForm}" Value="True">
+                                    <Setter Property="IsTabStop" Value="False" />
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+                </Button>
+                <Button FontSize="14" Content="LD" Command="{Binding FireChangeTab}" CommandParameter="LD"  Opacity="{Binding OpecityLD}" >
+                    <Button.Style>
+                        <Style BasedOn="{StaticResource {x:Type Button}}" TargetType="{x:Type Button}">
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding IsShowEditForm}" Value="True">
+                                    <Setter Property="IsTabStop" Value="False" />
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+                </Button>
+                <Button FontSize="14" Content="TD" Command="{Binding FireChangeTab}" CommandParameter="TD"  Opacity="{Binding OpecityTD}" >
+                    <Button.Style>
+                        <Style BasedOn="{StaticResource {x:Type Button}}" TargetType="{x:Type Button}">
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding IsShowEditForm}" Value="True">
+                                    <Setter Property="IsTabStop" Value="False" />
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+                </Button>
+                <Button FontSize="14" Content="CC" Command="{Binding FireChangeTab}" CommandParameter="CC" Opacity="{Binding OpecityCC}" >
+                    <Button.Style>
+                        <Style BasedOn="{StaticResource {x:Type Button}}" TargetType="{x:Type Button}">
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding IsShowEditForm}" Value="True">
+                                    <Setter Property="IsTabStop" Value="False" />
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+                </Button>
+                <Button FontSize="14" Content="他" Command="{Binding FireChangeTab}" CommandParameter="ETC" Opacity="{Binding OpecityOthers}" >
+                    <Button.Style>
+                        <Style BasedOn="{StaticResource {x:Type Button}}" TargetType="{x:Type Button}">
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding IsShowEditForm}" Value="True">
+                                    <Setter Property="IsTabStop" Value="False" />
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+                </Button>
+            </StackPanel>
+
+            <Border Grid.Row="1" BorderBrush="{StaticResource BackgroundColor2}" BorderThickness="3" Margin="0,0,20,10" Padding="5">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+
+                    <!-- ボタン　-->
+                    <StackPanel Grid.Row="0" HorizontalAlignment="Right" Orientation="Horizontal" Visibility="{Binding Path=EditOperationVisibility }" Grid.Column="1">
+                        <Button FontSize="14" FontWeight="Bold" Content="追加"  Margin="2,0,0,0" Command="{Binding FireUpdateEditMode}" >
+                            <Button.Style>
+                                <Style TargetType="{x:Type Button}">
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding IsFixed}" Value="True">
+                                            <Setter Property="IsEnabled" Value="False" />
+                                        </DataTrigger>
+                                        <DataTrigger Binding="{Binding IsFixed}" Value="False">
+                                            <Setter Property="IsEnabled" Value="True" />
+                                            <Setter Property="Button.Background" Value="{StaticResource BackgroundColor2}"/>
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </Button.Style>
+                        </Button>
+                        <Button FontSize="14" FontWeight="Bold" Content="変更" Margin="2,0,0,0" Command="{Binding FireUpdate}">
+                            <Button.Style>
+                                <Style TargetType="{x:Type Button}">
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding IsFixed}" Value="True">
+                                            <Setter Property="IsEnabled" Value="False" />
+                                        </DataTrigger>
+                                        <DataTrigger Binding="{Binding IsFixed}" Value="False">
+                                            <Setter Property="IsEnabled" Value="True" />
+                                            <Setter Property="Button.Background" Value="{StaticResource BackgroundColor2}"/>
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </Button.Style>
+                        </Button>
+
+                        <Button FontSize="14" FontWeight="Bold" Content="削除" Margin="2,0,0,0" Command="{Binding FireDelete}">
+                            <Button.Style>
+                                <Style TargetType="{x:Type Button}">
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding IsFixed}" Value="True">
+                                            <Setter Property="IsEnabled" Value="False" />
+                                        </DataTrigger>
+                                        <DataTrigger Binding="{Binding IsFixed}" Value="False">
+                                            <Setter Property="IsEnabled" Value="True" />
+                                            <Setter Property="Button.Background" Value="{StaticResource BackgroundColor2}"/>
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </Button.Style>
+                        </Button>
+                        <Button FontSize="14" FontWeight="Bold" Content="下へ" Margin="2,0,0,0" Command="{Binding FireReOrder}" CommandParameter="0">
+                            <Button.Style>
+                                <Style TargetType="{x:Type Button}">
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding IsFixed}" Value="True">
+                                            <Setter Property="IsEnabled" Value="False" />
+                                        </DataTrigger>
+                                        <DataTrigger Binding="{Binding IsFixed}" Value="False">
+                                            <Setter Property="IsEnabled" Value="True" />
+                                            <Setter Property="Button.Background" Value="{StaticResource BackgroundColor2}"/>
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </Button.Style>
+                        </Button>
+                        <Button FontSize="14" FontWeight="Bold" Content="上へ" Margin="2,0,0,0" Command="{Binding FireReOrder}" CommandParameter="1">
+                            <Button.Style>
+                                <Style TargetType="{x:Type Button}">
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding IsFixed}" Value="True">
+                                            <Setter Property="IsEnabled" Value="False" />
+                                        </DataTrigger>
+                                        <DataTrigger Binding="{Binding IsFixed}" Value="False">
+                                            <Setter Property="IsEnabled" Value="True" />
+                                            <Setter Property="Button.Background" Value="{StaticResource BackgroundColor2}"/>
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </Button.Style>
+                        </Button>
+                    </StackPanel>
+
+                    <!-- 編集フォーム時の説明文 -->
+
+                    <StackPanel Grid.Row="0" HorizontalAlignment="Left" Orientation="Horizontal" Visibility="{Binding Path=EditModeVisibility }">
+                        <Image Margin="4,0,0,0" Width="18" Height="18" HorizontalAlignment="Left" Source="/CKSI1010;component/image/hint.png" />
+                        <Label Margin="4,0,0,0" VerticalAlignment="Center" FontSize="18" >
+                            <Label.Style>
+                                <Style TargetType="{x:Type Label}">
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding IsModifyEditMode}" Value="False">
+                                            <Setter Property="Content" Value="追加する品目CD、業者CD、備考を入力後、" />
+                                        </DataTrigger>
+                                        <DataTrigger Binding="{Binding IsModifyEditMode}" Value="True">
+                                            <Setter Property="Content" Value="変更する品目名、業者名を入力後、" />
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </Label.Style>
+                        </Label>
+                        <Button Margin="0,-4,0,0" Height="30" FontSize="18" FontWeight="Bold" Content="更新" IsEnabled="False" />
+                        <Label VerticalAlignment="Center" FontSize="18" Content="をクリックしてください。" />
+                    </StackPanel>
+
+                    <!-- 実際には編集フォーム -->
+
+                    <StackPanel Grid.Row="1" HorizontalAlignment="Left" Orientation="Horizontal" Visibility="{Binding Path=EditModeVisibility }">
+                        <Border Margin="4,0,0,0" BorderBrush="{StaticResource BackgroundColor2}" BorderThickness="10" VerticalAlignment="Center">
+                            <Label VerticalAlignment="Center" FontSize="14" Content="品目CD" Background="{StaticResource BackgroundColor2}"/>
+                        </Border>
+                        <Border BorderBrush="{StaticResource BackgroundColor2}" BorderThickness="5" VerticalAlignment="Center">
+                            <TextBox  Height="30" Width="70" VerticalAlignment="Center" FontSize="20" Text="{Binding HinmokuCD}" IsReadOnly="{Binding IsReadonlyCD}" MaxLength="4"
+                                      InputMethod.IsInputMethodEnabled="false" 
+                                      InputMethod.PreferredImeState="On" 
+                                      InputMethod.PreferredImeConversionMode="Alphanumeric"
+                                      b:HinmokuCodeBehaviors.IsAlphaNumeric="True">
+                                <i:Interaction.Triggers>
+                                    <i:EventTrigger EventName="LostFocus">
+                                        <cmd:EventToCommand Command="{Binding FireLostFocus, Mode=OneWay}" CommandParameter="Hinmoku" />
+                                    </i:EventTrigger>
+                                </i:Interaction.Triggers>
+                                <TextBox.Style>
+                                    <Style BasedOn="{StaticResource {x:Type TextBox}}" TargetType="{x:Type TextBox}">
+                                        <Setter Property="IsEnabled" Value="True" />
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding IsModifyEditMode}" Value="True">
+                                                <Setter Property="IsEnabled" Value="False" />
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </TextBox.Style>
+                            </TextBox>
+                        </Border>
+
+                        <Border Margin="4,0,0,0" BorderBrush="{StaticResource BackgroundColor2}" BorderThickness="10" VerticalAlignment="Center">
+                            <Label  VerticalAlignment="Center" FontSize="14" Content="業者CD" Background="{StaticResource BackgroundColor2}"/>
+                        </Border>
+                        <Border BorderBrush="{StaticResource BackgroundColor2}" BorderThickness="5" VerticalAlignment="Center">
+                            <TextBox  Height="30" Width="70" VerticalAlignment="Center" FontSize="20" Text="{Binding GyosyaCD}" IsReadOnly="{Binding IsReadonlyCD}" MaxLength="4"
+                                      InputMethod.IsInputMethodEnabled="false" 
+                                      InputMethod.PreferredImeState="On" 
+                                      InputMethod.PreferredImeConversionMode="Alphanumeric"
+                                      b:GyosyaCodeBehaviors.IsAlphaNumeric="True">
+                                <i:Interaction.Triggers>
+                                    <i:EventTrigger EventName="LostFocus">
+                                        <cmd:EventToCommand Command="{Binding FireLostFocus, Mode=OneWay}" CommandParameter="Gyosya" />
+                                    </i:EventTrigger>
+                                </i:Interaction.Triggers>
+                                <TextBox.Style>
+                                    <Style BasedOn="{StaticResource {x:Type TextBox}}" TargetType="{x:Type TextBox}">
+                                        <Setter Property="IsEnabled" Value="True" />
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding IsModifyEditMode}" Value="True">
+                                                <Setter Property="IsEnabled" Value="False" />
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </TextBox.Style>
+                            </TextBox>
+                        </Border>
+
+                        <Border Margin="4,0,0,0" BorderBrush="{StaticResource BackgroundColor2}" BorderThickness="10" VerticalAlignment="Center">
+                            <Label  VerticalAlignment="Center" FontSize="14" Content="品目名" Background="{StaticResource BackgroundColor2}"/>
+                        </Border>
+                        <Border BorderBrush="{StaticResource BackgroundColor2}" BorderThickness="5" VerticalAlignment="Center">
+                            <TextBox IsReadOnly="{Binding IsReadonlyName}"  Height="30" Width="240" VerticalAlignment="Center" MaxLength="40" FontSize="20" Text="{Binding HinmokuName}"
+                                      InputMethod.PreferredImeState="On" 
+                                      InputMethod.PreferredImeConversionMode="FullShape,Native">
+                                <TextBox.Style>
+                                    <Style BasedOn="{StaticResource {x:Type TextBox}}" TargetType="{x:Type TextBox}">
+                                        <Setter Property="IsEnabled" Value="True" />
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding IsModifyEditMode}" Value="False">
+                                                <Setter Property="IsEnabled" Value="False" />
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </TextBox.Style>
+                            </TextBox>
+                        </Border>
+
+                        <Border Margin="4,0,0,0"  BorderBrush="{StaticResource BackgroundColor2}" BorderThickness="10" VerticalAlignment="Center">
+                            <Label VerticalAlignment="Center" FontSize="14" Content="業者名" Background="{StaticResource BackgroundColor2}"/>
+                        </Border>
+                        <Border BorderBrush="{StaticResource BackgroundColor2}" BorderThickness="5" VerticalAlignment="Center">
+                            <TextBox IsReadOnly="{Binding IsReadonlyName}" Height="30" Width="210" VerticalAlignment="Center" MaxLength="24" FontSize="20" Text="{Binding GyosyaName}" 
+                                      InputMethod.PreferredImeState="On" 
+                                      InputMethod.PreferredImeConversionMode="FullShape,Native">
+
+                                <TextBox.Style>
+                                    <Style BasedOn="{StaticResource {x:Type TextBox}}" TargetType="{x:Type TextBox}">
+                                        <Setter Property="IsEnabled" Value="True" />
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding IsModifyEditMode}" Value="False">
+                                                <Setter Property="IsEnabled" Value="False" />
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </TextBox.Style>
+                            </TextBox>
+                        </Border>
+
+                        <Border Margin="4,0,0,0" BorderBrush="{StaticResource BackgroundColor2}" BorderThickness="3" >
+                            <Button FontSize="14" FontWeight="Bold" Content="更新" Command="{Binding FireUpdateData}"/>
+                        </Border>
+                        <Border Margin="4,0,0,0" BorderBrush="{StaticResource BackgroundColor2}" BorderThickness="3" >
+                            <Button FontSize="14" FontWeight="Bold" Content="キャンセル"  Command="{Binding FireUpdateEditMode}"  />
+                        </Border>
+                    </StackPanel>
+
+                    <StackPanel Grid.Row="2" HorizontalAlignment="Left" Orientation="Horizontal" Visibility="{Binding Path=EditModeVisibility }" Margin="0,5,0,0">
+                        <Border Margin="4,0,0,0" BorderBrush="{StaticResource BackgroundColor2}" BorderThickness="10" VerticalAlignment="Center">
+                            <Label  VerticalAlignment="Center" FontSize="14" Content="備考" Background="{StaticResource BackgroundColor2}"/>
+                        </Border>
+                        <Border BorderBrush="{StaticResource BackgroundColor2}" BorderThickness="5" VerticalAlignment="Center">
+                            <TextBox Height="30" Width="850" VerticalAlignment="Center" MaxLength="40" FontSize="20" Text="{Binding Bikou}">
+                            </TextBox>
+                        </Border>
+
+                    </StackPanel>
+
+                    <!--    データ表示部  -->
+                    <DataGrid Grid.Row="3" Name="dataGrid" IsReadOnly="True" AutoGenerateColumns="False" ItemsSource="{Binding PrintTargetList}" 
+                               Margin="0,5,0,1" FontSize="11" SelectedIndex="{Binding Current}" ScrollViewer.CanContentScroll="True"
+                               CanUserReorderColumns="False" SelectionMode="Single" SelectionUnit="FullRow">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn FontSize="11" Header="品目CD" Binding="{Binding HinmokuCD}" Width="50" CanUserSort="False" >
+                                <DataGridTextColumn.CellStyle>
+                                    <Style TargetType="{x:Type DataGridCell}">
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding DataContext.IsShowEditForm,RelativeSource={RelativeSource FindAncestor,AncestorType={x:Type UserControl}}}" Value="True">
+                                                <Setter Property="KeyboardNavigation.IsTabStop" Value="False" />
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </DataGridTextColumn.CellStyle>
+                            </DataGridTextColumn>
+
+                            <DataGridTextColumn FontSize="11" Header="業者CD" Binding="{Binding GyosyaCD}" Width="50" CanUserSort="False">
+                                <DataGridTextColumn.CellStyle>
+                                    <Style TargetType="{x:Type DataGridCell}">
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding DataContext.IsShowEditForm,RelativeSource={RelativeSource FindAncestor,AncestorType={x:Type UserControl}}}" Value="True">
+                                                <Setter Property="KeyboardNavigation.IsTabStop" Value="False" />
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </DataGridTextColumn.CellStyle>
+                            </DataGridTextColumn>
+
+                            <DataGridTextColumn FontSize="11" Header="品目名" Binding="{Binding HinmokuName}" Width="230" CanUserSort="False">
+                                <DataGridTextColumn.CellStyle>
+                                    <Style TargetType="{x:Type DataGridCell}">
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding DataContext.IsShowEditForm,RelativeSource={RelativeSource FindAncestor,AncestorType={x:Type UserControl}}}" Value="True">
+                                                <Setter Property="KeyboardNavigation.IsTabStop" Value="False" />
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </DataGridTextColumn.CellStyle>
+                            </DataGridTextColumn>
+
+                            <DataGridTextColumn FontSize="11" Header="業者名" Binding="{Binding GyosyaName}" Width="155" CanUserSort="False">
+                                <DataGridTextColumn.CellStyle>
+                                    <Style TargetType="{x:Type DataGridCell}">
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding DataContext.IsShowEditForm,RelativeSource={RelativeSource FindAncestor,AncestorType={x:Type UserControl}}}" Value="True">
+                                                <Setter Property="KeyboardNavigation.IsTabStop" Value="False" />
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </DataGridTextColumn.CellStyle>
+                            </DataGridTextColumn>
+
+                            <DataGridTextColumn FontSize="11" Header="備考" Binding="{Binding Bikou}" Width="90" CanUserSort="False">
+                                <DataGridTextColumn.CellStyle>
+                                    <Style TargetType="{x:Type DataGridCell}">
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding DataContext.IsShowEditForm,RelativeSource={RelativeSource FindAncestor,AncestorType={x:Type UserControl}}}" Value="True">
+                                                <Setter Property="KeyboardNavigation.IsTabStop" Value="False" />
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </DataGridTextColumn.CellStyle>
+                            </DataGridTextColumn>
+
+                            <DataGridTextColumn FontSize="11" Header="入庫量" Binding="{Binding NyukoRyo,StringFormat=#\,0}" Width="82"  CanUserSort="False">
+                                <DataGridTextColumn.ElementStyle>
+                                    <Style TargetType="{x:Type TextBlock}" BasedOn="{StaticResource {x:Type TextBlock}}">
+                                        <Setter Property="TextAlignment" Value="Right" />
+                                    </Style>
+                                </DataGridTextColumn.ElementStyle>
+                                <DataGridTextColumn.CellStyle>
+                                    <Style TargetType="{x:Type DataGridCell}">
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding DataContext.IsShowEditForm,RelativeSource={RelativeSource FindAncestor,AncestorType={x:Type UserControl}}}" Value="True">
+                                                <Setter Property="KeyboardNavigation.IsTabStop" Value="False" />
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </DataGridTextColumn.CellStyle>
+                            </DataGridTextColumn>
+                            <DataGridTextColumn FontSize="11" Header="返品" Binding="{Binding Henpin,StringFormat=#\,0}" Width="82" CanUserSort="False">
+                                <DataGridTextColumn.ElementStyle>
+                                    <Style TargetType="{x:Type TextBlock}" BasedOn="{StaticResource {x:Type TextBlock}}">
+                                        <Setter Property="TextAlignment" Value="Right" />
+                                    </Style>
+                                </DataGridTextColumn.ElementStyle>
+                                <DataGridTextColumn.CellStyle>
+                                    <Style TargetType="{x:Type DataGridCell}">
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding DataContext.IsShowEditForm,RelativeSource={RelativeSource FindAncestor,AncestorType={x:Type UserControl}}}" Value="True">
+                                                <Setter Property="KeyboardNavigation.IsTabStop" Value="False" />
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </DataGridTextColumn.CellStyle>
+                            </DataGridTextColumn>
+                            <DataGridTextColumn FontSize="11" Header="前月在庫" Binding="{Binding LastMonth,StringFormat=#\,0}" Width="82" CanUserSort="False">
+                                <DataGridTextColumn.ElementStyle>
+                                    <Style TargetType="{x:Type TextBlock}" BasedOn="{StaticResource {x:Type TextBlock}}">
+                                        <Setter Property="TextAlignment" Value="Right" />
+                                    </Style>
+                                </DataGridTextColumn.ElementStyle>
+                                <DataGridTextColumn.CellStyle>
+                                    <Style TargetType="{x:Type DataGridCell}">
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding DataContext.IsShowEditForm,RelativeSource={RelativeSource FindAncestor,AncestorType={x:Type UserControl}}}" Value="True">
+                                                <Setter Property="KeyboardNavigation.IsTabStop" Value="False" />
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </DataGridTextColumn.CellStyle>
+                            </DataGridTextColumn>
+
+                            <DataGridTextColumn FontSize="11" Header="倉庫在庫" Binding="{Binding SokoZaiko,StringFormat=#\,0}" Width="82" CanUserSort="False">
+                                <DataGridTextColumn.ElementStyle>
+                                    <Style TargetType="{x:Type TextBlock}" BasedOn="{StaticResource {x:Type TextBlock}}">
+                                        <Setter Property="TextAlignment" Value="Right" />
+                                    </Style>
+                                </DataGridTextColumn.ElementStyle>
+                                <DataGridTextColumn.CellStyle>
+                                    <Style TargetType="{x:Type DataGridCell}">
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding DataContext.IsShowEditForm,RelativeSource={RelativeSource FindAncestor,AncestorType={x:Type UserControl}}}" Value="True">
+                                                <Setter Property="KeyboardNavigation.IsTabStop" Value="False" />
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </DataGridTextColumn.CellStyle>
+                            </DataGridTextColumn>
+
+                            <DataGridTextColumn FontSize="11" Header="EF在庫" Binding="{Binding EfZaiko,StringFormat=#\,0}" Width="82" CanUserSort="False">
+                                <DataGridTextColumn.ElementStyle>
+                                    <Style TargetType="{x:Type TextBlock}" BasedOn="{StaticResource {x:Type TextBlock}}">
+                                        <Setter Property="TextAlignment" Value="Right" />
+                                    </Style>
+                                </DataGridTextColumn.ElementStyle>
+                                <DataGridTextColumn.CellStyle>
+                                    <Style TargetType="{x:Type DataGridCell}">
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding DataContext.IsShowEditForm,RelativeSource={RelativeSource FindAncestor,AncestorType={x:Type UserControl}}}" Value="True">
+                                                <Setter Property="KeyboardNavigation.IsTabStop" Value="False" />
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </DataGridTextColumn.CellStyle>
+                            </DataGridTextColumn>
+
+                            <DataGridTextColumn FontSize="11" Header="LF在庫" Binding="{Binding LfZaiko,StringFormat=#\,0}" Width="82" CanUserSort="False">
+                                <DataGridTextColumn.ElementStyle>
+                                    <Style TargetType="{x:Type TextBlock}" BasedOn="{StaticResource {x:Type TextBlock}}">
+                                        <Setter Property="TextAlignment" Value="Right" />
+                                    </Style>
+                                </DataGridTextColumn.ElementStyle>
+                                <DataGridTextColumn.CellStyle>
+                                    <Style TargetType="{x:Type DataGridCell}">
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding DataContext.IsShowEditForm,RelativeSource={RelativeSource FindAncestor,AncestorType={x:Type UserControl}}}" Value="True">
+                                                <Setter Property="KeyboardNavigation.IsTabStop" Value="False" />
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </DataGridTextColumn.CellStyle>
+                            </DataGridTextColumn>
+
+                            <DataGridTextColumn FontSize="11" Header="CC在庫" Binding="{Binding CcZaiko,StringFormat=#\,0}" Width="*" CanUserSort="False">
+                                <DataGridTextColumn.ElementStyle>
+                                    <Style TargetType="{x:Type TextBlock}" BasedOn="{StaticResource {x:Type TextBlock}}">
+                                        <Setter Property="TextAlignment" Value="Right" />
+                                    </Style>
+                                </DataGridTextColumn.ElementStyle>
+                                <DataGridTextColumn.CellStyle>
+                                    <Style TargetType="{x:Type DataGridCell}">
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding DataContext.IsShowEditForm,RelativeSource={RelativeSource FindAncestor,AncestorType={x:Type UserControl}}}" Value="True">
+                                                <Setter Property="KeyboardNavigation.IsTabStop" Value="False" />
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </DataGridTextColumn.CellStyle>
+                            </DataGridTextColumn>
+                        </DataGrid.Columns>
+                    </DataGrid >
+                </Grid>
+            </Border>
+        </Grid>
+    </Grid>
+</v:OperationViewBase>

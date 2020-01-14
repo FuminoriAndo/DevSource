@@ -1,0 +1,547 @@
+﻿<v:OperationViewBase
+    x:Class="CKSI1090.Operation.WorkNoteCheckList.View.WorkNoteCheckListView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:cnv="clr-namespace:CKSI1090.Converter"
+    xmlns:common_cnv="clr-namespace:Converter"
+    xmlns:b="clr-namespace:CKSI1090.Common.Behaviors"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:cmd="clr-namespace:GalaSoft.MvvmLight.Command;assembly=GalaSoft.MvvmLight.Platform"
+    xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
+    xmlns:v="clr-namespace:CKSI1090.Operation.Common.View"
+    DataContext="{Binding WorkNoteCheckListViewModel, Source={StaticResource Locator}}"
+    d:DesignHeight="1024" d:DesignWidth="1280"
+    mc:Ignorable="d">
+
+    <v:OperationViewBase.Resources>
+        <common_cnv:StringToIntConverter x:Key="StringToIntConverter" />
+        <cnv:OperationDateConverter x:Key="OperationDateConverter" />
+        <cnv:WorkNoteKbnTieConverter x:Key="WorkNoteKbnTieConverter" />
+        <cnv:MukesakiTieConverter x:Key="MukesakiTieConverter" />
+        <common_cnv:BooleanNegationConverter x:Key="BooleanNegationConverter"/>
+    </v:OperationViewBase.Resources>
+
+    <Grid Margin="8,0">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+
+        <GroupBox Grid.Row="0" Margin="8,4">
+
+            <GroupBox.Header>
+                <Label Content="検索" FontSize="18"/>
+            </GroupBox.Header>
+
+            <StackPanel Orientation="Vertical">
+
+                <WrapPanel Margin="4" Grid.Row="1">
+
+                    <Border Margin="4" Padding="4" BorderBrush="LightGray" BorderThickness="1">
+                        <StackPanel Orientation="Horizontal">
+                            <CheckBox VerticalAlignment="Center" FontSize="13" Content="作業日(YYMMDD)：" 
+                                      IsChecked="{Binding SearchCondition.UseOperationDate}"/>
+                            <StackPanel Orientation="Horizontal" IsEnabled="{Binding SearchCondition.UseOperationDate}">
+                                <StackPanel.Style>
+                                    <Style TargetType="{x:Type StackPanel}">
+                                        <Setter Property="Opacity" Value="1"/>
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding SearchCondition.UseOperationDate}" Value="False">
+                                                <Setter Property="Opacity" Value="0.3"/>
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </StackPanel.Style>
+                                <TextBox Text="{Binding SearchCondition.MinOperationDate}" FontSize="13" Width="60" 
+                                         InputMethod.IsInputMethodEnabled="false" 
+                                         InputMethod.PreferredImeState="On" 
+                                         InputMethod.PreferredImeConversionMode="Alphanumeric" b:OperationDateBehaviors.IsNumeric="True" MaxLength="6"/>
+                                <Label VerticalAlignment="Center" Content="～"/>
+                                <TextBox Text="{Binding SearchCondition.MaxOperationDate}" FontSize="13" Width="60" 
+                                         InputMethod.IsInputMethodEnabled="false" 
+                                         InputMethod.PreferredImeState="On" 
+                                         InputMethod.PreferredImeConversionMode="Alphanumeric" b:OperationDateBehaviors.IsNumeric="True" MaxLength="6"/>
+                            </StackPanel>
+                        </StackPanel>
+                    </Border>
+
+                    <Border Margin="4" Padding="4" BorderBrush="LightGray" BorderThickness="1">
+                        <StackPanel Orientation="Horizontal">
+                            <CheckBox VerticalAlignment="Center" FontSize="13" Content="作業誌区分：" 
+                                      IsChecked="{Binding SearchCondition.UseWorkNoteKbn}"/>
+                            <ComboBox Width="144"  ItemsSource="{Binding WorkNoteComboList}" 
+                                      SelectedValue="{Binding SearchCondition.WorkNoteKbn}" 
+                                      SelectedValuePath="Key" IsEnabled="{Binding SearchCondition.UseWorkNoteKbn}">
+                                <ComboBox.ItemTemplate>
+                                    <DataTemplate>
+                                        <StackPanel Orientation="Horizontal">
+                                            <TextBlock Text="{Binding Value}" Margin="2.5"/>
+                                        </StackPanel>
+                                    </DataTemplate>
+                                </ComboBox.ItemTemplate>
+                                <ComboBox.Style>
+                                    <Style TargetType="{x:Type ComboBox}" BasedOn="{StaticResource {x:Type ComboBox}}">
+                                        <Setter Property="Opacity" Value="0.3"/>
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding SearchCondition.UseWorkNoteKbn}" Value="True">
+                                                <Setter Property="Opacity" Value="1"/>
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </ComboBox.Style>
+                            </ComboBox>
+                        </StackPanel>
+                    </Border>
+
+                    <Border Margin="4" Padding="4" BorderBrush="LightGray" BorderThickness="1">
+                        <StackPanel Orientation="Horizontal">
+                            <CheckBox VerticalAlignment="Center" FontSize="13" Content="品目CD：" 
+                                      IsChecked="{Binding SearchCondition.UseHinmokuCode}"/>
+                            <StackPanel Orientation="Horizontal" IsEnabled="{Binding SearchCondition.UseHinmokuCode}">
+                                <StackPanel.Style>
+                                    <Style TargetType="{x:Type StackPanel}">
+                                        <Setter Property="Opacity" Value="1"/>
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding SearchCondition.UseHinmokuCode}" Value="False">
+                                                <Setter Property="Opacity" Value="0.3"/>
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </StackPanel.Style>
+                                <TextBox Text="{Binding SearchCondition.MinHinmokuCode}" FontSize="13" Width="60" 
+                                         InputMethod.IsInputMethodEnabled="false" 
+                                         InputMethod.PreferredImeState="On" 
+                                         InputMethod.PreferredImeConversionMode="Alphanumeric" b:HinmokuCodeBehaviors.IsAlphaNumeric="True" MaxLength="4"/>
+                                <Label VerticalAlignment="Center" Content="～"/>
+                                <TextBox Text="{Binding SearchCondition.MaxHinmokuCode}" FontSize="13" Width="60" 
+                                         InputMethod.IsInputMethodEnabled="false" 
+                                         InputMethod.PreferredImeState="On" 
+                                         InputMethod.PreferredImeConversionMode="Alphanumeric" b:HinmokuCodeBehaviors.IsAlphaNumeric="True" MaxLength="4"/>
+                            </StackPanel>
+                        </StackPanel>
+                    </Border>
+
+                    <Border Margin="4" Padding="4" BorderBrush="LightGray" BorderThickness="1">
+                        <StackPanel Orientation="Horizontal">
+                            <CheckBox VerticalAlignment="Center" FontSize="13" Content="業者CD：" 
+                                      IsChecked="{Binding SearchCondition.UseGyosyaCode}"/>
+                            <StackPanel Orientation="Horizontal" IsEnabled="{Binding SearchCondition.UseGyosyaCode}">
+                                <StackPanel.Style>
+                                    <Style TargetType="{x:Type StackPanel}">
+                                        <Setter Property="Opacity" Value="1"/>
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding SearchCondition.UseGyosyaCode}"  Value="False">
+                                                <Setter Property="Opacity" Value="0.3"/>
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </StackPanel.Style>
+                                <TextBox Text="{Binding SearchCondition.MinGyosyaCode}" FontSize="13" Width="60" 
+                                         InputMethod.IsInputMethodEnabled="false" 
+                                         InputMethod.PreferredImeState="On" 
+                                         InputMethod.PreferredImeConversionMode="Alphanumeric" b:GyosyaCodeBehaviors.IsAlphaNumeric="True" MaxLength="4"/>
+                                <Label VerticalAlignment="Center" Content="～"/>
+                                <TextBox Text="{Binding SearchCondition.MaxGyosyaCode}" FontSize="13" Width="60" 
+                                         InputMethod.IsInputMethodEnabled="false" 
+                                         InputMethod.PreferredImeState="On" 
+                                         InputMethod.PreferredImeConversionMode="Alphanumeric" b:GyosyaCodeBehaviors.IsAlphaNumeric="True" MaxLength="4"/>
+                            </StackPanel>
+                        </StackPanel>
+                    </Border>
+
+                    <Border Margin="4" Padding="4" BorderBrush="LightGray" BorderThickness="1">
+                        <StackPanel Orientation="Horizontal">
+                            <CheckBox VerticalAlignment="Center" FontSize="13" Content="向先：" 
+                                      IsChecked="{Binding SearchCondition.UseMukesaki}"/>
+                            <ComboBox Width="144"  ItemsSource="{Binding MukesakiComboList}" 
+                                      SelectedValue="{Binding SearchCondition.Mukesaki}" 
+                                      SelectedValuePath="Key" IsEnabled="{Binding SearchCondition.UseMukesaki}">
+                                <ComboBox.ItemTemplate>
+                                    <DataTemplate>
+                                        <StackPanel Orientation="Horizontal">
+                                            <Label Content="{Binding Value}" Margin="2.5"/>
+                                        </StackPanel>
+                                    </DataTemplate>
+                                </ComboBox.ItemTemplate>
+                                <ComboBox.Style>
+                                    <Style TargetType="{x:Type ComboBox}" BasedOn="{StaticResource {x:Type ComboBox}}">
+                                        <Setter Property="Opacity" Value="0.3"/>
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding SearchCondition.UseMukesaki}" Value="True">
+                                                <Setter Property="Opacity" Value="1"/>
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </ComboBox.Style>
+                            </ComboBox>
+                        </StackPanel>
+                    </Border>
+                    
+                    <Border Margin="4" Padding="4" BorderBrush="LightGray" BorderThickness="1">
+                        <StackPanel Orientation="Horizontal">
+                            <CheckBox VerticalAlignment="Center" FontSize="13" Content="承認：" 
+                                      IsChecked="{Binding SearchCondition.UseApproval}"/>
+                            <RadioButton Margin="4,4,4,4" FontSize="13" Width="64" Content="承認" IsChecked="{Binding SearchCondition.Approval}" 
+                                         IsEnabled="{Binding SearchCondition.UseApproval}">
+                                <RadioButton.Style>
+                                    <Style TargetType="{x:Type RadioButton}" BasedOn="{StaticResource {x:Type RadioButton}}">
+                                        <Setter Property="Opacity" Value="0.3"/>
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding SearchCondition.UseApproval}" Value="True">
+                                                <Setter Property="Opacity" Value="1"/>
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </RadioButton.Style>
+                            </RadioButton>
+                            <RadioButton Margin="4,4,4,4" Width="64" FontSize="13" Content="未承認" 
+                                         IsChecked="{Binding SearchCondition.Approval,Converter={StaticResource BooleanNegationConverter}}" 
+                                         IsEnabled="{Binding SearchCondition.UseApproval}">
+                                <RadioButton.Style>
+                                    <Style TargetType="{x:Type RadioButton}" BasedOn="{StaticResource {x:Type RadioButton}}">
+                                        <Setter Property="Opacity" Value="0.3"/>
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding SearchCondition.UseApproval}" Value="True">
+                                                <Setter Property="Opacity" Value="1"/>
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </RadioButton.Style>
+                            </RadioButton>
+                        </StackPanel>
+                    </Border>
+
+                    <Border  Margin="4" Padding="4" BorderBrush="LightGray" BorderThickness="1" >
+                        <Button Name="searchButton" FontSize="14" Content="検索" Width="70" 
+                                Command="{Binding FireSearch}">
+                            <Button.Style>
+                                <Style TargetType="{x:Type Button}">
+                                    <Setter Property="IsEnabled" Value="True" />
+                                    <Setter Property="Button.Background" Value="{StaticResource BackgroundColor2}"/>
+                                </Style>
+                            </Button.Style>
+                        </Button>
+                    </Border>
+                </WrapPanel>
+
+            </StackPanel>
+
+        </GroupBox>
+        <StackPanel Grid.Row="1" HorizontalAlignment="Left" Orientation="Horizontal" Margin="8,4">
+            <Border Margin="4" Padding="4" BorderBrush="LightGray" BorderThickness="1" >
+                <Button Grid.Column="0" Width="80" FontSize="14" 
+                        HorizontalAlignment="Left" VerticalAlignment="Top" 
+                        Command="{Binding FireUpdate}" Content="更新">
+                    <Button.Style>
+                        <Style TargetType="{x:Type Button}">
+                            <Setter Property="IsEnabled" Value="False" />
+                            <Setter Property="Button.Background" Value="{StaticResource BackgroundColor2}"/>
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding IsSizaiOfficeStaff}" Value="False">
+                                    <Setter Property="IsEnabled" Value="False" />
+                                </DataTrigger>
+                                <DataTrigger Binding="{Binding WorkNoteRecordModification.IsDirty}" Value="True">
+                                    <Setter Property="IsEnabled" Value="True" />
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+                </Button>
+            </Border>
+        </StackPanel>
+        <StackPanel Grid.Row="1" HorizontalAlignment="Right" Orientation="Horizontal" Margin="8,4">
+            <Border  Margin="4" Padding="4" BorderBrush="LightGray" BorderThickness="1" >
+                <Button Grid.Column="0" Width="80" FontSize="14" 
+                        HorizontalAlignment="Right" VerticalAlignment="Top" 
+                        Command="{Binding FireSelectAll}" Content="全選択">
+                    <Button.Style>
+                        <Style TargetType="{x:Type Button}">
+                            <Setter Property="IsEnabled" Value="True" />
+                            <Setter Property="Button.Background" Value="{StaticResource BackgroundColor2}"/>
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding IsSizaiOfficeStaff}" Value="False">
+                                    <Setter Property="IsEnabled" Value="False" />
+                                </DataTrigger>
+                                <DataTrigger Binding="{Binding CanEdit}" Value="False">
+                                    <Setter Property="IsEnabled" Value="False" />
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+                </Button>
+            </Border>
+            <Border  Margin="4" Padding="4" BorderBrush="LightGray" BorderThickness="1" >
+                <Button Grid.Column="0" Width="80" FontSize="14" 
+                        HorizontalAlignment="Right" VerticalAlignment="Top" 
+                        Command="{Binding FireDeSelectAll}" Content="全解除">
+                    <Button.Style>
+                        <Style TargetType="{x:Type Button}">
+                            <Setter Property="IsEnabled" Value="True" />
+                            <Setter Property="Button.Background" Value="{StaticResource BackgroundColor2}"/>
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding IsSizaiOfficeStaff}" Value="False">
+                                    <Setter Property="IsEnabled" Value="False" />
+                                </DataTrigger>
+                                <DataTrigger Binding="{Binding CanEdit}" Value="False">
+                                    <Setter Property="IsEnabled" Value="False" />
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+                </Button>
+            </Border>
+        </StackPanel>
+
+        <!--データ表示部  -->
+        <GroupBox Grid.Row="2" Margin="8,4" >
+
+            <GroupBox.Header>
+                <Label Content="一覧" FontSize="18"/>
+            </GroupBox.Header>
+
+            <Grid Margin="4">
+                <Grid.RowDefinitions>
+                    
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+                <Grid>
+                    <DataGrid  Name="dataGrid" IsReadOnly="True" 
+                               AutoGenerateColumns="False"
+                               CanUserReorderColumns="False"
+                               ItemsSource="{Binding WorkNoteRecords}"
+                               VirtualizingStackPanel.VirtualizationMode="Standard"
+                               SelectionMode="Single"
+                               SelectedIndex="{Binding Current}" FontSize="12"
+                               VerticalScrollBarVisibility="Auto"
+                               HorizontalScrollBarVisibility="Auto">
+
+                        <DataGrid.Columns>
+
+                            <DataGridTemplateColumn Width="40" Header="承認">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <CheckBox HorizontalAlignment="Center" Content="" 
+                                                  IsChecked="{Binding IsChecked, UpdateSourceTrigger=PropertyChanged}">
+                                            <CheckBox.Style>
+                                                <Style BasedOn="{StaticResource {x:Type CheckBox}}" TargetType="{x:Type CheckBox}">
+                                                    <Setter Property="IsEnabled" Value="True" />
+                                                    <Style.Triggers>
+                                                        <DataTrigger Binding="{Binding  DataContext.IsSizaiOfficeStaff,RelativeSource={RelativeSource FindAncestor,AncestorType={x:Type UserControl}}}" Value="False">
+                                                            <Setter Property="IsEnabled" Value="False" />
+                                                            <Setter Property="KeyboardNavigation.IsTabStop" Value="False" />
+                                                            <Setter Property="Background" Value="LightGray" />
+                                                        </DataTrigger>
+                                                        <DataTrigger Binding="{Binding CanEdit}" Value="False">
+                                                            <Setter Property="IsEnabled" Value="False" />
+                                                            <Setter Property="KeyboardNavigation.IsTabStop" Value="False" />
+                                                            <Setter Property="Background" Value="LightGray" />
+                                                        </DataTrigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </CheckBox.Style>
+                                        </CheckBox>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+
+                            <DataGridTextColumn FontSize="12" Header="作業日" 
+                                                Binding="{Binding OperationDate, Converter={StaticResource OperationDateConverter}}" Width="80" CanUserSort="False">
+                                <DataGridTextColumn.ElementStyle>
+                                    <Style TargetType="{x:Type TextBlock}" >
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding CanEdit}" Value="False">
+                                                <Setter Property="Background" Value="LightGray" />
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </DataGridTextColumn.ElementStyle>
+                                <DataGridTextColumn.CellStyle>
+                                    <Style TargetType="{x:Type DataGridCell}">
+                                        <Setter Property="KeyboardNavigation.IsTabStop" Value="False" />
+                                    </Style>
+                                </DataGridTextColumn.CellStyle>
+                            </DataGridTextColumn>
+
+                            <DataGridTextColumn FontSize="12" Header="作業誌区分" 
+                                                Binding="{Binding WorkNoteType, Converter={StaticResource WorkNoteKbnTieConverter}}" Width="80" CanUserSort="False">
+                                <DataGridTextColumn.ElementStyle>
+                                    <Style TargetType="{x:Type TextBlock}" >
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding CanEdit}" Value="False">
+                                                <Setter Property="Background" Value="LightGray" />
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </DataGridTextColumn.ElementStyle>
+                                <DataGridTextColumn.CellStyle>
+                                    <Style TargetType="{x:Type DataGridCell}">
+                                        <Setter Property="KeyboardNavigation.IsTabStop" Value="False" />
+                                    </Style>
+                                </DataGridTextColumn.CellStyle>
+                            </DataGridTextColumn>
+
+                            <DataGridTextColumn FontSize="12" Header="品目CD" 
+                                                Binding="{Binding HinmokuCode}" Width="100" CanUserSort="False">
+                                <DataGridTextColumn.ElementStyle>
+                                    <Style TargetType="{x:Type TextBlock}" >
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding CanEdit}" Value="False">
+                                                <Setter Property="Background" Value="LightGray" />
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </DataGridTextColumn.ElementStyle>
+                                <DataGridTextColumn.CellStyle>
+                                    <Style TargetType="{x:Type DataGridCell}">
+                                        <Setter Property="KeyboardNavigation.IsTabStop" Value="False" />
+                                    </Style>
+                                </DataGridTextColumn.CellStyle>
+                            </DataGridTextColumn>
+
+                            <DataGridTextColumn FontSize="12" Header="業者CD" 
+                                                Binding="{Binding GyosyaCode}" Width="100" CanUserSort="False">
+                                <DataGridTextColumn.ElementStyle>
+                                    <Style TargetType="{x:Type TextBlock}" >
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding CanEdit}" Value="False">
+                                                <Setter Property="Background" Value="LightGray" />
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </DataGridTextColumn.ElementStyle>
+                                <DataGridTextColumn.CellStyle>
+                                    <Style TargetType="{x:Type DataGridCell}">
+                                        <Setter Property="KeyboardNavigation.IsTabStop" Value="False" />
+                                    </Style>
+                                </DataGridTextColumn.CellStyle>
+                            </DataGridTextColumn>
+
+                            <DataGridTextColumn FontSize="12" Header="向先" 
+                                                Binding="{Binding Mukesaki, Converter={StaticResource MukesakiTieConverter}}" Width="100" CanUserSort="False">
+                                <DataGridTextColumn.ElementStyle>
+                                    <Style TargetType="{x:Type TextBlock}" >
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding CanEdit}" Value="False">
+                                                <Setter Property="Background" Value="LightGray" />
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </DataGridTextColumn.ElementStyle>
+                                <DataGridTextColumn.CellStyle>
+                                    <Style TargetType="{x:Type DataGridCell}">
+                                        <Setter Property="KeyboardNavigation.IsTabStop" Value="False" />
+                                    </Style>
+                                </DataGridTextColumn.CellStyle>
+                            </DataGridTextColumn>
+
+                            <DataGridTextColumn FontSize="12" Header="品目名" 
+                                                Binding="{Binding HinmokuName}" Width="255.5" CanUserSort="False">
+                                <DataGridTextColumn.ElementStyle>
+                                    <Style TargetType="{x:Type TextBlock}" >
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding CanEdit}" Value="False">
+                                                <Setter Property="Background" Value="LightGray" />
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </DataGridTextColumn.ElementStyle>
+                                <DataGridTextColumn.CellStyle>
+                                    <Style TargetType="{x:Type DataGridCell}">
+                                        <Setter Property="KeyboardNavigation.IsTabStop" Value="False" />
+                                    </Style>
+                                </DataGridTextColumn.CellStyle>
+                            </DataGridTextColumn>
+
+                            <DataGridTextColumn FontSize="12" Header="業者名" 
+                                                Binding="{Binding GyosyaName}" Width="255.5" CanUserSort="False">
+                                <DataGridTextColumn.ElementStyle>
+                                    <Style TargetType="{x:Type TextBlock}" >
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding CanEdit}" Value="False">
+                                                <Setter Property="Background" Value="LightGray" />
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </DataGridTextColumn.ElementStyle>
+                                <DataGridTextColumn.CellStyle>
+                                    <Style TargetType="{x:Type DataGridCell}">
+                                        <Setter Property="KeyboardNavigation.IsTabStop" Value="False" />
+                                    </Style>
+                                </DataGridTextColumn.CellStyle>
+                            </DataGridTextColumn>
+
+                            <DataGridTextColumn FontSize="12" Header="数量" 
+                                                Binding="{Binding Amount,StringFormat=#\,0, Converter={StaticResource StringToIntConverter}}" 
+                                                Width="80" CanUserSort="False">
+                                <DataGridTextColumn.ElementStyle>
+                                    <Style TargetType="{x:Type TextBlock}" >
+                                        <Setter Property="TextAlignment" Value="Right" />
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding CanEdit}" Value="False">
+                                                <Setter Property="Background" Value="LightGray" />
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </DataGridTextColumn.ElementStyle>
+                                <DataGridTextColumn.CellStyle>
+                                    <Style TargetType="{x:Type DataGridCell}">
+                                        <Setter Property="KeyboardNavigation.IsTabStop" Value="False" />
+                                    </Style>
+                                </DataGridTextColumn.CellStyle>
+                            </DataGridTextColumn>
+
+                            <DataGridTextColumn FontSize="12" Header="水分率" 
+                                                Binding="{Binding Suibunritu,StringFormat=#\,0, Converter={StaticResource StringToIntConverter}}" 
+                                                Width="*" CanUserSort="False">
+                                <DataGridTextColumn.ElementStyle>
+                                    <Style TargetType="{x:Type TextBlock}" >
+                                        <Setter Property="TextAlignment" Value="Right" />
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding CanEdit}" Value="False">
+                                                <Setter Property="Background" Value="LightGray" />
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </DataGridTextColumn.ElementStyle>
+                                <DataGridTextColumn.CellStyle>
+                                    <Style TargetType="{x:Type DataGridCell}">
+                                        <Setter Property="KeyboardNavigation.IsTabStop" Value="False" />
+                                    </Style>
+                                </DataGridTextColumn.CellStyle>
+                            </DataGridTextColumn>
+
+                        </DataGrid.Columns>
+                    </DataGrid >
+                </Grid>
+            </Grid>
+        </GroupBox>
+
+        <StackPanel Grid.Row="3" Orientation="Horizontal" HorizontalAlignment="Center" Margin="8,4">
+            <Border  Margin="4" Padding="4" BorderBrush="LightGray" BorderThickness="1" >
+                <Button 
+                    Content="印刷" FontSize="14" Width="80" 
+                    HorizontalAlignment="Center" VerticalAlignment="Top" 
+                    Command="{Binding FirePrint}">
+                    <Button.Style>
+                        <Style TargetType="{x:Type Button}">
+                            <Setter Property="IsEnabled" Value="True" />
+                            <Setter Property="Button.Background" Value="{StaticResource BackgroundColor2}"/>
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding IsSizaiOfficeStaff}" Value="False">
+                                    <Setter Property="IsEnabled" Value="False" />
+                                </DataTrigger>
+                                <DataTrigger Binding="{Binding IsNoRecord}" Value="True">
+                                    <Setter Property="IsEnabled" Value="False" />
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+                </Button>
+            </Border>
+        </StackPanel>
+    </Grid>
+</v:OperationViewBase>

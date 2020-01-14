@@ -1,0 +1,156 @@
+﻿<v:OperationViewBase
+    x:Class="CKSI1010.Operation.ShowFlow.View.ShowFlowView" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:cnv="clr-namespace:CKSI1010.Converter" xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:v="clr-namespace:CKSI1010.Operation.Common.View" d:DesignHeight="300" d:DesignWidth="300"
+    DataContext="{Binding StartViewModel, Source={StaticResource Locator}}"
+    mc:Ignorable="d">
+
+    <v:OperationViewBase.Resources>
+        <cnv:MonthToFirstOrSecondConverter x:Key="MonthToFirstOrSecondConverter" />
+    </v:OperationViewBase.Resources>
+
+    <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" >
+        <StackPanel Margin="8,0" Orientation="Vertical">
+
+            <Grid>
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+
+                <Image
+                    Grid.Row="0" Grid.Column="0" Width="18"
+                    Height="18" HorizontalAlignment="Left" Source="/CKSI1010;component/image/hint.png" />
+
+                <Label
+                    Grid.Row="0" Grid.Column="1" Margin="4,0,0,0"
+                    VerticalAlignment="Center" FontSize="18">
+
+                    <Label.Content>
+                        <TextBlock>
+                            <TextBlock.Text>
+                                <MultiBinding StringFormat="{}以下の手順で{0}/{1}(第{2}{3}期)の副資材棚卸を実施します。">
+                                    <Binding Path="OperationYearMonth.Year" />
+                                    <Binding Path="OperationYearMonth.Month" />
+                                    <Binding Path="OperationYearMonth.Term" />
+                                    <Binding Converter="{StaticResource MonthToFirstOrSecondConverter}" Path="OperationYearMonth.Month" />
+                                </MultiBinding>
+                            </TextBlock.Text>
+                        </TextBlock>
+                    </Label.Content>
+                </Label>
+
+                <StackPanel
+                    Grid.Row="1" Grid.Column="1" Orientation="Horizontal">
+
+                    <Label
+                        VerticalAlignment="Center" FontSize="18" Content="内容を確認し" />
+
+                    <Button
+                        Margin="2,0,0,0" FontSize="14" FontWeight="Bold"
+                        Content="次へ" IsEnabled="False" />
+                    <Label
+                        VerticalAlignment="Center" FontSize="18" Content="をクリックしてください。" />
+
+                </StackPanel>
+            </Grid>
+
+            <!--  操作一覧  -->
+            <ItemsControl Margin="0,8" ItemsSource="{Binding Items}">
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <StackPanel Orientation="Vertical" />
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                            </Grid.RowDefinitions>
+
+                            <Border
+                                Grid.Row="0" Grid.Column="0"
+                                Background="{StaticResource BackgroundColor2}"
+                                BorderBrush="Black" BorderThickness="0.1" CornerRadius="0">
+
+                                <Border.Style>
+                                    <Style TargetType="{x:Type Border}">
+                                        <Setter Property="Visibility" Value="Visible" />
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding Operation.IsStartOperation}" Value="True">
+                                                <Setter Property="Visibility" Value="Collapsed" />
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </Border.Style>
+
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="Auto" />
+                                    </Grid.RowDefinitions>
+
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto" />
+                                        <ColumnDefinition Width="Auto" />
+                                    </Grid.ColumnDefinitions>
+
+                                    <StackPanel
+                                        Grid.Row="0" Grid.Column="0" Orientation="Horizontal">
+                                        <Label Content="{Binding No}" />
+                                        <Label Content="." />
+                                    </StackPanel>
+
+                                    <Label
+                                        Grid.Row="0" Grid.Column="1"
+                                        Content="{Binding Operation.Title}" />
+                                    <Label
+                                        Grid.Row="1" Grid.Column="1"
+                                        Content="{Binding Operation.Note}" />
+                                </Grid>
+
+                            </Border>
+
+                            <Label
+                                Grid.Row="1" HorizontalAlignment="Center" Content="↓">
+                                <Label.Style>
+                                    <Style BasedOn="{StaticResource {x:Type Label}}" TargetType="{x:Type Label}">
+                                        <Setter Property="Visibility" Value="Visible" />
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding Operation.IsLastOperation}" Value="True">
+                                                <Setter Property="Visibility" Value="Collapsed" />
+                                            </DataTrigger>
+                                            <DataTrigger Binding="{Binding Operation.IsStartOperation}" Value="True">
+                                                <Setter Property="Visibility" Value="Collapsed" />
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </Label.Style>
+                            </Label>
+                        </Grid>
+
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+            <StackPanel Orientation="Horizontal">
+                <Label Margin="0,8,0,0" VerticalAlignment="Center" FontSize="14" Content="【注意事項】"/>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal">
+                <Label Margin="8,0,0,0" VerticalAlignment="Center" FontSize="14" Content="副資材棚卸の途中で、資材班作業誌入力において、入庫量、出庫量、返品の修正を行った場合は、本画面を再起動してください。"/>
+            </StackPanel>
+
+        </StackPanel>
+    </ScrollViewer>
+
+</v:OperationViewBase>

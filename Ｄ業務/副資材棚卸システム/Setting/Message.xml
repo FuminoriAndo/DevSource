@@ -1,0 +1,176 @@
+﻿<?xml version="1.0"?>
+
+<Settings>
+    <Message>
+       <CKSI1010>
+          <Setting Name="ApplicationTitle" value="副資材棚卸"></Setting>
+          <Setting Name="ConfirmExit" value="終了してよろしいですか？"></Setting>
+          <Setting Name="ConfirmDelete" value="削除してもよろしいですか？"></Setting>
+          <Setting Name="FatalError" value="エラーが発生しました。&#x0D;&#x0A;インストール状態や設定ファイルを見直してください。"></Setting>
+          <Setting Name="InputDuplexdata" value="指定したデータはすでに存在しています。"></Setting>
+          <Setting Name="InputIncomplete" value="入力されていない項目があります。"></Setting>
+          <Setting Name="InputNotExistCode" value="指定されたコードに対応するデータは存在しません。"></Setting>
+          <Setting Name="UkebaraiErrorNotCleared" value="エラーの品目があるため、遷移できません。"></Setting>
+          <Setting Name="UnmatchCharsCountHINMOKU" value="品目コードは4桁で入力してください。"></Setting>
+          <Setting Name="UnmatchCharsCountGYOSYA" value="業者コードは4桁で入力してください。"></Setting>
+          <Setting Name="UnmatchCharsType" value="半角英数字以外の文字が使用されています。"></Setting>
+          <Setting Name="TargetNotChecked" value="印刷対象をチェックしてください。"></Setting>
+          <Setting Name="NotExcute" value="一度も実行していないため、&#x0D;&#x0A;確定状態にできません。"></Setting>
+          <Setting Name="NotSelectedKensinExcelPath" value="月末検針データ(EXCEL)の場所を選択してください。"></Setting>
+          <Setting Name="CanNotGoNext" value="作業が完了していないため、&#x0D;&#x0A;遷移できません。"></Setting>
+          <Setting Name="CanNotWorkCompleted" value="作業が完了していないため、&#x0D;&#x0A;終了できません。"></Setting>
+          <Setting Name="TanaorosiWorkCompleted" value="棚卸データ入力作業が完了しました。"></Setting>
+          <Setting Name="KensinWorkCompleted" value="副資材棚卸が完了しました。"></Setting>
+          <Setting Name="NotInputHinmokuTanka" value="単価が入力されていない品目があるため、次画面に遷移できません。&#x0D;&#x0A;単価未入力リストを確認してください。&#x0D;&#x0A;以下のファイルを確認してください。&#x0D;&#x0A;C:\TEMP\SIZAI\副資材棚卸.xlsx"></Setting>
+          <Setting Name="PrintCompleted" value="印刷が完了しました。"></Setting>
+          <Setting Name="CommitCompleted" value="確定しました。"></Setting>
+          <Setting Name="UpdateCompleted" value="更新しました。"></Setting>hinn
+          <Setting Name="SaveCompleted" value="保存しました。"></Setting>
+          <Setting Name="SelectModifyItem" value="変更する項目を選択してください。"></Setting>
+          <Setting Name="SelectDeleteItem" value="削除する項目を選択してください。"></Setting>
+          <Setting Name="SelectSortItem" value="並び替える項目を選択してください。"></Setting>
+          <Setting Name="ConfirmSavePrintData" value="編集中のデータがあります。&#x0D;&#x0A;保存しますか？"></Setting>
+          <Setting Name="NotPreviousWorkCompleted" value="前工程の作業が完了していないため、&#x0D;&#x0A;遷移できません。"></Setting>
+          <Setting Name="TanaorosiWorkNotCompleted" value="棚卸データ入力作業が完了していないため、&#x0D;&#x0A;検針データ入力作業は行えません。&#x0D;&#x0A;副資材棚卸システムを終了します。"></Setting>
+          <Setting Name="HasMinusTogetuYosouAmount" value="当月量（予想）がマイナスの品目があります。"></Setting>
+          <Setting Name="NotInputTogetuAmount" value="当月量が未入力の箇所があります。&#x0D;&#x0A;当月量を入力してください。"></Setting>
+          <Setting Name="TogetuAmountOverTogetuYosouAmount" value="当月量と当月量（予想）が異なる箇所があります。&#x0D;&#x0A;もしくは当月量が最大当月量を超える箇所があります。&#x0D;&#x0A;確定してもよろしいですか？"></Setting>
+          <Setting Name="NotInputKensinData" value="検針データが未登録です。"></Setting>
+          <Setting Name="NotRegistTanaorosiOperationGroup" value="グループ区分が設定されていません。&#x0D;&#x0A;棚卸操作グループマスタからグループ区分を設定してください。"></Setting>
+          <Setting Name="UnmatchCharsCountHinmokuName" value="品目名が長すぎます。"></Setting>
+          <Setting Name="UnmatchCharsCountGyosyaName" value="業者名が長すぎます。"></Setting>
+          <Setting Name="UnmatchCharsCountBiko" value="備考が長すぎます。"></Setting>
+          <Setting Name="NotHasHinmokuCodeOfSizai_Hinmoku_Mst" value="資材品目マスタに存在しない次の品目コードが&#x0D;&#x0A;資材棚卸マスタに存在します。&#x0D;&#x0A;(%s)"></Setting>
+          <Setting Name="OverInputTogetuAmount" value="当月量の値が大きすぎます。"></Setting>
+          <Setting Name="OverStockInputTogetuAmount" value="前月在庫 + 入庫量を超えている当月量があります。&#x0D;&#x0A;当月量を修正してください。"></Setting> 
+          <Setting Name="NotFindKensinExcel" value="月末検針データのファイルを選択してください。"></Setting>
+          <Setting Name="NotTargetPrintData" value="印刷対象データがありません。"></Setting>
+          <Setting Name="HasDBError" value="データベース操作でエラーが発生しました。&#x0D;&#x0A;エラーログを確認してください。&#x0D;&#x0A;(%s)"></Setting>
+          <Setting Name="NothingSizaiHinmokuChangeList" value="資材品目マスタの変更履歴はありません。"></Setting>
+          <Setting Name="NotInputGyosyaCode" value="使用高払いの品目CDのため、&#x0D;&#x0A;業者CDを入力してください。"></Setting>
+          <Setting Name="DoNotInputGyosyaCode" value="入庫払いの品目CDのため、&#x0D;&#x0A;業者CDを入力しないでください。"></Setting>
+       </CKSI1010>
+       <CKSI1020>
+          <Setting Name="ApplicationTitle" value="副資材棚卸"></Setting>
+          <Setting Name="ConfirmExit" value="終了してよろしいですか？"></Setting>
+          <Setting Name="ConfirmDelete" value="削除してもよろしいですか？"></Setting>
+          <Setting Name="FatalError" value="エラーが発生しました。&#x0D;&#x0A;インストール状態や設定ファイルを見直してください。"></Setting>
+          <Setting Name="InputDuplexdata" value="指定したデータはすでに存在しています。"></Setting>
+          <Setting Name="InputIncomplete" value="入力されていない項目があります。"></Setting>
+          <Setting Name="InputNotExistCode" value="指定されたコードに対応するデータは存在しません。"></Setting>
+          <Setting Name="UkebaraiErrorNotCleared" value="エラーの品目があるため、遷移できません。"></Setting>
+        </CKSI1020>
+        <CKSI1030>
+          <Setting Name="ApplicationTitle" value="棚卸システム分類マスタメンテ"></Setting>
+          <Setting Name="Add" value="追加しますか？"></Setting>
+          <Setting Name="Modify" value="変更しますか？"></Setting>
+          <Setting Name="Delete" value="削除しますか？"></Setting>
+          <Setting Name="Completed" value="完了しました"></Setting>
+          <Setting Name="ConfirmExit" value="終了してよろしいですか？"></Setting>
+          <Setting Name="DataNotFind" value="該当データが見つかりませんでした。"></Setting>
+          <Setting Name="NoSystemCategoryValue" value="システム分類を入力してください。"></Setting>
+          <Setting Name="NoSystemCategoryNameValue" value="システム分類名を入力してください。"></Setting>
+          <Setting Name="InvalidNoSystemCategoryNameLength" value="30桁以下のシステム分類名を入力してください。"></Setting>
+          <Setting Name="AlreadyExists" value="データが重複しています。"></Setting>
+          <Setting Name="SystemError" value="システムエラーが発生しました。システム管理者へ連絡してください。"></Setting>
+        </CKSI1030>
+        <CKSI1040>
+          <Setting Name="ApplicationTitle" value="棚卸グループ区分マスタメンテ"></Setting>
+          <Setting Name="Add" value="追加しますか？"></Setting>
+          <Setting Name="Modify" value="変更しますか？"></Setting>
+          <Setting Name="Delete" value="削除しますか？"></Setting>
+          <Setting Name="Completed" value="完了しました"></Setting>
+          <Setting Name="ConfirmExit" value="終了してよろしいですか？"></Setting>
+          <Setting Name="DataNotFind" value="該当データが見つかりませんでした。"></Setting>
+          <Setting Name="NotSelectSystemCategory" value="システム分類を選択してください。"></Setting>
+          <Setting Name="NoGroupKbnValue" value="グループ区分を入力してください。"></Setting>
+          <Setting Name="NoGroupKbnNameValue" value="グループ区分名を入力してください。"></Setting>
+          <Setting Name="InvalidNoGroupKbnNameLength" value="30桁以下のグループ区分名を入力してください。"></Setting>
+          <Setting Name="AlreadyExists" value="データが重複しています。"></Setting>
+          <Setting Name="SystemError" value="システムエラーが発生しました。システム管理者へ連絡してください。"></Setting>
+      </CKSI1040>
+      <CKSI1050>
+          <Setting Name="ApplicationTitle" value="棚卸操作マスタメンテ"></Setting>
+          <Setting Name="Add" value="追加しますか？"></Setting>
+          <Setting Name="Modify" value="変更しますか？"></Setting>
+          <Setting Name="Delete" value="削除しますか？"></Setting>
+          <Setting Name="Completed" value="完了しました"></Setting>
+          <Setting Name="ConfirmExit" value="終了してよろしいですか？"></Setting>
+          <Setting Name="DataNotFind" value="該当データが見つかりませんでした。"></Setting>
+        　<Setting Name="NotSelectSystemCategory" value="システム分類を選択してください。"></Setting>
+          <Setting Name="NoTanaorosiOperationCodeValue" value="3桁以下の操作コードを入力してください。"></Setting>
+          <Setting Name="NoTanaorosiOperationNameValue" value="60桁以下の操作名を入力してください。"></Setting>
+          <Setting Name="InvalidTanaorosiOperaionNameLength" value="60桁以下の操作名を入力してください。"></Setting>
+          <Setting Name="AlreadyExists" value="データが重複しています。"></Setting>
+          <Setting Name="SystemError" value="システムエラーが発生しました。システム管理者へ連絡してください。"></Setting>
+      </CKSI1050>
+      <CKSI1060>
+          <Setting Name="ApplicationTitle" value="棚卸操作グループマスタメンテ"></Setting>
+          <Setting Name="Add" value="追加しますか？"></Setting>
+          <Setting Name="Modify" value="変更しますか？"></Setting>
+          <Setting Name="Delete" value="削除しますか？"></Setting>
+          <Setting Name="Completed" value="完了しました"></Setting>
+          <Setting Name="ConfirmExit" value="終了してよろしいですか？"></Setting>
+          <Setting Name="DataNotFind" value="該当データが見つかりませんでした。"></Setting>
+	        <Setting Name="NotInputSyainCD" value="4桁の社員番号を入力してください。"></Setting>
+	        <Setting Name="NotSelectSystemCategory" value="システム分類を選択してください。"></Setting>
+          <Setting Name="NotSelectGroupKbn" value="グループ区分を選択してください。"></Setting>
+          <Setting Name="AlreadyExists" value="データが重複しています。"></Setting>
+          <Setting Name="NonGroupKbnMstTieSystemCategory" value="システム分類(%s)に紐付くグループ区分が&#x0D;&#x0A;設定されていません。"></Setting>
+          <Setting Name="SystemError" value="システムエラーが発生しました。システム管理者へ連絡してください。"></Setting>
+      </CKSI1060>
+      <CKSI1070>
+          <Setting Name="ApplicationTitle" value="棚卸操作メニューマスタメンテ"></Setting>
+          <Setting Name="Add" value="追加しますか？"></Setting>
+          <Setting Name="Modify" value="変更しますか？"></Setting>
+          <Setting Name="Delete" value="削除しますか？"></Setting>
+          <Setting Name="Completed" value="完了しました"></Setting>
+          <Setting Name="ConfirmExit" value="終了してよろしいですか？"></Setting>
+          <Setting Name="DataNotFind" value="該当データが見つかりませんでした。"></Setting>
+          <Setting Name="OverlapExists" value="データが重複しています。"></Setting>
+          <Setting Name="NonSystemCategoryMst" value="棚卸システム分類マスタが登録されていません。"></Setting>
+          <Setting Name="NonGroupKbnMst" value="棚卸グループ区分マスタが登録されていません。"></Setting>
+          <Setting Name="NonOperationMst" value="棚卸操作マスタが登録されていません。"></Setting>
+          <Setting Name="NotSelectSyainSZCD" value="所属部署を選択してください。"></Setting>
+          <Setting Name="NotSelectSystemCategory" value="システム分類を選択してください。"></Setting>
+          <Setting Name="NotSelectGroupKbn" value="グループ区分を選択してください。"></Setting>
+          <Setting Name="NotSelectWorkCategory" value="作業区分を選択してください。"></Setting>
+          <Setting Name="NotSelectOperationType" value="操作種類を選択してください。"></Setting>
+          <Setting Name="NotSelectOperationCD" value="操作コードを選択してください。"></Setting>
+          <Setting Name="NotInputOperationOrder" value="2桁以下の操作順を入力してください。"></Setting>
+          <Setting Name="NonGroupKbnMstTieSystemCategory" value="システム分類(%s)に紐付くグループ区分が&#x0D;&#x0A;登録されていません。"></Setting>
+        　<Setting Name="NonWorkCategory" value="システム分類(%s)に紐付く作業区分が&#x0D;&#x0A;設定されていません。"></Setting>
+        　<Setting Name="NonOpeartionCode" value="システム分類(%s)に紐付く操作コードが&#x0D;&#x0A;登録されていません。"></Setting>
+          <Setting Name="SystemError" value="システムエラーが発生しました。システム管理者へ連絡してください。"></Setting>
+      </CKSI1070>
+      <CKSI1080>
+          <Setting Name="ApplicationTitle" value="棚卸作業ログ"></Setting>
+          <Setting Name="ConfirmExit" value="終了してよろしいですか？"></Setting>
+          <Setting Name="DataNotFind" value="該当データが見つかりませんでした。"></Setting>
+          <Setting Name="NoEmployeeNoValue" value="社員番号を選択してください。"></Setting>
+          <Setting Name="NoOperationDateValue" value="作業年月日を入力してください。"></Setting>
+          <Setting Name="InvalidMinOperationDateLength" value="作業年月日(最小)を正しい日付で入力してください。(例:290101)"></Setting>
+          <Setting Name="InvalidMaxOperationDateLength" value="作業年月日(最大)を正しい日付で入力してください。(例:290101)"></Setting>
+          <Setting Name="NoWorkKbnValue" value="入力作業を選択してください。"></Setting>
+          <Setting Name="NoOperateTypeValue" value="操作種別を選択してください。"></Setting>
+          <Setting Name="NoOperateContentValue" value="操作内容を選択してください。"></Setting>
+　        <Setting Name="SystemError" value="システムエラーが発生しました。システム管理者へ連絡してください。"></Setting>
+        </CKSI1080>
+        <CKSI1090>
+          <Setting Name="ApplicationTitle" value="資材班作業誌入力データ閲覧・承認"></Setting>
+          <Setting Name="ConfirmExit" value="終了してよろしいですか？"></Setting>
+          <Setting Name="DataNotFound" value="該当データが見つかりませんでした"></Setting>
+          <Setting Name="FatalError" value="エラーが発生しました。&#x0D;&#x0A;インストール状態や設定ファイルを見直してください。"></Setting>
+          <Setting Name="ConfirmPrint" value="印刷しますか？"></Setting>
+          <Setting Name="ConfirmUpdate" value="更新しますか？"></Setting>
+          <Setting Name="CompletedSearch" value="検索が完了しました"></Setting>
+          <Setting Name="CompletedPrint" value="印刷が完了しました"></Setting>
+          <Setting Name="CompletedUpdate" value="更新が完了しました"></Setting>
+          <Setting Name="NotInput" value="%sを入力してください。"></Setting>
+          <Setting Name="NotSelect" value="%sを選択してください。"></Setting>
+          <Setting Name="NotEnoughLength" value="%1は%2桁で入力してください。"></Setting>
+          <Setting Name="NotSetSearchCondition" value="検索条件を指定してください。"></Setting>
+          <Setting Name="ExcelInsertPageLimitOver" value="改ページの最大数を超えているため印刷できません。&#x0D;&#x0A;作業日の範囲を狭めてください。"></Setting>
+        </CKSI1090>
+	</Message>
+</Settings>

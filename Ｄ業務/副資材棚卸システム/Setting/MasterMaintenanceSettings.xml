@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<Settings>
+
+  <!-- メニューボタン設定 -->
+  <MenuButton>
+    <Setting Width="300" Height="180" Margin="30" />
+  </MenuButton>
+
+  <!-- メニュー画面 -->
+  <MenuList>
+    <Menu ButtonName="TanaorosiSystemCategory" Content="棚卸システム分類マスタメンテ" Execution="C:\EXE\資材システム\CKSI1030.exe" />
+    <Menu ButtonName="TanaorosiGroupKBN" Content="棚卸グループ区分マスタメンテ" Execution="C:\EXE\資材システム\CKSI1040.exe" />
+    <Menu ButtonName="TanaorosiOperation" Content="棚卸操作マスタメンテ" Execution="C:\EXE\資材システム\CKSI1050.exe" />
+    <Menu ButtonName="TanaorosiOperationGroup" Content="棚卸グループマスタメンテ" Execution="C:\EXE\資材システム\CKSI1060.exe" />
+    <Menu ButtonName="TanaorosiOperationMenu" Content="棚卸操作メニューマスタメンテ" Execution="C:\EXE\資材システム\CKSI1070.exe" />
+  </MenuList>
+
+</Settings>

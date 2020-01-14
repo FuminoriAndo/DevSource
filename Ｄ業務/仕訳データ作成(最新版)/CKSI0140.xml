@@ -1,0 +1,463 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>CKSI0140</name>
+    </assembly>
+    <members>
+        <member name="F:Project1.C_PRINT._pd">
+            <summary>
+            PrintDocumentオブジェクト
+            </summary>
+        </member>
+        <member name="F:Project1.C_PRINT._font">
+            <summary>
+            フォント
+            </summary>
+        </member>
+        <member name="F:Project1.C_PRINT._fXpitch">
+            <summary>
+            Ｘ座標
+            </summary>
+        </member>
+        <member name="F:Project1.C_PRINT._fYpitch">
+            <summary>
+            Ｙ座標
+            </summary>
+        </member>
+        <member name="F:Project1.C_PRINT._nLineCount">
+            <summary>
+            汎用カウンター
+            </summary>
+        </member>
+        <member name="F:Project1.C_PRINT._dtDataTable">
+            <summary>
+            汎用DataTable
+            </summary>
+        </member>
+        <member name="M:Project1.C_PRINT.Init">
+            <summary>
+            初期化
+            </summary>
+        </member>
+        <member name="M:Project1.C_PRINT.Init(System.String,System.String,System.Int32,System.Int32,System.Int32)">
+            <summary>
+            初期化
+            </summary>
+            <param name="sPrtNm">プリンタ名</param>
+            <param name="sFontNm">フォント名</param>
+            <param name="nFontSz">フォントサイズ</param>
+            <param name="nPpSz">用紙サイズ</param>
+            <param name="nType">印刷方向</param>
+        </member>
+        <member name="M:Project1.C_PRINT.Dispose">
+            <summary>
+            終了処理
+            </summary>
+        </member>
+        <member name="M:Project1.C_PRINT.getObject">
+            <summary>
+            PrintDocumentオブジェクト取得
+            </summary>
+            <returns>PrintDocumentオブジェクト</returns>
+        </member>
+        <member name="M:Project1.C_PRINT.Print">
+            <summary>
+            印刷開始
+            </summary>
+        </member>
+        <member name="M:Project1.C_PRINT.setPrintEvent(System.Drawing.Printing.PrintPageEventHandler)">
+            <summary>
+            イベントハンドラ登録
+            </summary>
+        </member>
+        <member name="M:Project1.C_PRINT.setPrinter(System.String)">
+            <summary>
+            印刷プリンタ名設定
+            </summary>
+        </member>
+        <member name="M:Project1.C_PRINT.setFont(System.String,System.Int32)">
+            <summary>
+            印刷フォント設定
+            </summary>
+        </member>
+        <member name="M:Project1.C_PRINT.setLandscape(System.Int32)">
+            <summary>
+            印刷方向設定
+            </summary>
+        </member>
+        <member name="M:Project1.C_PRINT.setPaperSize(System.Int32)">
+            <summary>
+            印刷用紙設定
+            </summary>
+        </member>
+        <member name="M:Project1.C_PRINT.cnvPaperKindPRTtoPRTDC(System.Int32)">
+            <summary>
+            用紙種類変換
+            </summary>
+            <param name="nKind">Printerの用紙種類</param>
+            <returns>PrintDocumentの用紙種類</returns>
+        </member>
+        <member name="M:Project1.C_PRINT.printer_print(System.Drawing.Printing.PrintPageEventArgs,System.String,System.Single,System.Single)">
+            <summary>
+            印刷処理
+            </summary>
+        </member>
+        <member name="M:Project1.IPPAN2.Get_Syohizei(System.String)">
+            <summary>
+            指定年月日を基準にDBから税率などの値を取得する
+            </summary>
+            <param name="L_DATE">指定年月日</param>
+            <returns>ZeiInfoクラス</returns>
+        </member>
+        <member name="M:Project1.IPPAN2.Get_Syohizei(System.Int32,System.String)">
+            <summary>
+            税区分を基準にDBから税率などの値を取得する
+            </summary>
+            <param name="kbn">1の場合、引数ZEIKBNは税区分1,2の場合、引数ZEIKBNは税区分2</param>
+            <param name="ZEIKBN">税区分の値</param>
+            <returns>ZeiInfoクラス</returns>
+        </member>
+        <member name="M:Project1.IPPAN2.Get_Syohizei(System.String,System.Int32,System.Double)">
+            <summary>
+            指定日時と金額から、税抜金額、税込金額、消費税を求め、テーブルから取得した税区分や税率なども返す。
+            </summary>
+            <param name="L_DATE">指定年月日</param>
+            <param name="zei">引数が税込、四捨五入まるめなら「1」,切上げまるめなら「2」、引数が税抜、四捨五入まるめなら「3」,切上げまるめなら「4」</param>
+            <param name="KINGAKU">入力金額</param>
+            <returns>ZeiInfoクラス</returns>
+        </member>
+        <member name="M:Project1.IPPAN2.Get_Syohizei(System.Int32,System.String,System.Int32,System.Double)">
+            <summary>
+            税区分と金額から、税抜金額、税込金額、消費税を求める。テーブルから取得した税区分や税率なども返す。       
+            </summary>
+            <param name="kbn">1の場合、引数ZEIKBNは税区分1,2の場合、引数ZEIKBNは税区分2</param>
+            <param name="ZEIKBN">税区分の値</param>
+            <param name="zei">引数が税込、四捨五入まるめなら「1」,切上げまるめなら「2」、引数が税抜、四捨五入まるめなら「3」,切上げまるめなら「4」</param>
+            <param name="KINGAKU">入力金額 </param>
+            <returns>ZeiInfoクラス</returns>
+        </member>
+        <member name="F:Project1.FRM_CKSI0140M.PC_PRINT_NM">
+            <summary>
+            プリンタ名：NEC PC-PR750/150R(168dpi)
+            </summary>
+        </member>
+        <member name="F:Project1.FRM_CKSI0140M.PC_PRINT_FONT_NM">
+            <summary>
+            フォント名：ＭＳ 明朝
+            </summary>
+        </member>
+        <member name="F:Project1.FRM_CKSI0140M.PC_PRINT_FONT_SIZE">
+            <summary>
+            フォントサイズ：12
+            </summary>
+        </member>
+        <member name="M:Project1.FRM_CKSI0140M.PRINT_Init(System.String,System.Int16)">
+            <summary>
+            印刷初期化処理
+            </summary>
+            <param name="WH">検索条件：LISTNO</param>
+            <param name="flg">0：再印刷 1：通常印刷</param>
+            <returns>true:正常 false:異常</returns>
+        </member>
+        <member name="M:Project1.FRM_CKSI0140M.PRINT_PrintPage(System.Object,System.Drawing.Printing.PrintPageEventArgs)">
+            <summary>
+            印刷処理
+            </summary>
+            <param name="sender">イベントのソース</param>
+            <param name="e">イベント データを格納している PrintPageEventArgs</param>
+        </member>
+        <member name="F:Project1.Siwake_Kosin.syohizeiResolver">
+            <summary>
+            消費税リゾルバー
+            </summary>
+        </member>
+        <member name="F:Project1.CKKR0010.syohizeiResolver">
+            <summary>
+            消費税リゾルバー
+            </summary>
+        </member>
+        <member name="T:Project1.C_ODBC">
+            <summary>
+            ODBC操作クラス
+            </summary>
+        </member>
+        <member name="F:Project1.C_ODBC.ORA_00054">
+            <summary>
+            oracleエラー：ロック取得失敗
+            </summary>
+        </member>
+        <member name="F:Project1.C_ODBC._con">
+            <summary>
+            SQLコネクション
+            </summary>
+        </member>
+        <member name="F:Project1.C_ODBC._trn">
+            <summary>
+            トランザクション・オブジェクト
+            </summary>
+        </member>
+        <member name="F:Project1.C_ODBC._ex">
+            <summary>
+            エラー情報
+            </summary>
+        </member>
+        <member name="M:Project1.C_ODBC.Connect(System.String,System.String,System.String,System.String)">
+            <summary>
+            DB接続
+            </summary>
+            <param name="dsn">データソース名</param>
+            <param name="dbn">データベース名</param>
+            <param name="uid">ユーザーID</param>
+            <param name="pas">パスワード</param>
+        </member>
+        <member name="M:Project1.C_ODBC.Connect">
+            <summary>
+            DB接続
+            </summary>
+        </member>
+        <member name="M:Project1.C_ODBC.Disconnect">
+            <summary>
+            DB切断
+            </summary>
+        </member>
+        <member name="M:Project1.C_ODBC.ExecSQL(System.String)">
+            <summary>
+            SQLの実行
+            </summary>
+            <param name="sql">SQL文</param>
+        </member>
+        <member name="M:Project1.C_ODBC.ExecStored(System.String,System.Collections.ArrayList@)">
+            <summary>
+            ストアドプロシージャの実行
+            </summary>
+            <param name="sCmd">ストアドのコマンド</param>
+            <param name="arylist">設定するパラメータ</param>
+        </member>
+        <member name="M:Project1.C_ODBC.BeginTrans">
+            <summary>
+            トランザクション開始
+            </summary>
+        </member>
+        <member name="M:Project1.C_ODBC.Commit">
+            <summary>
+            コミット
+            </summary>
+        </member>
+        <member name="M:Project1.C_ODBC.Rollback">
+            <summary>
+            ロールバック
+            </summary>
+        </member>
+        <member name="M:Project1.C_ODBC.LockCheck(System.String)">
+            <summary>
+            ロックチェック
+            </summary>
+            <param name="tableName">対象テーブル名</param>
+        </member>
+        <member name="M:Project1.C_ODBC.TableLockEX(System.String)">
+            <summary>
+            テーブル排他ロック
+            </summary>
+            <param name="sTableName">テーブル名</param>
+        </member>
+        <member name="M:Project1.C_ODBC.Error">
+            <summary>
+            エラーメッセージ
+            </summary>
+        </member>
+        <member name="M:Project1.C_ODBC.Dispose">
+            <summary>
+            解放処理
+            </summary>
+        </member>
+        <member name="T:Project1.C_ODBC.StoredParam">
+            <summary>
+            ストアド設定構造体
+            </summary>
+        </member>
+        <member name="M:Project1.IPPAN.Change_InputZeiKubun(System.String,System.String,System.String)">
+            ------------------------------------------------------------------------------------------------------------------
+             機能      :  入力税区分変換取得
+            
+             戻り値    :  String型 税区分
+            
+             引き数    :  L_InpKbn                    ：入力税区分
+                          L_Kamoku                    ：科目コード
+                          L_Bumon                     ：部門コード
+            
+             機能説明  :  一般管理販売費の入力税区分を変換します。
+            
+             備考      :  2012/04/03 依頼書№:10-136 全面修正
+            
+            ------------------------------------------------------------------------------------------------------------------
+        </member>
+        <member name="T:Project1.GYOMU">
+            <summary>
+            業務関数
+            </summary>
+        </member>
+        <member name="T:Project1.C_COMMON">
+            <summary>
+            共通関数を記述(主にコンバート差分の吸収)
+            </summary>
+        </member>
+        <member name="F:Project1.C_COMMON.G_COMMON_MSGTITLE">
+            <summary>
+            メッセージのタイトル(プロジェクト名)
+            </summary>
+        </member>
+        <member name="F:Project1.C_COMMON.G_CRYSTALREPORT_CONNECT">
+            <summary>
+            CrystalReport接続文字列
+            </summary>
+        </member>
+        <member name="F:Project1.C_COMMON.G_CMN_LOCALID_JP">
+            <summary>
+            カルチャ識別子：日本語
+            </summary>
+        </member>
+        <member name="M:Project1.C_COMMON.Msg(System.String)">
+            <summary>
+            メッセージ出力
+            </summary>
+            <param name="sMsg">出力するメッセージ</param>
+            <returns>結果</returns>
+        </member>
+        <member name="M:Project1.C_COMMON.Msg(System.String,System.String)">
+            <summary>
+            メッセージ出力
+            </summary>
+            <param name="sMsg">出力するメッセージ</param>
+            <param name="sTitle">タイトル</param>
+            <returns>結果</returns>
+        </member>
+        <member name="M:Project1.C_COMMON.Msg(System.String,System.Windows.Forms.MessageBoxButtons)">
+            <summary>
+            メッセージ出力
+            </summary>
+            <param name="sMsg">出力するメッセージ</param>
+            <param name="btnType">ボタン形式</param>
+            <returns>結果</returns>
+        </member>
+        <member name="M:Project1.C_COMMON.Msg(System.String,System.Windows.Forms.MessageBoxButtons,System.String)">
+            <summary>
+            メッセージ出力
+            </summary>
+            <param name="sMsg">出力するメッセージ</param>
+            <param name="btnType">ボタン形式</param>
+            <param name="sTitle">タイトル</param>
+            <returns>結果</returns>
+        </member>
+        <member name="M:Project1.C_COMMON.Msg(System.String,System.Windows.Forms.MessageBoxButtons,System.Windows.Forms.MessageBoxIcon)">
+            <summary>
+            メッセージ出力
+            </summary>
+            <param name="sMsg">出力するメッセージ</param>
+            <param name="btnType">ボタン形式</param>
+            <param name="icnType">アイコン形式</param>
+            <returns></returns>
+        </member>
+        <member name="M:Project1.C_COMMON.FormatToNum(System.String,System.String)">
+            <summary>
+            書式設定(数値変換)
+            </summary>
+            <param name="sStr">対象文字列</param>
+            <param name="sFmt">書式</param>
+            <returns>結果</returns>
+        </member>
+        <member name="M:Project1.C_COMMON.ToDecimal(System.String)">
+            <summary>
+            decimal変換処理
+            </summary>
+            <param name="sStr">対象文字列</param>
+            <returns>結果</returns>
+        </member>
+        <member name="M:Project1.C_COMMON.ChkStrToNum(System.String)">
+            <summary>
+            数値変換前文字列チェック処理
+            </summary>
+            <param name="sStr">対象文字列</param>
+            <returns>結果</returns>
+        </member>
+        <member name="M:Project1.C_COMMON.LeftB(System.String,System.Int32)">
+            <summary>
+            文字列の左端から指定したバイト数分の文字列を返します。
+            </summary>
+            <param name="stTarget">取り出す元になる文字列</param>
+            <param name="iByteSize">取り出すバイト数</param>
+            <returns>左端から指定されたバイト数分の文字列</returns>
+        </member>
+        <member name="M:Project1.C_COMMON.LenB(System.String)">
+            <summary>
+            半角 1 バイト、全角 2 バイトとして、指定された文字列のバイト数を返します。
+            </summary>
+            <param name="stTarget">バイト数取得の対象となる文字列</param>
+            <returns>半角 1 バイト、全角 2 バイトでカウントされたバイト数</returns>
+        </member>
+        <member name="M:Project1.C_COMMON.MidB(System.String,System.Int32)">
+            -----------------------------------------------------------------------------------------
+            <summary>
+                文字列の指定されたバイト位置以降のすべての文字列を返します。</summary>
+            <param name="stTarget">
+                取り出す元になる文字列。</param>
+            <param name="iStart">
+                取り出しを開始する位置。</param>
+            <returns>
+                指定されたバイト位置以降のすべての文字列。</returns>
+            -----------------------------------------------------------------------------------------
+        </member>
+        <member name="M:Project1.C_COMMON.MidB(System.String,System.Int32,System.Int32)">
+            -----------------------------------------------------------------------------------------
+            <summary>
+                文字列の指定されたバイト位置から、指定されたバイト数分の文字列を返します。</summary>
+            <param name="stTarget">
+                取り出す元になる文字列。</param>
+            <param name="iStart">
+                取り出しを開始する位置。</param>
+            <param name="iByteSize">
+                取り出すバイト数。</param>
+            <returns>
+                指定されたバイト位置から指定されたバイト数分の文字列。</returns>
+            -----------------------------------------------------------------------------------------
+        </member>
+        <member name="M:Project1.C_COMMON.MIGIDUME(System.String,System.String,System.Int32)">
+            <summary>
+            金額右詰編集処理
+            </summary>
+            <param name="Kingaku">編集前金額(文字型)</param>
+            <param name="Hensyu">編集フォーマット(VB形式)</param>
+            <param name="Keta">編集後の項目の桁数</param>
+            <returns></returns>
+        </member>
+        <member name="M:Project1.C_COMMON.StrintToInt(System.String)">
+            <summary>
+            　　string型をint型に変換します。
+            　　スペース、nullの場合には「0」を返します。
+            </summary>
+            <param name="stTarget"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Project1.C_COMMON.DateYYChanged(System.String)">
+            <summary>
+            
+            </summary>
+            <param name="stYY"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Project1.C_COMMON.CheckKouteiNM(System.String)">
+            <summary>
+            工程名称が存在するかを確認
+            </summary>
+            <param name="kouteiCD">工程CD</param>
+            <returns>結果の値(有：0 無：1)</returns>
+        </member>
+        <member name="M:Project1.C_COMMON.GetKouteiNM(System.String,System.String@)">
+            <summary>
+            工程マスタから工程名称を取得
+            </summary>
+            <param name="kouteiCD">工程CD</param>
+            <param name="kouteiNM">工程名称</param>
+            <returns>結果の値(取得OK：0 取得NG : 1)</returns>
+        </member>
+    </members>
+</doc>

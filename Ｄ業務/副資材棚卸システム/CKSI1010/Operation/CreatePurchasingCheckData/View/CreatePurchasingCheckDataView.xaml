@@ -1,0 +1,83 @@
+﻿<v:OperationViewBase
+    x:Class="CKSI1010.Operation.CreatePurchasingCheckData.View.CreatePurchasingCheckDataView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:cnv="clr-namespace:CKSI1010.Converter"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:v="clr-namespace:CKSI1010.Operation.Common.View" 
+    DataContext="{Binding CreatePurchasingCheckDataViewModel, Source={StaticResource Locator}}"
+    d:DesignHeight="300" 
+    d:DesignWidth="300"
+    mc:Ignorable="d">
+
+    <v:OperationViewBase.Resources>
+        <cnv:MonthToFirstOrSecondConverter x:Key="MonthToFirstOrSecondConverter" />
+    </v:OperationViewBase.Resources>
+
+    <StackPanel Margin="8,0" Orientation="Vertical">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+
+            <Image Grid.Row="0" Grid.Column="0" Width="18"
+                   Height="18" HorizontalAlignment="Left" Source="/CKSI1010;component/image/hint.png" />
+            <Label Grid.Row="0" Grid.Column="1" Margin="4,0,0,0"
+                   VerticalAlignment="Center" FontSize="18">
+                <Label.Content>
+                    <TextBlock>
+                        <TextBlock.Text>
+                            <MultiBinding StringFormat="{}{0}/{1}(第{2}{3}期)の購買検収データを作成します。">
+                                <Binding Path="OperationYearMonth.Year" />
+                                <Binding Path="OperationYearMonth.Month" />
+                                <Binding Path="OperationYearMonth.Term" />
+                                <Binding Converter="{StaticResource MonthToFirstOrSecondConverter}" Path="OperationYearMonth.Month" />
+                            </MultiBinding>
+                        </TextBlock.Text>
+                    </TextBlock>
+                </Label.Content>
+            </Label>
+
+            <StackPanel Grid.Row="1" Grid.Column="1" Orientation="Horizontal">
+                <Button Margin="0,0,0,0" FontSize="14" FontWeight="Bold" Content="実行" IsEnabled="False" />
+                <Label VerticalAlignment="Center" FontSize="18" Content="をクリックしてください。" />
+            </StackPanel>
+
+            <Button Grid.Row="2" Grid.Column="1" Margin="8,4,0,0" FontSize="14" FontWeight="Bold" HorizontalAlignment="Left" VerticalAlignment="Top"
+                    Command="{Binding FireExecute}" Content="実行" Height="30" Width="37">
+                <Button.Style>
+                    <Style TargetType="{x:Type Button}">
+                        <Setter Property="IsEnabled" Value="True" />
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding Executed}" Value="True">
+                                <Setter Property="IsEnabled" Value="False" />
+                            </DataTrigger>
+                            <DataTrigger Binding="{Binding Executed}" Value="False">
+                                <Setter Property="IsEnabled" Value="True" />
+                                <Setter Property="Button.Background" Value="{StaticResource BackgroundColor2}"/>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
+            </Button>
+            
+            <StackPanel Grid.Row="3" Grid.Column="1" Orientation="Horizontal">
+                <Label Margin="0,4,0,0" FontSize="18" Content="【注意事項】"/>
+            </StackPanel>
+            <StackPanel Grid.Row="4" Grid.Column="1" Orientation="Horizontal">
+                <Label Margin="8,4,0,0" FontSize="18" Content="購買検収データ作成は一度しか実行できません。"/>
+            </StackPanel>
+            
+        </Grid>
+    </StackPanel>
+</v:OperationViewBase>

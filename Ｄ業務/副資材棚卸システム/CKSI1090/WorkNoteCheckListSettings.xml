@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<Settings>
+  
+	<!-- 棚卸操作の定義 -->
+	<OperationDefinitions>
+    <Tanaorosi>
+	    <OperationDefinition Code="1" Title="作業誌チェックリスト" UserControlName="WorkNoteCheckListView" />
+    </Tanaorosi>
+  </OperationDefinitions>
+
+  <!-- 期末月一覧 -->
+  <EndTerms>
+    <EndTerm Month="2"/>
+    <EndTerm Month="8"/>
+  </EndTerms>
+  
+	<!-- 作業誌区分 -->
+	<WorkNoteType>
+		<WorkNote Key="1" Value="入庫"/>
+		<WorkNote Key="2" Value="出庫"/>
+    <WorkNote Key="3" Value="直送"/>
+    <WorkNote Key="4" Value="返品"/>
+    <WorkNote Key="9" Value="削除"/>
+	</WorkNoteType>
+  
+	<!-- 向先 -->
+	<MukesakiType>
+		<Mukesaki Key="1" Value="EF"/>
+		<Mukesaki Key="2" Value="LF、築炉、LD"/>
+    <Mukesaki Key="3" Value="CC"/>
+    <Mukesaki Key="4" Value="その他"/>
+    <Mukesaki Key="5" Value="事業開発"/>
+    <Mukesaki Key="6" Value="1次切断"/>
+    <Mukesaki Key="7" Value="TD"/>
+    <Mukesaki Key="8" Value="2次切断"/>
+	</MukesakiType>
+
+  <Excel>
+    <!-- テンプレートファイル -->
+    <Template Path="C:\EXE\資材システム\" Name="TEMPLATE_SIZAI_SAGYOSI_CHECK_LIST.xlsx" />
+    <!-- 出力ファイル -->
+    <Output Path="C:\TEMP\SIZAI\" Name="作業誌チェックリスト.xlsx" />
+  </Excel>
+
+  <ExceptionSQL>
+    <File Path="C:\TEMP\SAGYOUSI\LOGS" />
+  </ExceptionSQL>
+
+</Settings>

@@ -1,0 +1,276 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<Settings>
+
+ <!-- 棚卸操作の定義 -->
+ <OperationDefinitions>
+
+  <Tanaorosi>
+
+	  <!-- 実施月の確認 -->
+	  <OperationDefinition Code="1" Title="実施月の確認" UserControlName="TanaorosiYearMonthCheckView" />
+
+	  <!-- 手順確認 -->
+	  <OperationDefinition Code="2" Title="手順確認" UserControlName="ShowFlowView" />
+
+    <!-- 資材品目マスタの変更履歴 -->
+    <OperationDefinition Code="15" Title="資材品目マスタの変更履歴" UserControlName="ShowSizaiHinmokuChangeListView" Note="資材品目マスタの変更履歴を表示します。"/>
+
+	  <!-- 棚卸表印刷 -->
+	  <OperationDefinition Code="3" Title="棚卸表印刷" UserControlName="PrintView" Note="資材棚卸調査表を印刷します。"/>
+	
+    <!-- 棚卸実績値入力 -->
+    <OperationDefinition Code="4" Title="棚卸実績値入力" UserControlName="InputInventoryActualInventoryDataView" Note="棚卸の実績値を入力します。"/>
+
+	  <!-- 棚卸実績値更新 -->
+    <OperationDefinition Code="5" Title="棚卸実績値更新" UserControlName="UpdateInventoryActualView"  Note="棚卸の実績値を更新し、経理報告データを作成します。"/>
+      
+    <!-- 受払いチェック(使用高払い) -->
+	  <OperationDefinition Code="6" Title="受払いチェック(使用高払い)" UserControlName="UsePaymentCheckView"  Note="受払いチェック(使用高払い)を行います。"/>
+
+	  <!-- 受払いチェック(入庫払い) -->
+	  <OperationDefinition Code="7" Title="受払いチェック(入庫払い)" UserControlName="InputPaymentCheckView" Note="受払いチェック(入庫払い)を行います。"/>
+      
+    <!-- 立会い用棚卸表印刷 -->
+    <OperationDefinition Code="12" Title="立会い用棚卸表印刷" UserControlName="PrintWitnessInventoryView" Note="立会い用棚卸表を印刷します。"/>
+      
+    <!-- 計算書発行 -->
+	  <OperationDefinition Code="8" Title="計算書発行" UserControlName="IssueCaluculationView"  Note="使用高払い受払い計算書、入庫払い受払い計算書を発行します。"/>
+
+  </Tanaorosi>
+
+  <Kensin>
+      
+    <!-- 手順確認 -->
+    <OperationDefinition Code="2" Title="手順確認" UserControlName="ShowFlowView" />
+
+    <!-- 資材班作業誌入力(液酸入庫) -->
+    <OperationDefinition Code="9" Title="資材班作業誌入力(液酸入庫)" UserControlName="InputInputWorkNoteView"  Note="資材班作業誌入力(液酸入庫)を行い、経理報告データを作成します。"/>
+
+    <!-- 検収明細書作成 -->
+    <OperationDefinition Code="10" Title="検収明細書作成" UserControlName="CreateDetailsView" Note="検収明細書を作成します。"/>
+
+    <!-- 資材班作業誌入力(液酸出庫) -->
+    <OperationDefinition Code="11" Title="資材班作業誌入力(液酸出庫)" UserControlName="InputOutputWorkNoteView" Note="資材班作業誌入力(液酸出庫)を行い、経理報告データを作成します。"/>
+      
+    <!-- 棚卸実績値入力 -->
+    <OperationDefinition Code="4" Title="棚卸実績値入力" UserControlName="InputInventoryActualMeterDataView" Note="棚卸の実績値を入力します。"/>
+
+    <!-- 棚卸実績値更新 -->
+    <OperationDefinition Code="5" Title="棚卸実績値更新" UserControlName="UpdateInventoryActualView"  Note="棚卸の実績値を更新し、経理報告データを作成します。"/>
+
+    <!-- 受払いチェック(使用高払い) -->
+    <OperationDefinition Code="6" Title="受払いチェック(使用高払い)" UserControlName="UsePaymentCheckView"  Note="受払いチェック(使用高払い)を行います。"/>
+
+    <!-- 受払いチェック(入庫払い) -->
+    <OperationDefinition Code="7" Title="受払いチェック(入庫払い)" UserControlName="InputPaymentCheckView" Note="受払いチェック(入庫払い)を行います。"/>
+
+    <!-- 計算書発行 -->
+    <OperationDefinition Code="8" Title="計算書発行" UserControlName="IssueCaluculationView"  Note="使用高払い受払い計算書、入庫払い受払い計算書を発行します。"/>
+
+    <!-- 立会い用棚卸表印刷 -->
+    <OperationDefinition Code="12" Title="立会い用棚卸表印刷" UserControlName="PrintWitnessInventoryView" Note="立会い用棚卸表を印刷します。"/>
+
+    <!-- 財務提出用棚卸表印刷 -->
+    <OperationDefinition Code="13" Title="財務提出用棚卸表印刷" UserControlName="PrintFinancingPresetationInventoryView" Note="財務提出用棚卸表を印刷します。"/>
+
+    <!-- 購買検収データ作成 -->
+    <OperationDefinition Code="14" Title="購買検収データ作成" UserControlName="CreatePurchasingCheckDataView" Note="購買検収データを作成します。"/>
+
+  </Kensin>
+  
+ </OperationDefinitions>
+  
+ <!-- 最終操作のNo. -->
+ <LastOperationNo>
+   <Tanaorosi>
+     <Reigetu>
+       <No Target="9"/>
+     </Reigetu>
+     <Kimatu>
+       <No Target="10"/>
+     </Kimatu>
+   </Tanaorosi>
+   <Kensin>
+     <Reigetu>
+       <No Target="10"/>
+     </Reigetu>
+     <Kimatu>
+       <No Target="11"/>
+    </Kimatu>
+   </Kensin>
+ </LastOperationNo>
+    
+ <!-- 印刷操作対象 -->
+ <PrintOperations>
+    <PrintOperation Target="資材品目マスタの変更履歴"/>
+    <PrintOperation Target="棚卸表印刷"/>
+    <PrintOperation Target="計算書発行"/>
+    <PrintOperation Target="検収明細書作成"/>
+    <PrintOperation Target="立会い用棚卸表印刷"/>
+    <PrintOperation Target="財務提出用棚卸表印刷"/>
+ </PrintOperations>
+    
+ <!-- 確定操作対象 -->
+ <FixOperations>
+    <FixOperation Target="棚卸実績値入力"/>
+    <FixOperation Target="資材班作業誌入力(液酸入庫)"/>
+    <FixOperation Target="資材班作業誌入力(液酸出庫)"/>
+ </FixOperations>
+
+ <!-- 更新操作対象 -->
+ <UpdateOperations>
+    <UpdateOperation Target="棚卸実績値更新"/>
+ </UpdateOperations>
+
+ <!-- 修正操作対象 -->
+ <ModifyOperations>
+    <ModifyOperation Target="棚卸表印刷"/>
+    <ModifyOperation Target="棚卸実績値入力"/>
+    <ModifyOperation Target="棚卸実績値更新"/>
+    <ModifyOperation Target="計算書発行"/>
+    <ModifyOperation Target="資材班作業誌入力(液酸入庫)"/>
+    <ModifyOperation Target="検収明細書作成"/>
+    <ModifyOperation Target="資材班作業誌入力(液酸出庫)"/>
+    <ModifyOperation Target="立会い用棚卸表印刷"/>
+    <ModifyOperation Target="財務提出用棚卸表印刷"/>
+ </ModifyOperations>
+  
+ <!-- 作業状況対象外の操作 -->
+ <ConditionExcludeOperations>
+    <ConditionExcludeOperation Target="実施月の確認"/>
+    <ConditionExcludeOperation Target="手順確認"/>
+    <ConditionExcludeOperation Target="資材品目マスタの変更履歴"/>
+ </ConditionExcludeOperations>
+
+  <ApplicationDefinitions>
+		<ApplicationDefinition Name="資材班作業誌入力" Path="C:\EXE\資材システム\CKSI0010.exe" />
+		<ApplicationDefinition Name="検収明細書作成" Path="C:\EXE\資材システム\CKSI0040.exe" />
+		<ApplicationDefinition Name="購買検収データ作成" Path="C:\EXE\資材システム\CKSI0060.exe" />
+		<ApplicationDefinition Name="経理報告データ作成" Path="C:\EXE\資材システム\CKSI0050.exe" />
+	</ApplicationDefinitions>
+
+	<!-- 期末月一覧 -->
+	<EndTerms>
+		<EndTerm Month="2"/>
+		<EndTerm Month="8"/>
+	</EndTerms>
+	
+	<!-- 置場の定義 -->
+	<PlaceDefinitions>
+
+		<!--SK置場 -->
+		<PlaceDefinition Code="1" Place ="SK" />
+
+		<!-- EF置場 -->
+		<PlaceDefinition Code="2" Place ="EF" />
+		
+		<!-- LF置場 -->
+		<PlaceDefinition Code="3" Place ="EF" />
+		
+		<!-- CC置場 -->
+		<PlaceDefinition Code="4" Place ="CC" />
+		
+		<!-- 他置場 -->
+		<PlaceDefinition Code="5" Place ="他" />
+		
+		<!-- メータ置場 -->
+		<PlaceDefinition Code="6" Place ="メータ" />
+		
+		<!-- 予備1置場 -->
+		<PlaceDefinition Code="7" Place ="予備1" />
+		
+		<!-- 予備2置場 -->
+		<PlaceDefinition Code="8" Place ="予備2" />
+		
+	</PlaceDefinitions>
+	
+	<!-- 資材区分と置場との紐付けの定義 -->
+	<SizaiKbnTiePlaceDefinitions>
+
+		<!-- SK -->
+		<SizaiKbnTiePlaceDefinition SizaiKbn="1" PlaceCode="1" />
+		
+		<!-- EF -->
+		<SizaiKbnTiePlaceDefinition SizaiKbn="2" PlaceCode="2" />
+		
+		<!-- LF -->
+		<SizaiKbnTiePlaceDefinition SizaiKbn="3" PlaceCode="3" />
+		
+		<!-- 築炉 -->
+		<SizaiKbnTiePlaceDefinition SizaiKbn="4" PlaceCode="3" />
+		
+		<!-- LD -->
+		<SizaiKbnTiePlaceDefinition SizaiKbn="5" PlaceCode="3" />
+		
+		<!-- TD -->
+		<SizaiKbnTiePlaceDefinition SizaiKbn="6" PlaceCode="4" />
+		
+		<!-- CC -->
+		<SizaiKbnTiePlaceDefinition SizaiKbn="7" PlaceCode="4" />
+		
+		<!-- 他 -->
+		<SizaiKbnTiePlaceDefinition SizaiKbn="8" PlaceCode="5" />
+		
+		<!-- メータ -->
+		<SizaiKbnTiePlaceDefinition SizaiKbn="9" PlaceCode="6" />
+		
+		<!-- 予備1 -->
+		<SizaiKbnTiePlaceDefinition SizaiKbn="10" PlaceCode="7" />
+		
+		<!-- 予備2 -->
+		<SizaiKbnTiePlaceDefinition SizaiKbn="11" PlaceCode="8" />
+
+	</SizaiKbnTiePlaceDefinitions>
+
+  <!-- 向先 -->
+  <MukesakiType>
+    <Mukesaki Key="1" Value="EF"/>
+    <Mukesaki Key="2" Value="LF、築炉、LD"/>
+    <Mukesaki Key="3" Value="CC"/>
+    <Mukesaki Key="4" Value="その他"/>
+    <Mukesaki Key="5" Value="事業開発"/>
+    <Mukesaki Key="6" Value="1次切断"/>
+    <Mukesaki Key="7" Value="TD"/>
+    <Mukesaki Key="8" Value="2次切断"/>
+  </MukesakiType>
+	
+	<Excel>	
+		<!-- テンプレートファイル -->
+		<Template Path="C:\EXE\資材システム\" Name="TEMPLATE_SIZAI_TANAOROSI.xlsx"  />
+		
+		<!-- 出力ファイル -->
+		<Output Path="C:\TEMP\SIZAI\" Name="副資材棚卸.xlsx"  />
+  
+    <!-- 出力シート名 -->
+    <SheetNames>
+      <SheetName Key="SK" Original="SK" IncludeZero="SK(全て0含む)" />
+      <SheetName Key="EF" Original="EF" IncludeZero="EF(全て0含む)" />
+      <SheetName Key="LF" Original="LF" IncludeZero="LF(全て0含む)" />
+      <SheetName Key="Chikuro" Original="築炉" IncludeZero="築炉(全て0含む)" />
+      <SheetName Key="LD" Original="LD" IncludeZero="LD(全て0含む)" />
+      <SheetName Key="TD" Original="TD" IncludeZero="TD(全て0含む)" />
+      <SheetName Key="CC" Original="CC" IncludeZero="CC(全て0含む)" />
+      <SheetName Key="ETC" Original="他" IncludeZero="他(全て0含む)" />
+    </SheetNames>
+	</Excel>
+
+ <Kensin>
+  <File Path="" />
+ </Kensin>
+
+  <ExceptionSQL>
+    <File Path="C:\TEMP\SIZAI\LOGS" Name="TanaorosiExceptionSQL.log"/>
+  </ExceptionSQL>
+  
+ <Message>
+   <Error>
+     <message Code="1" Content="在庫・入庫・出庫数量の何れかにマイナス値が登録されています！"  />
+   </Error>
+   <Warning>
+     <message Code="1" Content="月末、月初在庫の桁の差が閾値を超えています！" />
+     <message Code="2" Content="出庫してはいけない向先に出庫されています！" />
+   </Warning>
+ </Message>
+	
+</Settings>

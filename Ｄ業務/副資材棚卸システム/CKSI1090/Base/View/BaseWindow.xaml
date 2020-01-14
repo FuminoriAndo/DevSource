@@ -1,0 +1,85 @@
+﻿<Window
+    x:Class="CKSI1090.Base.View.BaseWindow" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:cmd="clr-namespace:GalaSoft.MvvmLight.Command;assembly=GalaSoft.MvvmLight.Platform" 
+    xmlns:cnv="clr-namespace:CKSI1090.Converter" 
+    xmlns:common_cnv="clr-namespace:Converter" 
+    xmlns:ctl="clr-namespace:CKSI1090.Controls"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity" xmlns:ignore="http://www.galasoft.ch/ignore"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" Title="資材班作業誌入力データ閲覧・承認" Width="1280"
+    Height="1024"
+    Background="{StaticResource BackgroundColor1}"
+    DataContext="{Binding BaseViewModel, Source={StaticResource Locator}}"
+    AllowsTransparency="True"
+    ResizeMode="CanResizeWithGrip" WindowStyle="None" mc:Ignorable="d ignore"
+    WindowStartupLocation="CenterScreen" Icon="/CKSI1090;component/Image/CheckList.png">
+
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Loaded">
+            <cmd:EventToCommand Command="{Binding FireLoaded, Mode=OneWay}" />
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
+
+    <Window.Resources>
+        <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
+        <common_cnv:BooleanInverseConverter x:Key="BooleanInverseConverter" />
+    </Window.Resources>
+
+    <Border BorderBrush="Black" BorderThickness="1">
+
+        <Grid Margin="8">
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+            <!--  アプリのタイトル  -->
+            <Label
+                Grid.Row="0" Margin="8,0,0,0" FontSize="28"
+                FontWeight="ExtraBold" Content="資材班作業誌入力データ閲覧・承認" />
+
+            <!--  アプリの終了ボタン  -->
+            <Button
+                Grid.Row="0" HorizontalAlignment="Right" VerticalAlignment="Top"
+                Background="{StaticResource AccentColor1}"
+                Foreground="{StaticResource AccentColor2}"
+                FontWeight="Bold" IsTabStop="False"
+                Command="{Binding FireClose}"
+                Content="×"
+                IsEnabled="{Binding BusyStatus.IsBusy, Converter={StaticResource BooleanInverseConverter}}"/>
+
+            <!--  パンくずリスト～遷移ボタン  -->
+            <Grid Grid.Row="1" Margin="0,4">
+
+                <Grid.Style>
+                    <Style TargetType="{x:Type Grid}">
+                        <Setter Property="IsEnabled" Value="True" />
+                        <Setter Property="Opacity" Value="1" />
+                        <Setter Property="Visibility" Value="Visible" />
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding BusyStatus.IsBusy}" Value="True">
+                                <Setter Property="IsEnabled" Value="False" />
+                                <Setter Property="Opacity" Value="0.3" />
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </Grid.Style>
+
+                <!--  各機能  -->
+                <Border
+                    Grid.Row="1" Margin="8,0,8,8" Padding="8"
+                    BorderBrush="Black" BorderThickness="0.7">
+                    <Grid x:Name="OperationGrid" />
+                </Border>
+
+            </Grid>
+
+            <!--  進行中表示  -->
+            <ctl:CircularProgressControl
+                Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center"
+                Visibility="{Binding BusyStatus.IsBusy, Converter={StaticResource BooleanToVisibilityConverter}}" />
+
+        </Grid>
+    </Border>
+</Window>
+

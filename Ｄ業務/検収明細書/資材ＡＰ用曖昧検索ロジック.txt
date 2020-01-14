@@ -1,0 +1,28 @@
+    G_SQL = G_SQL & "SIZAI_SAGYOSI_TRN.SAGYOBI LIKE '" & G_NENGETU & "__' "   '02.04.05 ûBñÜåüçıÇ…ïœçX
+
+
+
+
+
+G_SQL = "Select SUM(KEIJYOKIN) "
+    G_SQL = G_SQL & "From KOBAI_KENSYU_TRN "
+    G_SQL = G_SQL & "Where SINNO = '" & L_SINNO & "'"
+'    G_SQL = G_SQL & "and SUBSTRING(KENSYUYMD,1,6) = '" & G_KH_TONENGETU & "' "
+    G_SQL = G_SQL & "and KENSYUYMD LIKE '" & G_KH_TONENGETU & "__' "  '99.01.07 ûBñÜåüçıÇ…ïœçX
+    G_SQL = G_SQL & "Group By SINNO"
+
+
+    G_SQL = "Select SINNO "
+    G_SQL = G_SQL & "From BS_NYUKO_FILE "
+    G_SQL = G_SQL & "Where TANACD = '" & L_TANACD & "' "
+'    G_SQL = G_SQL & "and SUBSTRING(NYUKOYMD,1,6) = '" & G_KH_TONENGETU & "' "
+    G_SQL = G_SQL & "and NYUKOYMD LIKE '" & G_KH_TONENGETU & "__' "   '99.01.07 ûBñÜåüçıÇ…ïœçX
+    G_SQL = G_SQL & "Group By SINNO"
+
+
+    G_SQL = "Select SINNO "
+    G_SQL = G_SQL & "From BS_NYUKO_FILE "
+    G_SQL = G_SQL & "Where TANACD = '" & L_TANACD & "' "
+'    G_SQL = G_SQL & "and SUBSTRING(NYUKOYMD,1,6) = '" & G_KH_TONENGETU & "' "
+    G_SQL = G_SQL & "and NYUKOYMD LIKE '" & G_KH_TONENGETU & "__' "   '99.01.07 ûBñÜåüçıÇ…ïœçX
+    G_SQL = G_SQL & "Group By SINNO"

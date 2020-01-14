@@ -1,0 +1,145 @@
+﻿<v:OperationViewBase
+    x:Class="CKSI1010.Operation.ShowSizaiHinmokuChangeList.View.ShowSizaiHinmokuChangeListView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:cnv="clr-namespace:CKSI1010.Converter"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:cmd="clr-namespace:GalaSoft.MvvmLight.Command;assembly=GalaSoft.MvvmLight.Platform"
+    xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
+    xmlns:v="clr-namespace:CKSI1010.Operation.Common.View"
+    DataContext="{Binding ShowSizaiHinmokuChangeListViewModel, Source={StaticResource Locator}}"
+    mc:Ignorable="d">
+
+    <v:OperationViewBase.Resources>
+        <cnv:MonthToFirstOrSecondConverter x:Key="MonthToFirstOrSecondConverter" />
+        <cnv:UkebaraiTieConverter x:Key="UkebaraiTieConverter" />
+        <cnv:DoActionConverter x:Key="DoActionConverter" />
+        <cnv:MukesakiTieConverter x:Key="MukesakiTieConverter" />
+    </v:OperationViewBase.Resources>
+
+    <Grid>
+        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0">
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+
+            <Image Grid.Row="0" Grid.Column="0" Width="18"
+                   Height="18" HorizontalAlignment="Left" Source="/CKSI1010;component/image/hint.png" />
+
+            <Label Grid.Row="0" Grid.Column="1" Margin="4,0,0,0"
+                   VerticalAlignment="Center" FontSize="18">
+                <Label.Content>
+                    <TextBlock>
+                        <TextBlock.Text>
+                            <MultiBinding StringFormat="{}{0}/{1}(第{2}{3}期)における資材品目マスタの変更履歴を表示します。">
+                                <Binding Path="OperationYearMonth.Year" />
+                                <Binding Path="OperationYearMonth.Month" />
+                                <Binding Path="OperationYearMonth.Term" />
+                                <Binding Converter="{StaticResource MonthToFirstOrSecondConverter}" Path="OperationYearMonth.Month" />
+                            </MultiBinding>
+                        </TextBlock.Text>
+                    </TextBlock>
+                </Label.Content>
+            </Label>
+
+            <StackPanel Grid.Row="1" Grid.Column="1" Orientation="Horizontal">
+                <Label VerticalAlignment="Center" FontSize="18" 
+                       Content="必要があれば、変更内容に合わせて資材棚卸調査表の項目を変更してください。" />
+            </StackPanel>
+            
+        </Grid>
+
+        <Grid Grid.Row="1">
+            
+            <Border BorderBrush="{StaticResource BackgroundColor2}" BorderThickness="3" 
+                    Margin="0,8,20,10" Padding="5">
+                
+                <Grid>
+                    
+                    <DataGrid Name="dataGrid" IsReadOnly="True" AutoGenerateColumns="False" 
+                              ItemsSource="{Binding SizaiHinmokuRecords}"
+                              ScrollViewer.VerticalScrollBarVisibility="Auto" 
+                              ScrollViewer.HorizontalScrollBarVisibility="Auto"
+                              VirtualizingStackPanel.VirtualizationMode="Standard"
+                              CanUserReorderColumns="False" SelectionMode="Single"
+                              SelectedIndex="{Binding Current}" FontSize="12">
+                        
+                        <DataGrid.Columns>
+                            
+                            <DataGridTextColumn FontSize="12" Header="品目CD" 
+                                                Binding="{Binding HinmokuCode}" Width="80" CanUserSort="False"/>
+
+                            <DataGridTextColumn FontSize="12" Header="品目名" 
+                                                Binding="{Binding HinmokuName}" Width="280" CanUserSort="False"/>
+
+                            <DataGridTextColumn FontSize="12" Header="種別" 
+                                                Binding="{Binding UkebaraiType, Converter={StaticResource UkebaraiTieConverter}}" Width="80" CanUserSort="False"/>
+
+                            <DataGridTextColumn FontSize="12" Header="費目" 
+                                                Binding="{Binding Himoku}" Width="45" CanUserSort="False"/>
+
+                            <DataGridTextColumn FontSize="12" Header="内訳" 
+                                                Binding="{Binding Utiwake}" Width="45" CanUserSort="False"/>
+
+                            <DataGridTextColumn FontSize="12" Header="棚番" 
+                                                Binding="{Binding Tanaban}" Width="45" CanUserSort="False"/>
+
+                            <DataGridTextColumn FontSize="12" Header="単位" 
+                                                Binding="{Binding Tani}" Width="45" CanUserSort="False"/>
+
+                            <DataGridTextColumn FontSize="12" Header="水分&#x0D;&#x0A;引き" 
+                                                Binding="{Binding SuibunKbn, Converter={StaticResource DoActionConverter}}" Width="55" CanUserSort="False"/>
+
+                            <DataGridTextColumn FontSize="12" Header="検収明細&#x0D;&#x0A;出力" 
+                                                Binding="{Binding KensyuKbn, Converter={StaticResource DoActionConverter}}" Width="60" CanUserSort="False"/>
+
+                            <DataGridTextColumn FontSize="12" Header="経理&#x0D;&#x0A;報告" 
+                                                Binding="{Binding HoukokuKbn, Converter={StaticResource DoActionConverter}}" Width="55" CanUserSort="False"/>
+
+                            <DataGridTextColumn FontSize="12" Header="向先" 
+                                                Binding="{Binding Mukesaki, Converter={StaticResource MukesakiTieConverter}}" 
+                                                Width="100" CanUserSort="False"/>
+
+                            <DataGridTextColumn FontSize="12" Header="出庫&#x0D;&#x0A;位置" 
+                                                Binding="{Binding IchiKbn, Converter={StaticResource MukesakiTieConverter}}" 
+                                                Width="100" CanUserSort="False"/>
+
+                            <DataGridTextColumn FontSize="12" Header="単価&#x0D;&#x0A;設定" 
+                                                Binding="{Binding TankaSetting}" Width="50" CanUserSort="False" >
+                                <DataGridTextColumn.ElementStyle>
+                                    <Style TargetType="{x:Type TextBlock}" >
+                                        <Setter Property="TextAlignment" Value="Center" />
+                                    </Style>
+                                </DataGridTextColumn.ElementStyle>
+                            </DataGridTextColumn>
+
+                            <DataGridTextColumn FontSize="12" Header="更新日" 
+                                                Binding="{Binding UpdYMD, ConverterCulture=ja}" Width="*" CanUserSort="False"/>
+
+                        </DataGrid.Columns>
+                        
+                    </DataGrid >
+                    
+                </Grid>
+                
+            </Border>
+            
+        </Grid>
+        
+    </Grid>
+    
+</v:OperationViewBase>
