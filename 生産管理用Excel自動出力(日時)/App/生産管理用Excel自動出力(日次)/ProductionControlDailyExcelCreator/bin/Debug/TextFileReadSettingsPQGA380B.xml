@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Root Version="1.0.0">
+
+  <RecordFormats Encoding="Shift_JIS">
+
+    <RecordFormat Name="Detail" Length="139" CheckPriority="1">
+      <Items>
+        <Item Name="OrderNo" Position="1" Length="11"/>
+        <Item Name="CustomerCode" Position="12" Length="4"/>
+        <Item Name="CustomerName" Position="16" Length="20"/>
+        <Item Name="DisutributorCode" Position="36" Length="2"/>
+        <Item Name="City" Position="38" Length="1"/>
+        <Item Name="Collectiion" Position="39" Length="2"/>
+        <Item Name="Kind" Position="41" Length="2"/>
+        <Item Name="StandardCode" Position="43" Length="3"/>
+        <Item Name="SettlementCondition" Position="46" Length="3"/>
+        <Item Name="DisutributorName" Position="49" Length="8"/>
+        <Item Name="StandardName" Position="57" Length="10"/>
+        <Item Name="Atu" Position="67" Length="3"/>
+        <Item Name="AtuHabaX1" Position="70" Length="1"/>
+        <Item Name="Haba" Position="71" Length="4"/>
+        <Item Name="AtuHabaX2" Position="75" Length="1"/>
+        <Item Name="Naga" Position="76" Length="4"/>
+        <Item Name="ShipmentHonsuu" Position="80" Length="4"/>
+        <Item Name="ShipmentWeight" Position="84" Length="7"/>
+        <Item Name="UnitPrice" Position="91" Length="5"/>
+        <Item Name="TransferCondition" Position="96" Length="1"/>
+        <Item Name="CHNo" Position="97" Length="6"/>
+        <Item Name="Slab1No1" Position="103" Length="2"/>
+        <Item Name="Slab1No2" Position="105" Length="2"/>
+        <Item Name="Slab1No3" Position="107" Length="2"/>
+        <Item Name="Slab1No4" Position="109" Length="2"/>
+        <Item Name="Slab1No5" Position="111" Length="2"/>
+        <Item Name="Slab1No6" Position="113" Length="2"/>
+        <Item Name="Slab1No7" Position="115" Length="2"/>
+        <Item Name="Slab1No8" Position="117" Length="2"/>
+        <Item Name="Slab1No9" Position="119" Length="2"/>
+        <Item Name="Slab1No10" Position="121" Length="2"/>
+        <Item Name="SlabWeight" Position="123" Length="7"/>
+        <Item Name="SlabHonsuu" Position="130" Length="4"/>
+        <Item Name="ExtractionYMD" Position="134" Length="6"/>
+      </Items>
+    </RecordFormat>
+  </RecordFormats>
+</Root>

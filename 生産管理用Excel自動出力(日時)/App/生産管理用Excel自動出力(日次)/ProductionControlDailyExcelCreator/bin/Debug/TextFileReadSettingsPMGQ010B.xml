@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Root Version="1.0.0">
+
+  <RecordFormats Encoding="Shift_JIS">
+
+    <RecordFormat Name="Detail" Length="133" CheckPriority="1">
+      <Items>
+        <Item Name="OrderNo1" Position="1" Length="9"/>
+        <Item Name="OrderNoX" Position="10" Length="1"/>
+        <Item Name="OrderNo2" Position="11" Length="2"/>
+        <Item Name="Reserve1" Position="13" Length="1"/>
+        <Item Name="CustomerName" Position="14" Length="28"/>
+        <Item Name="Reserve2" Position="42" Length="1"/>
+        <Item Name="StandardName" Position="43" Length="13"/>
+        <Item Name="Reserve3" Position="56" Length="1"/>
+        <Item Name="ProductAtu" Position="57" Length="5"/>
+        <Item Name="ProductX1" Position="62" Length="1"/>
+        <Item Name="ProductHaba" Position="63" Length="4"/>
+        <Item Name="ProductX2" Position="67" Length="1"/>
+        <Item Name="ProductNaga" Position="68" Length="5"/>
+        <Item Name="TM" Position="73" Length="1"/>
+        <Item Name="Reserve5" Position="74" Length="1"/>
+        <Item Name="ProductCode" Position="75" Length="3"/>
+        <Item Name="Reserve6" Position="78" Length="1"/>
+        <Item Name="RollHaba" Position="79" Length="4"/>
+        <Item Name="RollX" Position="83" Length="1"/>
+        <Item Name="RollNaga" Position="84" Length="5"/>
+        <Item Name="Reserve7" Position="89" Length="1"/>
+        <Item Name="TPClassfication" Position="90" Length="2"/>
+        <Item Name="Reserve8" Position="92" Length="1"/>
+        <Item Name="Lot1" Position="93" Length="4"/>
+        <Item Name="LotX" Position="97" Length="1"/>
+        <Item Name="Lot2" Position="98" Length="3"/>
+        <Item Name="Reserve9" Position="101" Length="1"/>
+        <Item Name="AtuenYMD" Position="102" Length="6"/>
+        <Item Name="Reserve10" Position="108" Length="1"/>
+        <Item Name="CHNo" Position="109" Length="6"/>
+        <Item Name="SlabX1" Position="115" Length="1"/>
+        <Item Name="SlabNo1" Position="116" Length="2"/>
+        <Item Name="SlabX2" Position="118" Length="1"/>
+        <Item Name="SlabNo2" Position="119" Length="2"/>
+        <Item Name="Reserve11" Position="121" Length="1"/>
+        <Item Name="RollNo" Position="122" Length="6"/>
+        <Item Name="ExtractionYMD" Position="128" Length="6"/>
+      </Items>
+    </RecordFormat>
+  </RecordFormats>
+</Root>

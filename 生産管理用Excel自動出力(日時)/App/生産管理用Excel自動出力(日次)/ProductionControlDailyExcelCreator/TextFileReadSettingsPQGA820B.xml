@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Root Version="1.0.0">
+
+  <RecordFormats Encoding="Shift_JIS">
+
+    <RecordFormat Name="Detail" Length="88" CheckPriority="1">
+      <Items>
+        <Item Name="ShipmentYYMMDD" Position="1" Length="8"/>
+        <Item Name="ZK081Honsuu" Position="9" Length="3"/>
+        <Item Name="ZK081Weight" Position="12" Length="7"/>
+        <Item Name="ZK085Honsuu" Position="19" Length="3"/>
+        <Item Name="ZK085Weight" Position="22" Length="7"/>
+        <Item Name="ZK121Honsuu" Position="29" Length="3"/>
+        <Item Name="ZK121Weight" Position="32" Length="7"/>
+        <Item Name="ZK172Honsuu" Position="39" Length="3"/>
+        <Item Name="ZK172Weight" Position="42" Length="7"/>
+        <Item Name="SPHCHonsuu" Position="49" Length="3"/>
+        <Item Name="SPHCWeight" Position="52" Length="7"/>
+        <Item Name="SS400Honsuu" Position="59" Length="3"/>
+        <Item Name="SS400Weight" Position="62" Length="7"/>
+        <Item Name="OtherHonsuu" Position="69" Length="3"/>
+        <Item Name="OtherWeight" Position="72" Length="7"/>
+        <Item Name="TotalHonsuu" Position="79" Length="3"/>
+        <Item Name="TotalWeight" Position="82" Length="7"/>
+      </Items>
+    </RecordFormat>
+  </RecordFormats>
+</Root>

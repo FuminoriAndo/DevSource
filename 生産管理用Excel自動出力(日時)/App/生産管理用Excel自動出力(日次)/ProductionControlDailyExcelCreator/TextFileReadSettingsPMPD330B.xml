@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Root Version="1.0.0">
+
+  <RecordFormats Encoding="Shift_JIS">
+
+    <RecordFormat Name="Detail" Length="138" CheckPriority="1">
+      <Items>
+        <Item Name="SteelsName" Position="1" Length="8"/>
+        <Item Name="SteelsType" Position="9" Length="8"/>
+        <Item Name="StandardName" Position="17" Length="13"/>
+        <Item Name="ProductAtu" Position="30" Length="5"/>
+        <Item Name="ProductAtuX" Position="35" Length="1"/>
+        <Item Name="ProductHaba" Position="36" Length="4"/>
+        <Item Name="ProductHabaX" Position="40" Length="1"/>
+        <Item Name="ProductNaga" Position="41" Length="5"/>
+        <Item Name="TM" Position="46" Length="1"/>
+        <Item Name="ProductCode" Position="47" Length="3"/>
+        <Item Name="Reserve1" Position="50" Length="1"/>
+        <Item Name="OrdersNo" Position="51" Length="11"/>
+        <Item Name="Reserve2" Position="62" Length="1"/>
+        <Item Name="CustomerName" Position="63" Length="15"/>
+        <Item Name="Reserve3" Position="78" Length="1"/>
+        <Item Name="DeliveryDateMM" Position="79" Length="2"/>
+        <Item Name="DeliveryDateDash" Position="81" Length="1"/>
+        <Item Name="DeliveryDateDD" Position="82" Length="2"/>
+        <Item Name="DeliveryDateRank" Position="84" Length="1"/>
+        <Item Name="Reserve4" Position="85" Length="1"/>
+        <Item Name="Maisuu" Position="86" Length="3"/>
+        <Item Name="Reserve5" Position="89" Length="1"/>
+        <Item Name="RollHaba" Position="90" Length="4"/>
+        <Item Name="RollHabaX" Position="94" Length="1"/>
+        <Item Name="RollNaga" Position="95" Length="5"/>
+        <Item Name="HeatInsulation" Position="100" Length="2"/>
+        <Item Name="SlabAtu" Position="102" Length="3"/>
+        <Item Name="SlabAtuX" Position="105" Length="1"/>
+        <Item Name="SlabHaba" Position="106" Length="4"/>
+        <Item Name="SlabHabaX" Position="110" Length="1"/>
+        <Item Name="SlabNaga" Position="111" Length="4"/>
+        <Item Name="Reserve6" Position="115" Length="1"/>
+        <Item Name="SlabWeight" Position="116" Length="5"/>
+        <Item Name="Reserve8" Position="121" Length="1"/>
+        <Item Name="SlabCount" Position="122" Length="5"/>
+        <Item Name="HasteDivision" Position="127" Length="2"/>
+        <Item Name="SpecialDivision" Position="129" Length="2"/>
+        <Item Name="ExportDivision" Position="131" Length="2"/>
+        <Item Name="ExtractionYMD" Position="133" Length="6"/>
+      </Items>
+    </RecordFormat>
+  </RecordFormats>
+</Root>

@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Root Version="1.0.0">
+
+  <RecordFormats Encoding="Shift_JIS">
+
+    <RecordFormat Name="Detail" Length="126" CheckPriority="1">
+      <Items>
+        <Item Name="OrderNo" Position="1" Length="11"/>
+        <Item Name="Reserve1" Position="12" Length="1"/>
+        <Item Name="CustomerCode" Position="13" Length="4"/>
+        <Item Name="Reserve2" Position="17" Length="1"/>
+        <Item Name="CustomerName" Position="18" Length="20"/>
+        <Item Name="Reserve3" Position="38" Length="1"/>
+        <Item Name="DisutributorCode" Position="39" Length="2"/>
+        <Item Name="Reserve4" Position="41" Length="1"/>
+        <Item Name="City" Position="42" Length="1"/>
+        <Item Name="Reserve5" Position="43" Length="1"/>
+        <Item Name="Collection" Position="44" Length="2"/>
+        <Item Name="Reserve6" Position="46" Length="1"/>
+        <Item Name="Kind" Position="47" Length="2"/>
+        <Item Name="Reserve6" Position="49" Length="1"/>
+        <Item Name="StandardCode" Position="50" Length="3"/>
+        <Item Name="Reserve7" Position="53" Length="1"/>
+        <Item Name="SettlementCondition" Position="54" Length="2"/>
+        <Item Name="Reserve7" Position="56" Length="2"/>
+        <Item Name="DisutributorName" Position="58" Length="8"/>
+        <Item Name="Reserve8" Position="66" Length="1"/>
+        <Item Name="StandardName" Position="67" Length="10"/>
+        <Item Name="Reserve9" Position="77" Length="1"/>
+        <Item Name="Atu" Position="78" Length="3"/>
+        <Item Name="Reserve10" Position="81" Length="1"/>
+        <Item Name="EX1" Position="82" Length="1"/>
+        <Item Name="Reserve11" Position="83" Length="1"/>
+        <Item Name="Haba" Position="84" Length="4"/>
+        <Item Name="Reserve12" Position="88" Length="1"/>
+        <Item Name="EX2" Position="89" Length="1"/>
+        <Item Name="Reserve13" Position="90" Length="1"/>
+        <Item Name="Naga" Position="91" Length="4"/>
+        <Item Name="Reserve14" Position="95" Length="1"/>
+        <Item Name="Honsuu" Position="96" Length="4"/>
+        <Item Name="Reserve15" Position="100" Length="1"/>
+        <Item Name="Weight" Position="101" Length="7"/>
+        <Item Name="Reserve16" Position="108" Length="1"/>
+        <Item Name="DeliveryDate" Position="109" Length="8"/>
+        <Item Name="DeliveryDateRank" Position="117" Length="1"/>
+        <Item Name="Reserve17" Position="118" Length="1"/>
+        <Item Name="TransferCondition" Position="119" Length="1"/>
+        <Item Name="Reserve18" Position="120" Length="1"/>
+        <Item Name="ExtractionYMD" Position="121" Length="6"/>
+      </Items>
+    </RecordFormat>
+  </RecordFormats>
+</Root>

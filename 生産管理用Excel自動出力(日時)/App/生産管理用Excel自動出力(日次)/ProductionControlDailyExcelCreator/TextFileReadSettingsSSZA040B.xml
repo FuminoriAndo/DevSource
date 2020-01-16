@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Root Version="1.0.0">
+
+    <RecordFormats Encoding="Shift_JIS">
+
+      <RecordFormat Name="Detail" Length="144" CheckPriority="1">
+        <Items>
+          <Item Name="OrderNo" Position="1" Length="11"/>
+          <Item Name="Reserve1" Position="12" Length="1"/>
+          <Item Name="StandardName" Position="13" Length="11"/>
+          <Item Name="Reserve2" Position="24" Length="1"/>
+          <Item Name="ProductAtu" Position="25" Length="5"/>
+          <Item Name="ProductX1" Position="30" Length="1"/>
+          <Item Name="ProductHaba" Position="31" Length="4"/>
+          <Item Name="ProductX2" Position="35" Length="1"/>
+          <Item Name="ProductNaga" Position="36" Length="5"/>
+          <Item Name="Reserve2" Position="41" Length="1"/>
+          <Item Name="TM" Position="42" Length="1"/>
+          <Item Name="Reserve3" Position="43" Length="1"/>
+          <Item Name="ProductCode" Position="44" Length="3"/>
+          <Item Name="Reserve4" Position="47" Length="1"/>
+          <Item Name="CustomerName" Position="48" Length="28"/>
+          <Item Name="Reserve5" Position="76" Length="1"/>
+          <Item Name="OrderCount" Position="77" Length="4"/>
+          <Item Name="Reserve6" Position="81" Length="1"/>
+          <Item Name="OrderWeight" Position="82" Length="6"/>
+          <Item Name="Reserve7" Position="88" Length="1"/>
+          <Item Name="ShipmentCount" Position="89" Length="4"/>
+          <Item Name="Reserve8" Position="93" Length="1"/>
+          <Item Name="TransferPlaceName" Position="94" Length="28"/>
+          <Item Name="Reserve9" Position="122" Length="1"/>
+          <Item Name="TransferCondition" Position="123" Length="8"/>
+          <Item Name="Reserve10" Position="131" Length="1"/>
+          <Item Name="DeliveryDate" Position="132" Length="4"/>
+          <Item Name="DeliveryDateRank" Position="136" Length="1"/>
+          <Item Name="Reserve11" Position="137" Length="1"/>
+          <Item Name="ProvisionClassfication" Position="138" Length="1"/>
+          <Item Name="ExtractionYMD" Position="139" Length="6"/>
+        </Items>
+      </RecordFormat>
+    </RecordFormats>
+</Root>

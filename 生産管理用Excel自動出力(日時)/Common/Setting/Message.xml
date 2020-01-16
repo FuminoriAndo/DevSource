@@ -1,0 +1,20 @@
+﻿<?xml version="1.0"?>
+
+<Settings>
+    <Message>
+      <ProductionControlDailyExcelCreator>
+        <Setting Name="ApplicationTitle" value="生産管理用Excel自動出力(日次)"></Setting>
+        <Setting Name="Completed" value="終了してよろしいですか？"></Setting>
+        <Setting Name="Exception" value="%s"></Setting>
+        <Setting Name="FatalError" value="エラーが発生しました。&#x0D;&#x0A;インストール状態や設定ファイルを見直してください。"></Setting>
+        <Setting Name="ApplicationCanNotExecute" value="対象機能は実行できません。"></Setting>
+        <Setting Name="AlreadyRun" value="既に起動しています。"></Setting>
+        <Setting Name="CanNotConnectInputFolderHostName" value="読込み対象のフォルダに接続できません。"></Setting>
+        <Setting Name="ReadTargetTextFile" value="対象のテキストファイルを読込み中です。"></Setting>
+        <Setting Name="WriteTargetExcelFile" value="対象のExcelを書込み中です。"></Setting>
+        <Setting Name="ProcessCompleted" value="処理が完了しました。"></Setting>
+        <Setting Name="ProcessCanceled" value="キャンセルされました。"></Setting>
+        <Setting Name="ProcessAborted" value="処理が中止されました。"></Setting>
+      </ProductionControlDailyExcelCreator>
+	</Message>
+</Settings>

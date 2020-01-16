@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Root Version="1.0.0">
+
+  <RecordFormats Encoding="Shift_JIS">
+    <RecordFormat Name="Detail" Length="74" CheckPriority="1">
+      <Items>
+        <Item Name="Year" Position="1" Length="2"/>
+        <Item Name="YearSlash" Position="3" Length="1"/>
+        <Item Name="Month" Position="4" Length="2"/>
+        <Item Name="MonthSlash" Position="6" Length="1"/>
+        <Item Name="Day" Position="7" Length="2"/>
+        <Item Name="Reserve1" Position="9" Length="1"/>
+        <Item Name="EndShearWaste" Position="10" Length="9"/>
+        <Item Name="Reserve2" Position="19" Length="1"/>
+        <Item Name="PlanerWaste" Position="20" Length="9"/>
+        <Item Name="Reserve3" Position="29" Length="1"/>
+        <Item Name="TrimmerWaste" Position="30" Length="9"/>
+        <Item Name="Reserve4" Position="39" Length="1"/>
+        <Item Name="LaserWaste" Position="40" Length="9"/>
+        <Item Name="Reserve5" Position="49" Length="1"/>
+        <Item Name="OtherWaste" Position="50" Length="9"/>
+        <Item Name="Reserve9" Position="59" Length="1"/>
+        <Item Name="Total" Position="60" Length="9"/>
+        <Item Name="ExtractionYMD" Position="69" Length="6"/>
+      </Items>
+    </RecordFormat>
+  </RecordFormats>
+</Root>

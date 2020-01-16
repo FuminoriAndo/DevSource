@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Root Version="1.0.0">
+
+  <RecordFormats Encoding="Shift_JIS">
+
+    <RecordFormat Name="Detail" Length="110" CheckPriority="1">
+      <Items>
+        <Item Name="IssuNoAndDate" Position="1" Length="24"/>
+        <Item Name="CHNo" Position="25" Length="24"/>
+        <Item Name="StandardName" Position="49" Length="13"/>
+        <Item Name="Atu" Position="62" Length="3"/>
+        <Item Name="Reserve1" Position="65" Length="1"/>
+        <Item Name="X1" Position="66" Length="1"/>
+        <Item Name="Reserve2" Position="67" Length="1"/>
+        <Item Name="Haba" Position="68" Length="4"/>
+        <Item Name="Reserve3" Position="72" Length="1"/>
+        <Item Name="X2" Position="73" Length="1"/>
+        <Item Name="Reserve4" Position="74" Length="1"/>
+        <Item Name="Naga" Position="75" Length="4"/>
+        <Item Name="UnitWeight" Position="79" Length="5"/>
+        <Item Name="OrderNo" Position="84" Length="11"/>
+        <Item Name="PlanNo" Position="95" Length="10"/>
+        <Item Name="ExtractionYMD" Position="105" Length="6"/>
+      </Items>
+    </RecordFormat>
+  </RecordFormats>
+</Root>

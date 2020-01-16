@@ -1,0 +1,5 @@
+C:\Users\And\Desktop\常駐作業納品物(20191030)\3.生産管理用Excel自動出力(日次)\2.ソースコード\生産管理用Excel自動出力(日時)\Common\Dll\Logger\bin\Debug\Logger.dll
+C:\Users\And\Desktop\常駐作業納品物(20191030)\3.生産管理用Excel自動出力(日次)\2.ソースコード\生産管理用Excel自動出力(日時)\Common\Dll\Logger\bin\Debug\Logger.pdb
+C:\Users\And\Desktop\常駐作業納品物(20191030)\3.生産管理用Excel自動出力(日次)\2.ソースコード\生産管理用Excel自動出力(日時)\Common\Dll\Logger\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\And\Desktop\常駐作業納品物(20191030)\3.生産管理用Excel自動出力(日次)\2.ソースコード\生産管理用Excel自動出力(日時)\Common\Dll\Logger\obj\Debug\Logger.dll
+C:\Users\And\Desktop\常駐作業納品物(20191030)\3.生産管理用Excel自動出力(日次)\2.ソースコード\生産管理用Excel自動出力(日時)\Common\Dll\Logger\obj\Debug\Logger.pdb

@@ -1,0 +1,66 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Root Version="1.0.0">
+
+  <RecordFormats Encoding="Shift_JIS">
+
+    <RecordFormat Name="Detail" Length="142" CheckPriority="1">
+      <Items>
+        <Item Name="OrderNo1" Position="1" Length="6"/>
+        <Item Name="OrderNoDash1" Position="7" Length="1"/>
+        <Item Name="OrderNo2" Position="8" Length="3"/>
+        <Item Name="OrderNoDash2" Position="11" Length="1"/>
+        <Item Name="OrderNo3" Position="12" Length="2"/>
+        <Item Name="Reserve1" Position="14" Length="1"/>
+        <Item Name="DeliveryDateMM" Position="15" Length="2"/>
+        <Item Name="DeliveryDateSlash" Position="17" Length="1"/>
+        <Item Name="DeliveryDateDD" Position="18" Length="2"/>
+        <Item Name="DeliveryDateRank" Position="20" Length="1"/>
+        <Item Name="Reserve2" Position="21" Length="1"/>
+        <Item Name="CustomerName" Position="22" Length="17"/>
+        <Item Name="Reserve3" Position="39" Length="1"/>
+        <Item Name="LotNo1" Position="40" Length="4"/>
+        <Item Name="LotNoDash" Position="44" Length="1"/>
+        <Item Name="LotNo2" Position="45" Length="3"/>
+        <Item Name="Reserve4" Position="48" Length="1"/>
+        <Item Name="RollNo" Position="49" Length="6"/>
+        <Item Name="Reserve5" Position="55" Length="1"/>
+        <Item Name="NotCollectedLotNo1" Position="56" Length="4"/>
+        <Item Name="NotCollectedLotNoDash" Position="60" Length="1"/>
+        <Item Name="NotCollectedLotNo2" Position="61" Length="3"/>
+        <Item Name="Reserve6" Position="64" Length="1"/>
+        <Item Name="Status" Position="65" Length="4"/>
+        <Item Name="Reserve7" Position="69" Length="1"/>
+        <Item Name="PlanStandardCode" Position="70" Length="3"/>
+        <Item Name="Reserve8" Position="73" Length="1"/>
+        <Item Name="PlanAtu" Position="74" Length="5"/>
+        <Item Name="PlanX1" Position="79" Length="1"/>
+        <Item Name="PlanHaba" Position="80" Length="4"/>
+        <Item Name="PlanX2" Position="84" Length="1"/>
+        <Item Name="PlanNaga" Position="85" Length="5"/>
+        <Item Name="PlanTM" Position="90" Length="1"/>
+        <Item Name="Reserve9" Position="91" Length="1"/>
+        <Item Name="PlanProductCode" Position="92" Length="3"/>
+        <Item Name="Reserve10" Position="95" Length="1"/>
+        <Item Name="PlanMaisuu" Position="96" Length="3"/>
+        <Item Name="Reserve11" Position="99" Length="1"/>
+        <Item Name="PerformanceStandardCode" Position="100" Length="3"/>
+        <Item Name="Reserve12" Position="103" Length="1"/>
+        <Item Name="PerformanceAtu" Position="104" Length="5"/>
+        <Item Name="PerformanceX1" Position="109" Length="1"/>
+        <Item Name="PerformanceHaba" Position="110" Length="4"/>
+        <Item Name="PerformanceX2" Position="114" Length="1"/>
+        <Item Name="PerformanceNaga" Position="115" Length="5"/>
+        <Item Name="PerformanceTM" Position="120" Length="1"/>
+        <Item Name="Reserve13" Position="121" Length="1"/>
+        <Item Name="PerformanceProdutCode" Position="122" Length="3"/>
+        <Item Name="Reserve14" Position="125" Length="1"/>
+        <Item Name="PerformanceMaisuu" Position="126" Length="3"/>
+        <Item Name="Reserve15" Position="129" Length="1"/>
+        <Item Name="GeneratingStep" Position="130" Length="4"/>
+        <Item Name="Reserve16" Position="134" Length="1"/>
+        <Item Name="Special" Position="135" Length="2"/>
+        <Item Name="ExtractionYMD" Position="137" Length="6"/>
+      </Items>
+    </RecordFormat>
+  </RecordFormats>
+</Root>

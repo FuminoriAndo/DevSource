@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<Settings>
+
+  <!-- 操作の定義 -->
+  <OperationDefinitions>
+    <OperationDefinition Code="1" Title="生産管理用Excel作成(日時)"
+                         UserControlName="ReportCreatorView"
+                         Note="生産管理用のExcelを出力します。(日時)"/>
+  </OperationDefinitions>
+
+
+  <!--<Input Folder="\\cksosvr32\FTP\EXCEL_BATCH\" HostName="cksosvr32" />-->
+  <Input  Folder="C:\TEMP\PQGP\EXCEL_BATCH\"/>
+  <Output Folder="C:\TEMP\TEST\"/>
+  <Backup Folder="C:\TEMP\TEST\BK\"/>
+  <Ping>
+    <Output IPAddress="127.0.0.1" RetryCount="1" TimeoutPeriod ="5"/>
+  </Ping>
+  <Text>
+    <Input FileNo="0" FileName="PMGQ010F.TXT"
+            SettingFileName="TextFileReadSettingsPMGQ010B.xml" LengthPerLine="133"/>
+    <Input FileNo="2" FileName="PMPD611F.TXT"
+            SettingFileName="TextFileReadSettingsPMPD330B.xml" LengthPerLine="138"/>
+    <Input FileNo="2" FileName="PMPD612F.TXT"
+            SettingFileName="TextFileReadSettingsPMPD330B.xml" LengthPerLine="138"/>
+    <Input FileNo="3" FileName="PMPF070F.TXT"
+            SettingFileName="TextFileReadSettingsPMPF070B.xml" LengthPerLine="142"/>
+    <Input FileNo="4" FileName="PMPF090F.TXT"
+            SettingFileName="TextFileReadSettingsPMPF090B.xml" LengthPerLine="100"/>
+    <Input FileNo="6" FileName="PQGA380F.TXT"
+        SettingFileName="TextFileReadSettingsPQGA380B.xml" LengthPerLine="139"/>
+    <Input FileNo="11" FileName="SSZA400F.TXT"
+            SettingFileName="TextFileReadSettingsSSZA040B.xml" LengthPerLine="144"/>
+  </Text>
+  <Excels>
+    <Excel FileNo="0" 
+           TemplateBookFolder="C:\生産管理用Excel自動出力\" 
+           TemplateBookName="TEMPLATE_PMGQ010B_LIST.xlsx" 
+           OutputBookName="技術特殊引合品チェックリスト(PMGQ010B).xlsx"
+           OutputBookFolder="C:\TEMP\TEST\日次\18.特殊引合チェックリスト\"
+           BackupFolder="C:\TEMP\TEST\BK\日次\18.特殊引合チェックリスト\"/>
+    <Excel FileNo="2"
+           TemplateBookFolder="C:\生産管理用Excel自動出力\"
+           TemplateBookName="TEMPLATE_PMPD330B_LIST.xlsx"
+           OutputBookName="未計画受注リスト(PMPD330B).xlsx"
+           OutputBookFolder="C:\TEMP\TEST\日次\05_未計画受注リスト\"
+           BackupFolder="C:\TEMP\TEST\BK\日次\05_未計画受注リスト\"/>
+    <Excel FileNo="3" 
+           TemplateBookFolder="C:\生産管理用Excel自動出力\" 
+           TemplateBookName="TEMPLATE_PMPF070B_LIST.xlsx" 
+           OutputBookName="未採取リスト(PMPF070B).xlsx"
+           OutputBookFolder="C:\TEMP\TEST\日次\01_未採取リスト\"
+           BackupFolder="C:\TEMP\TEST\BK\日次\01_未採取リスト\"/>
+    <Excel FileNo="4" 
+           TemplateBookFolder="C:\生産管理用Excel自動出力\" 
+           TemplateBookName="TEMPLATE_PMPF090B_LIST.xlsx" 
+           OutputBookName="余剰品引当可能在庫リスト(PMPF090B).xlsx"
+           OutputBookFolder="C:\TEMP\TEST\日次\02_余剰品引当可能在庫リスト\"
+           BackupFolder="C:\TEMP\TEST\BK\日次\02_余剰品引当可能在庫リスト\"/>
+    <Excel FileNo="6" 
+           TemplateBookFolder="C:\生産管理用Excel自動出力\" 
+           TemplateBookName="TEMPLATE_PQGA380B_LIST.xlsx" 
+           OutputBookName="外販出荷実績報告書(PQGA380B).xlsx"
+           OutputBookFolder="C:\TEMP\TEST\日次\03_外販出荷実績リスト\"
+           BackupFolder="C:\TEMP\TEST\BK\日次\03_外販出荷実績リスト\"/>
+    <Excel FileNo="11" 
+           TemplateBookFolder="C:\生産管理用Excel自動出力\" 
+           TemplateBookName="TEMPLATE_SSZA400B_LIST.xlsx" 
+           OutputBookName="在庫売り受注一覧表(SSZA040B).xlsx"
+           OutputBookFolder="C:\TEMP\TEST\日次\04_在庫売り受注一覧表\"
+           BackupFolder="C:\TEMP\TEST\BK\日次\04_在庫売り受注一覧表\"/>
+  </Excels>
+
+  <CustomLog>
+    <Folder Folder="C:\Temp\ProductionControlDailyExcelCreator"/>
+    <File Name="ProductionControlDailyExcelCreator.log"/>
+  </CustomLog>
+  
+  <OutputLog>
+    <Folder Folder="C:\Temp\ProductionControlDailyExcelCreator" />
+  </OutputLog>
+  
+</Settings>

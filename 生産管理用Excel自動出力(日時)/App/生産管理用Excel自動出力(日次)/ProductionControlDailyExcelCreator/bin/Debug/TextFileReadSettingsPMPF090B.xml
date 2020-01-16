@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Root Version="1.0.0">
+
+  <RecordFormats Encoding="Shift_JIS">
+
+    <RecordFormat Name="Detail" Length="100" CheckPriority="1">
+      <Items>
+        <Item Name="StandardName" Position="1" Length="13"/>
+        <Item Name="ProductAtu" Position="14" Length="5"/>
+        <Item Name="ProductHaba" Position="19" Length="4"/>
+        <Item Name="ProductNaga" Position="23" Length="5"/>
+        <Item Name="TM" Position="28" Length="1"/>
+        <Item Name="ProductCode" Position="29" Length="3"/>
+        <Item Name="YardCode" Position="32" Length="4"/>
+        <Item Name="YardDash1" Position="36" Length="1"/>
+        <Item Name="YardX" Position="37" Length="2"/>
+        <Item Name="YardDash2" Position="39" Length="1"/>
+        <Item Name="YardY" Position="40" Length="2"/>
+        <Item Name="Maisuu" Position="42" Length="3"/>
+        <Item Name="TieMaisuu" Position="45" Length="3"/>
+        <Item Name="ReservationClassfication" Position="48" Length="1"/>
+        <Item Name="NotCollectClassfication" Position="49" Length="1"/>
+        <Item Name="OrderNo1" Position="50" Length="6"/>
+        <Item Name="OrderNoDash1" Position="56" Length="1"/>
+        <Item Name="OrderNo2" Position="57" Length="3"/>
+        <Item Name="OrderNoDash2" Position="60" Length="1"/>
+        <Item Name="OrderNo3" Position="61" Length="2"/>
+        <Item Name="CustomerName" Position="63" Length="20"/>
+        <Item Name="UnPlan" Position="83" Length="3"/>
+        <Item Name="DeliveryDate" Position="86" Length="8"/>
+        <Item Name="DeliveryDateRank" Position="94" Length="1"/>
+        <Item Name="ExtractionYMD" Position="95" Length="6"/>                             
+      </Items>
+    </RecordFormat>
+  </RecordFormats>
+</Root>
